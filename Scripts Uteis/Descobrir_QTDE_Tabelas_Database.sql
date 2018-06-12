@@ -1,0 +1,1 @@
+sp_msforeachdb 'select "?" as ''Banco'',count(t.name) as ''qtTab'' from ?.sys.tables t where t.type = ''U''' 

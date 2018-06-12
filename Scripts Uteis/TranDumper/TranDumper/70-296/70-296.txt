@@ -1,0 +1,840 @@
+Exame 70-296: Planning, Implementing, and Maintaining a Microsoft Windows Server 2003 Environment for an MCSE Certified on Windows 2000
+
+
+
+1. You are the systems engineer for Contoso. The network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. All client computers run Windows XP Professional. The servers on the network are located in a physically secured room, which is located in a central data center building on the company campus. All servers have the Recovery Console installed and support firmware-based console redirection by means of their serial ports, which are connected to a terminal concentrator. The terminal concentrator is connected to the company network by means of a standard LAN connection.
+<p>It is required that all servers can be managed remotely. All IT staff in the company can establish connections to the servers by means of either a Remote Desktop connection or the Windows Server 2003 Administration Tools, which are installed locally on their client computers. 
+<p>Company management new requires that several servers that have high-availability requirements must also be remotely managed in the event of system failures and when the Recovery Console is used. Company management also requires that these servers can be remotely managed when the servers are slow or are not responding to normal network requests. You need to plan a remote management solution that complies with the new requirements.
+
+What should you do?
+
+A. On each highly available server, enable Emergency Management Services by adding the Redirect=COM1 and /redirect parameters to the Boot.ini file on each server and the EMSPort=COM1 and EMSBaudRate=9600 parameters to the Winnt.sif file on each server. 
+B. On each highly available server, configure the Telnet service with a startup parameter of Automatic. Set the number of maximum Telnet connections to match the number of administrators in the company. Add the administrator's user accounts to the TelnetClients security group. 
+C. Install IIS on each highly available server. Select the Remote Administration (HTML) check box in the properties for the World Wide Web Service. Add the administrator's user accounts to the HelpServicesGroup security group. 
+D. Use the netsh command to create an offline configuration script that contains the network parameters for outof- band remote management. Copy this script to the C:\Cmdcons folder on each highly available server. 
+
+Answer:A 
+
+Justification:
+B and C are right out. Neither Telnet nor IIS would be running if the server had encountered a STOP error, or if the server needed to be in Directory Services Restore Mode. Netsh has nothing to do with out-of-band management.
+<p>Emergency Management Services is new in Windows Server 2003. The only place I could find decent information about it is in a MS whitepaper they have available for download on their site. I have verified that the EMSPort commands, etc. specified in answer A are accurate. So the answer is definitely A.
+
+
+2. You are a network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The network contains two Windows Server 2003 domain controllers. All servers run Windows Server 2003, and all client computers run Windows XP Professional. You install a wireless network. You discover that the coverage for the executive offices is very poor. You need to improve wireless coverage for the executive team in their office area.
+The design team specifies the following requirements for the executive team:
+<br>• Executives must be able to access the wireless network in all locations in the building, including their offices.
+• Non executive employees may use wireless access points in the executive office area only if other access points are unavailable.
+
+You need to develop a plan to improve the coverage in the executive offices. You need to implement your plan by using the minimum amount of administrative effort. What should you do?
+
+A. Use the Connection Manager Administration Kit (CMAK) wizard to create new service profiles. One profile will be used for executives only. Send an e-mail message that contains the proper profiles to the proper users. 
+B. Use the Windows Management Instrumentation command-line tool with the NIC and the NICCONFIG aliases. 
+C. Install new access points for the executive team with a new dedicated service set identifier (SSID). Use wireless network policies to control use of the SSIDs on the wireless network. 
+D. Install new access points for the executive team with a new dedicates service set identifier (SSID). Use wireless network policies to control access for ad hoc networks. 
+
+Answer:C 
+
+
+
+3. You are a system engineer for Contoso. The network consists of four Active Directory domains.
+All servers on the network run Windows Server 2003. The Windows Server 2003 computers are distributed among three offices. All servers support out-of-band management by means of serial connections to terminal concentrators in each office's data center. Each office maintains its own separate connection to the Internet.
+
+The company adopts a new written security policy, which includes the following requirements:
+• Physical access to all servers is restricted to authorized personnel and only for the purpose of installing or maintaining hardware.
+• all in-band remote administration connections must be authenticated by the Kerberos version 5 protocols.
+• Administrators in each office must be able to access their servers for remote administration or troubleshooting even when the operating system is not running or experiences a Stop error.
+• Services or programs that are not essential for remote administration or server operation must not be installed on any computer.
+
+You need to plan a remote administration strategy for the network that compiles with the new policy. You are not responsible for permissions management in the domains.
+
+Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Configure each server to accept Remote Desktop connections. 
+B. On each server, enable the Telnet service with a startup parameter of Automatic. 
+C. Install Terminal Services on each server. 
+D. On each server, enable Emergency Management Services. 
+E. Install IIS on each server. Select the Remote Administration (HTML) check box in the properties for the Wide World Web Service. 
+
+Answer:A, D 
+
+
+
+4. You are the network administrator for Contoso. The company is deploying a network that consists of a single Active Directory domain named Contoso.com. All client computers run Windows XP Professional. You are planning the data transmission security for the sales department. 
+<p>You need to monitor the data transmissions to and from the client computers in the sales department at all times. You need to ensure the integrity of the data transmissions to and from the client computers. You also need to be able to implement intrusion detection on the sales department traffic.
+What should you do?
+
+A. Assign a custom IPSec policy with the Integrity and Encryption security method to the sales department client computers. 
+B. Assign a custom IPSec policy with the Integrity only security method to the sales department client computers. 
+C. Assign a custom IPSec policy with a custom security method and the 3DES encryption algorithm to the sales department client computers. 
+D. Assign the Client (Respond Only) IPSec policy to the sales department client computers. 
+
+Answer:B 
+
+
+
+5. You are a network administrator for Contoso. The company has a main office and one branch office. The network consists of a single Active Directory domain named Contoso.com. The network contains three Windows Server 2003 domain controllers:Contoso1,Contoso2, andContoso4. You configure two Active Directory sites, one for the main office and one for the branch office. The network is shown in exhibit.
+
+
+The domain controllers are backed up each night by using a normal backup that also captures the system state. You are responsible for creating a domain controller recover plan to be used if a domain controller fails in either office.
+
+The design team specifies that the domain controller recover plan must minimize replication traffic across the link between the network in the main office and the network in the branch office. The plan must also minimize restoration time. You need to include in your recovery plan the process for restoring Active Directory services if any of the domain controllers suffes a hardware failure.
+
+Which two actions should you include in your plan? (Each correct answer presents part of the solution. (Choose two)
+
+A. Restore the system state of any domain controller to an available member server in the same network subnet. 
+B. Perform an authoritative restore operation on a functioning domain controller. 
+C. On an available member server in the same network subnet as the failed domain controller, run the dcpromo /adv command and select the Over the network option. 
+D. On an available member server in the same network subnet as the failed domain controller, run the dcpromo /adv command and select the From these restored backup files option. 
+
+Answer:A,D 
+
+
+
+6. You are the network administrator for Acme Ltd. The company has a subsidiary named Contoso. The Acme Ltd network consists of a single Active Directory forest. The forest contains one domain named acme.com. The functional level of the domain is Windows Server 2003. 
+<p>The Contoso network consists of a single Windows NT 4.0 domain named Contoso. A file server named Server4 is a member of the acme.com domain. All users in both domains need to save files on Server4 every day. You need to allow users in the Contoso domain to access files on Server4. 
+<p>You need to ensure that the domain administrators of the Contoso domain cannot grant users in the acme.com domain permissions on servers in the Contoso domain.
+What should you do?
+
+A. Upgrade the Contoso domain to Windows Server 2003 and make this domain the root domain of a second tree in the existing forest. 
+B. Upgrade the Contoso domain to Windows Server 2003 and make this domain the root domain of a new forest. Create a two-way forest trust relationship. 
+C. Create a one-way external trust relationship in which the adatum.com domain trusts the Contoso domain. 
+D. Create a one-way external trust relationship in which the Contoso domain trusts the acme.com domain. 
+
+Answer:C 
+
+
+
+7. You are the network administrator for Contoso. The company has offices in Brasilia, Buenos Aires, and Mexico City. Each office employs 500 people. The network consists of a single Active Directory forest with one domain in each office. Each domain contains two domain controllers named ContosoSrvA and ContosoSrvB. All domain controllers run Windows Server 2003. Each office is configured as an Active Directory site. The domain structure is shown in the exhibit.
+
+
+The Windows Server 2003 computer named ContosoSrvA.Contoso.com holds all operations master roles for its domain, and it holds both forest-level operations master roles. The Windows Server 2003 computers named ContosoSrvA.sales.franklin.com and ContosoSrvA.prod.franklin.com hold all operations master roles for their respective domains. WAN connectivity between the offices is unreliable.
+
+You need to plan the placement of global catalog servers for the network. You need to ensure that each user can log on in the event of the failure of a single domain controller and WAN connection. You need to ensure that the consistency of universal group membership information remains intact.
+
+Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Configure both domain controllers inContosoi.com as global catalog servers. 
+B. Configure onlyContosoSrvA in each domain as a global catalog server. 
+C. Configure onlyContosoSrvA in each domain as a global catalog server. 
+D. Enable universal group membership caching for each site. 
+E. Enable universal group membership caching for the Brasilia office. 
+F. Enable universal group membership caching for the Mexico City office and the Buenos Aires office. 
+
+Answer:C,D 
+
+
+
+8. You are a network administrator for Contoso. The network consists of 20 Active Directory domains. All servers run Windows Server 2003. Contoso has 240 offices. Each office is configured as an Active Directory site.
+
+A branch office is connected to the corporate network by a 56-Kbps WAN connection. The branch office contains a domain controller named Contoso17 that is configured as an additional domain controller for the australia.contoso.com domain. An Active Directory site is configured for the branch office. Contoso17 is a member of this site. An IP site link exists between the branch office and the main office.
+
+The WAN connection is available only during business hours. Users in the branch office report slow response times on the WAN connection.
+
+You examine the WAN connection and discover that the problem is caused by Active Directory replication. You need to improve the performance of the WAN connection.
+
+What should you do?
+
+A. Configure Contoso17 as a global catalog server.
+B. Enable universal group membership caching in the branch office.
+C. Remove Active Directory from Contoso17 and configure Contoso17 as a member server.
+D. On the site link that connects the branch office to the corporate network, increase the replication interval.
+
+Answer: D
+
+Justification:
+Configuring Contoso17 as a Global Catalog will only increase the amount of replication traffic.
+
+Universal Group Membership caching is a neat new feature in Windows 2003, but all it does is cache the stuff you need to logon with. You actually *could* do this here, because each office is a site, and UGMC is enabled on a per-site basis. However, it won’t get rid of the AD replication that is incurred by having a DC in the branch office.
+
+Man, I really am tempted to say just demote the damn thing and let the logons take a while, at least then you don’t have all the replication.
+
+Increasing the replication interval would make it replicate less often, which would help, but they really don’t give you enough information here to determine whether you really *need* a DC in the office. I’m going to assume they want you to keep the DC. Although I could be off on this one, I’ll go with Answer D.
+
+
+
+9. You are the network administrator for Contoso. The network consists of two Active Directory forests, each consisting of a single domain. The functional level of both forests is Windows Server 2003. One forest is used for testing and the other forest is used for production. The test forest contains a single domain controller.
+You are using the test forest to test Group Policy objects (GPOs) that manage administrative templates before they are implemented in the production forests. This testing includes changes to the Default Domain Policy GPO and the Default Domain Controllers Policy GPO. You need to be able to restore the Default Domain Policy and Default Domain Controllers Policy GPOs for the test domain to the settings used in the production forest. You want to accomplish this task by using the minimum amount of administrative effort.
+
+Which two actions should you take?
+(Each correct answer presents part of the solution.)(Choose two)
+
+A. Run the dcgpofix /both command in the test domain.
+B. Back up the Default Domain Policy and Default Domain Controllers Policy GPOs from the production domain by using the Group Policy Management Console (GPMC).
+C. Import the Default Domain Policy and Default Domain Controllers Policy GPOs into the test domain by using the Group Policy Management Console (GPMC) and a migration table.
+D. Back up the original GptTmpl.inf files for the Default Domain Policy and Default Domain Controllers Policy GPOs from the production forests.
+E. Restore the backed up GptTmpl.inf files to the test domain.
+F. Increment the version in the Gpt.ini files for the Default Domain Policy and Default Domain Controllers Policy GPOs.
+
+Answer: B,C
+
+Justification: Well, we can start by eliminating A. Running the command dcgpofix /both would simply reset the Default Domain Controller and Default Domain security policies back to their original state as if you had done a clean install. We need to reset them to the ones used in the production forest, so this is right out.
+
+Now we get to the sticky part. A combination of D, E & F will actually work. This is what you had to do in Windows 2000 if you wanted to do this. But this is three choices, not two, and also I tend to think that MS wants you to always take the “latest and greatest” approach. So we should rule this out.
+
+A combination of B & C will do the job too, with the added benefit that by using a migration table, you don’t have to worry about mismatched security principals.
+
+
+
+10. You are a network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. A Group Policy object (GPO) named Software Restrictions prevents users from running unauthorized applications. Thus restriction does not apply to users who are local administrators on their client computers. 
+<p>Developers at the company create a new application for internal users. An administrator installs the application on a number of computers by running the Setup.exe file supplied by the developers. However, when users try to run the new application, they report that they cannot do so. You need to ensure that all users can run the new application. You also need to ensure that unauthorized applications cannot run.
+
+What should you do?
+
+A. Install the application on computers that require its use. Create a VMI filter on the Software Restrictions GPO that detects where the software is installed and prevents the GPO from being applied. 
+B. Create a security group that contains all users who need to use the application. Modify the security settings on the Software Restrictions GPO so that its effects are bypassed for members of this group. 
+C. Create a hash value for the application's executable code file, and revise the Software Restrictions GPO to allow executable code files that match the hash value to run. 
+D. Repackage the application as an .msi package and use a new GPO to assign the package to the computers that require the application. 
+
+Answer:C 
+
+Justification:
+
+Let’s eliminate the ones that are definitely wrong first.
+
+Answer A might work out, because there is such thing as what’s called a Path Rule. A Path Rule lets you allow unrestricted access to execute programs from a certain directory. However, I don’t know what the heck a VMI filter is supposed to be. I searched on microsoft’s site, in my books, and on google groups. No dice. I don’t think it’s a real thing at all. So it can’t be A.
+
+Answer B would result in the people who need the new application bypassing the restriction GPO altogether. This can’t be right because one of the parameters is that they need to still be restricted from other stuff.
+
+Distributing an .msi via GPO is really pretty nice, but in this instance, the user would get it installed, then still they would not be able to run it.
+
+The answer has to be C. There is definitely a way to make a hash value from an executable and generate a rule for this.
+
+
+
+11. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The domain contains Windows Server 2003 computers and Windows XP Professional client computers. The domain contains two organizational units (OUs) named Sales and Marketing. Both OUs have multiple Group Policy Objects (GPOs) linked to them. The Sales OU needs to be moved under the Marketing OU. You need to find out which objects in the Sales OU are adversely affected by GPOs linked to the Marketing OU.
+<p>You need to achieve this goal without disruption to users. What should you do?
+
+A. Use Resultant Set of Policy (RSoP) in logging mode for the Marketing OU. Review the policy results for the users in the OU. 
+B. Use Resultant Set of Policy (RSoP) in logging mode for the Sales OU. Review the policy results for the users in the OU. 
+C. Use Resultant Set of Policy (RSoP) in planning mode for the Marketing OU. Choose the Sales OU to simulate policy settings. 
+D. Use Resultant Set of Policy (RSoP) in planning mode for the Sales OU. Choose the Marketing OU to simulate policy settings. 
+
+Answer:D 
+
+
+
+12. You are a network administrator for Contoso. All client computers run Windows XP Professional. You administer a Windows Server 2003 file server named ContosoSrvC. <br>ContosoSrvC contains two volumes configured as drive G and Drive H. Shared folders for the accounting department are stored on drive G. Shared folders for the marketing department are stored on drive G and on drive H. Drive H has sufficient space to store all of the shared folders with 400 GB of free space.
+The design team specifies the following requirements for the files in the marketing shared folders onContosoSrvC: 
+<p>• The files must be backed up, even if they are open.
+• Backups can be performed during business hours, if required.
+• Users must be able to restore the files.
+
+You need to create a plan that will allow the backup and recovery of folders and files in accordance with the requirements. You need to minimize data loss.
+
+Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Customize all shared folders by using the Documents template. 
+B. Place all marketing shared folders on drive H. Enable Shadow Copies of Shared Folders on the volume. 
+C. Configure all backups by selecting the Disable volume shadow copy check box. 
+D. Install the Previous Versions client software on all marketing client computers. 
+E. Assign all users the Allow - Full Control NTFS permissions for the marketing shared folders. 
+
+Answer:B,D 
+
+
+
+13. You are the network administrator for Contoso. The network consists of a single Active Directory forest that contains a single domain named Contoso.com. All servers run Windows Server 2003, and all client computers run Windows XP Professional. In a test lab that contains a separate forest, you develop and test a Group Policy object (GPO) that you need to apply to all computers and users in the domain.
+<p>You need to implement the new GPO on the network. You want to accomplish this task by using the minimum amount of administrative effort.
+
+What should you do?
+
+A. Use a Distributed File System (DFS) to replicate the GPO information in the SYSVOL shared folder from the test lab to the domain. 
+B. Use the Group Policy Management Console (GPMC) to back up the GPO from the test lab and import it into the domain. 
+C. Copy the Group Policy Template (GPT) files in the SYSVOL shared folder from the test lab to the domain. 
+D. Use Active Directory Users and Computers to create a new GPO linked to the domain. In the new GPO, include all of the settings that exist in the GPO in the test lab. 
+
+Answer:B 
+
+
+
+14. You are a network administrator for Contoso. Your network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. The company has users who work in the main office and users who work remotely by connecting to a server running Routing and Remote Access. The company's written security policy requires that administrators in the main office log on by using smart cards.
+<p>The written security policy also requires that remote users use smart cards to access network resources. No other users are required to use smart cards. You issue portable computers that contain smart card readers to administrators and remote users. You issue smart card to administrators and remote users. Administrators and remote users report that they can log on without using a smart card. You need to ensure that only administrators are required to use smart cards when working in the main office. You must also ensure that remote users are required to use smart cards when accessing network resources.
+
+Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. In the computer configuration settings of the Default Domain Policy Group Policy object (GPO), enable the Interactive logon: Require smart card setting. 
+B. On the server running Routing and Remote Access, select the Extensible authentication protocol (EAP) check box and require smart card authentication. 
+C. In the properties of each administrator account, select the Smart Card Required for Interactive Logon check box. 
+D. In the computer configuration settings of the Default Domain Controllers Policy Group Policy object (GPO), enable the Interactive logon: Requires smart card setting. 
+E. In the properties of each user account that requires remote access, select the Smart Card Required for Interactive Logon check box. 
+
+Answer:B,C 
+
+
+
+15. You are a network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. Most of the client computers are located in the offices of individual users. Some client computers are located in publicly accessible locations.
+The company's written security policy includes the following requirements.
+• All users must use smart cards to log on to a client computer.
+• Users using the publicly accessible client computers must be logged off if the smart card is removed from the smart card reader.
+
+You configure all user accounts to require smart cards for interactive logon. You create an organizational unit (OU) named Public.
+
+You need to ensure that the appropriate result occurs on each client computer when a smart card is removed.
+
+You must achieve this goal without effecting other computers. What should you do?
+
+A. Place all computer accounts for the publicly accessible client computers in the Public OU. Create a new Group Policy object (GPO) and link the GPO to the Public OU. Configure the Interactive Logon: Smart card removal behavior setting to Force Logoff. 
+B. Place the user accounts of all users who use the publicly accessible client computers in the Public OU. Create a new Group Policy object (GPO) and link the GPO to the Public OU. Configure the Interactive logon: Smart card removal behavior setting to Force loggoff. 
+C. On the Default Domain Policy Group Policy object (GPO), configure the Interactive logon: Smart card removal behavior setting to Force logoff. 
+D. On the Default Domain Controllers Policy Group Policy object (GPO), configure the Interactive logon: Smart card removal behavior setting to Force Logoff. 
+
+Answer:A 
+
+
+
+
+16. You are the network administrator for Contoso. The company has a main office and six branch offices. Each branch office employs fewer than 15 users. The network consists of a single Active Directory domain configured as a single site. All servers run Windows Server 2003. Domain controllers are located in the main office. All branch offices are connected to the main office by WAN connections. All users are required to change their password every 10 days. 
+<p>They are further restricted from reusing a password until after they have used five different passwords. You discover that users in the branch office can log on by using recently expired passwords and access local resources during a WAN connection failure that lasts for 24 hours or longer. You need to ensure that users can log on to the domain only by using a current password.
+
+What should you do?
+
+A. Enable universal group membership caching in the site.
+B. Instruct all users to log on by using their principal names (UPNs).
+C. In Active Directory Users and Computers, require all users to change their passwords to the next time they log on to the domain.
+D. Configure the Default Domain Policy Group Policy object (GPO) to prevent logon attempts that use cached credentials.
+
+Answer: D
+
+Justification: The users are in a branch office with no DC present and the WAN connection goes down. Universal group membership caching won’t help because it needs a DC. Answers B & C are nonsense, they don’t apply to this situation.
+
+Although I never personally have seen the GPO setting that prevents logon attempts using cached credentials, I’d be willing to bet that there is one. The answer has to be D.
+
+
+
+
+17. You are the network administrator for Contoso GmBh. The network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. All client computers run Windows XP Professional. The Active Directory structure is shown in the Active Directory exhibit.
+
+
+The company's written policy states that users in the manufacturing department are given only restricted access to settings and applications on their computers. The written policy also states that this limitation does not apply to members of a security group named Managers. You create a Group Policy object (GPO) named Restricted Settings and link the GPO to the domain. This GPO contains the policy settings required by the written company policy. You discover that the restricted settings apply to all users. You examine the Restricted Settings GPO by using the Group Policy Management Console (GPMC). The relevant information is shown in the GPMC exhibit.
+
+You need to configure the network so that the written policy is enforced correctly. Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Unlink the Restricted Settings GPO from the domain. Link it to the Manufacturing organizational unit (OU). 
+B. Unlink the Restricted Settings GPO from the domain. Link it to the Company Users organizational unit (OU). 
+C. Assign the Authenticated Users group to the Deny - Apply Group Policy permission for the Restricted Settings GPO. 
+D. Assign the Managers group the Deny - Apply Group Policy permission for the Restricted Settings GPO. 
+
+Answer:A,D
+
+
+18. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. You are testing Group Policy object (GPOs) on an organizational unit (OU) named Test. The Test OU contains a Windows XP Professional client computer that you use as a test computer. 
+<p>The domain contains a group named Security. You create a new GPO and configure the Computer Configuration section to grant the Security group the Change the system time user right. You log on to the test computer and discover that the setting you set through the GPO is not in effect. You need to apply the GPO settings immediately.
+
+What should you do?
+
+A. Log off the test computer and log on again. 
+B. Log off the test computer. Create a test user account in the Test OU and then log on as the test user account. 
+C. On the test computer, run the gpresult command. 
+D. On the test computer, run the gpupdate /force command. 
+
+Answer:D 
+
+
+
+19. You are a network administrator for Contoso. The company consists of a single Active Directory domain named Contoso.com. All client computers run Windows XP Professional. The company's main office is located in Dallas. You are a network administrator at the company's branch office in Boston. 
+
+<p>You create a Group Policy object (GPO) that redirects the Start menu for users in the Boston branch office to a shared folder on a file server. Several users in Boston report that many of the programs that they normally use are missing from their Start menus. The program were available on the Start menu he previous day, but did not appear when the users logged on today. You log on to one of the client computers. All of the required programs appear on the Start menu. You verify that users can access the shared folder on the server. You need to find out why the Start menu changed for these users.
+<p>What are two possible ways to achieve this goal? (Each correct answer presents a complete solution.)(Choose two)
+
+A. In the Group Policy Management Console (GPMC), select the file server that hosts the shared folder and a user account that is in the Domain Admins global group and run Resultant Set Of Policy (RSoP) in planning mode. 
+B. In the Group Policy Management Console (GPMC), select one of the affected user accounts and run Resultant Set of Policy (RSoP) in logging mode. 
+C. On one of the affected client computers, run the gpresult command. 
+D. On one of the affected client computers, run the gpupdate command. 
+E. On one of the affected client computers, run the secedit command. 
+
+Answer:B,C 
+
+
+
+20. are the network administrator for Fabrikam, Inc. The network consists of a single Active Directory domain that contains one domain controller. All servers run Windows Server 2003. All client computers run Windows XP Professional. The company uses Policy objects (GPOs) to configure user and computer settings. 
+<p>	A new user named Dr. King reports that his Windows desktop is different from others in the company and that he does not have access to the same applications as other users. You discover that none of the user settings from any GPOs are in effect in Dr. King's computer after Dr. King logs on. You instruct Dr. King to run the gpresult command, and he reports that he receives the following error message: "INFO: The policy object does not exist". You run the gpotool command on the domain controller and receive the output shown in the exhibit.
+
+[Exhibit Not Available]
+
+You need to ensure that Group Policy settings can be applied correctly. What should you do?
+
+A. Run the gpupdate /force command on the domain controller.
+B. Run the gpupdate /force command on Dr. King's computer.
+C. Restore the system state on the domain controller from a valid backup.
+D. Restore the backup state on Dr. King's computer from a valid backup.
+
+Answer: B
+
+Justification: This is an easy one. The policy is not applying, and you need to force an update.
+
+
+
+21. You are a network administrator for Contoso. Your network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. A help desk user reports that a user object was accidentally deleted and the user can no longer long on to the domain and access resources. You confirm that the user object was included in the most recent backup. You need to enable the user to log on to the domain. You must ensure that the user retains access to resources.
+What should you do?
+A. Install a new domain controller. Install Active Directory from media by using the most recent backup. Manually initiate replication. 
+B. Decrease the garbage collection interval. Perform a nonauthorative restoration of Active Directory by using the most recent backup. 
+C. Perform a nonauthorative restoration of Active Directory by using the most recent backup. Authoritatively restore the user object that was deleted. 
+D. Re-create a user object that has the same user principal name (UPN) as the user object that was deleted. Authoritatively restore this user object. 
+
+Answer:C 
+
+
+22. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The functional level of the domain is Windows Server 2003. The domain contains a secure site and a main office site, as shown in the exhibit. [Exhibit not available]
+
+All domain controllers are configured as shown in the following table.
+
+	<DIV ALIGN="center">
+	  <CENTER>
+	  <TABLE BORDER="1" CELLSPACING="0">
+	    <TR>
+	      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2"><B>Drive</B></FONT></TD>
+	      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2"><B>Contents</B></FONT></TD>
+	    </TR>
+	    <TR>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">C</FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">Boot partition, system partition, Active Directory database log files</FONT></TD>
+	    </TR>
+	    <TR>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">D</FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">Active Directory database</FONT></TD>
+	    </TR>  
+	    <TR>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">E</FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">Files and folders</FONT></TD>
+	    </TR>
+	</TABLE> </CENTER></DIV><BR><BR>
+
+The motherboard on Contoso2 fails and Contoso2 is taken offline. One week later, an administrator connects to Contoso3 and seizes the schema master role. You need to access files on drive E on Contoso2. You replace the motherboard on Contoso2 and bring Contoso2 online on an isolated subnet. You need to be able to bring Contoso2 back into the secure site as quickly as possible in order to access the files.
+
+What should you do?
+
+A. Perform a full format of drive D on Contoso2. Transfer the schema master role to a domain controller in the MainOffice site. Remove references to Contoso2 from Active Directory by using the Ntdsutil utility and the ADSIEdit utility on Contoso1.
+B. Perform a full format of drive C on Contoso2. Reinstall the operating system on Contoso2. Remove references to Contoso2 from Active Directory by using the Ntdsutil utility and the ADSIEdit utility on Contoso1.
+C. Perform a full format of drive E on Contoso2. Run the dcpromo command on Contoso2. Transfer the schema master role to a domain controller in the MainOffice site. Join Contoso2 to the domain.
+D. Perform a full format of drive C on Contoso2. Transfer the schema master role to a domain controller in the MainOffice site. Remove references to Contoso2 from Active Directory by using the Ntdsutil utility and the ADSIEdit utility on Contoso1.
+
+Answer: B
+
+Justification:
+
+This question stumped me. None of the answers really make sense. We can however, work through elimination to come to the *least wrong* conclusion.
+
+First off, Answer C can go. If you format the data drive, it defeats the purpose of what we are trying to accomplish here.
+
+The other 3 all involve reformatting drives and removing references in AD from Contoso1 (what you can’t see here, and you can in the exhibit, is that Contoso1 is the infrastructure master). Only answer B bothers to reinstall the O/S after formatting, which is why I’m choosing it. Yet again a question where it really isn’t clear what part of your knowledge they are trying to gauge. Are they seriously worried at this point that we won’t know to reinstall the O/S after formatting?
+
+
+
+23. You are the network administrator for your company. The company consists of two subsidiaries named Contoso., and Fabrikam, Inc. The network consists of two Active Directory forests. All servers run Windows Server 2003. The domain configuration is shown in the exhibit.
+
+
+The North American department in the company is renamed to Northwind Traders. You rename the NA.Contoso.com domain to northwindtraders.com. You change the NetBIOS name for the domain to northwindtraders. The northwindtraders.com domain is a second tree in theContoso.com forest. After the domain is renamed, users in the northwindtraders.com domain report that they cannot access any shared resourced in the fabrikam.com domain. In addition, users in the fabrikam.com domain report that they cannot access shared resources in the norhwindtraders.com domain. You need to reenable the sharing of resources between the northwindtraders.com domain and the fabrikam.com domain.
+
+What should you do?
+
+A. Change the NetBIOS name for the northwindtraders.com domain to NA. 
+B. Delete and re-create the two one-way trust relationships between the northwindtraders.com domain and the fabrikam.com domain. 
+C. Configure conditional forwarding on the DNS server in the fabrikam.com domain to forward requests for the northwindtraders.com domain to the DNS servers in theContoso.com domain. 
+D. Reset the computer account passwords on all of the domain controllers in the northwindtraders.com domain. 
+
+Answer:B 
+
+
+
+24. You are the network administrator for Contoso. The network consists of a single Active Directory forest that contains three domains. The functional level of all three domains is Windows 2000 native.
+
+Your company is merging with a company named Acme. The Acme network consists of a single Active Directory forest that contains one domain named acme.com. The functional level of the domain is Windows 2000 native. The forests of both companies are shown in the exhibit.
+
+[Exhibit not available]
+
+You need to allow users in each forest to fully access resources in the domains of the other forest. In addition, users must be able to log on between domains by using Kerberos authentication. You need to ensure that users can continue to access all resources by using their existing user accounts.
+
+What should you do?
+
+A. Demote the Windows 2000 domain controllers in the acme.com domain to become member servers. Promote these servers into the Contoso.com domain.
+B. Demote the Windows 2000 domain controllers in the acme.com domain to become member servers. Upgrade these servers to Windows Server 2003. Promote the upgraded computers to become domain controllers for a new domain tree in the Contoso forest.
+C. Upgrade the Windows 2000 domain controllers in the acme.com domain to Windows Server 2003. Create external trust relationships between the root domains of each forest.
+D. Upgrade all domain controllers in both forests to Windows Server 2003. Raise the functional level of both forests to Windows Server 2003. Create a forest trust relationship between the root domains of each forest.
+
+Answer: D
+
+Justification:
+
+This question is a bit odd. Because the cheapest thing would be to leave things how they are and configure cross-forest trusts between the individual domains. You would still be able to use Kerberos authentication and nothing would need to be upgraded. But this isn’t one of the options.
+
+Options A & B both involve moving acme.com’s domains into Contoso’s forest. I can’t remember what the exhibit shows, but I think there is a naming conflict that prevents this. In any event, the question doesn’t seem to allow for the elimination of one of the forests.
+
+Answer C wouldn’t work because forest trusts are only allowed in forests that are 2003 functional level.
+
+Since the domains are already in 2000 native functional level, upgrading all DCs to 2003 and then raising the forest levels to 2003 is the exact upgrade path that MS recommends. So I’m very heavily inclined to answer D.
+
+
+
+25. You are a network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The functional level of the domain is Windows Server 2003. All domain controllers run Windows Server 2003. The domain controllers are configured as shown in the following table.
+
+
+You plan to takeContosoSrvD offline for maintenance. Another network administrator plants to add 1,250 new user accounts whileContosoSrvD is offline. You need to ensure that the network administrator can add the user accounts whileContosoSrvD is offline. You also need to endure that there is no disruption of user account creation afterContosoSrvD is brought back online.
+
+Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Connect toContosoA by using the Ntdsutil utility. 
+B. Connect toContosoSrvD by using the Ntdsutil utility. 
+C. Remove the global catalog server role fromContosoSrvD. 
+D. Add the global catalog server role toContosoSrvD. 
+E. Transfer the RID master role. 
+
+
+Answer:D 
+
+
+26. You are the network administrator for Contoso. The network consists of a single Active Directory forest. The forest contains Windows Server 2003 servers and Windows XP Professional computers. The forest consists of a forest root domain named Contoso.com and two child domains named child1.franklin.com and child2.franklin.com. The child1.franklin.com domain contains a member server named ContosoSrvC.
+<br>You configure ContosoSrvC to be an enterprise certification authority (CA), and you configure a user certificate template. You enable the Publish certificate in Active Directory setting in the certificate template. You instruct users in both the child1.franklin.com and the child2.franklin.com domains to enroll for user certificates. You discover that the certificates for user accounts in the child1.franklin.com domain are being published to Active Directory, but the certificates for user accounts in the child2.franklin.com domain are not. You want certificates issued byContosoSrvB to child2.21ertify.com domain user accounts to be published in Active Directory. What should you do?
+
+A. Configure user certificate autoenrollment for all domain user accounts in theContoso.com. 
+B. Configure user certificate autoenrollment for all domain user accounts in the child2.franklin.com domain. 
+C. AddContosoSrvC to the Cert Publisher group in theContoso.com domain. 
+D. AddContosoSrvC to the Cert Publisher group in the child2.franklin.com domain. 
+
+Answer:D 
+
+
+
+27. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All computers on the network are members of the domain. The network contains a Windows Server 2003 computer named ContosoCA. The company uses an enterprise certification authority (CA) on ContosoCA to issue certificates.
+
+A certificate to encrypt files is autoenrolled to all users. The certificate is based on a custom Encryption File System (EFS) certificate template. The validity period if the certificate is set to two years.
+
+Currently, the network is configured to use data recovery agents. You are planning to implement key archival for the keys that users use to decrypt files.
+
+You configure the CA and the custom EFS certificate template to enable key archival of the encryption private keys. You need to ensure that the private EFS key of each user who logs on to the domain is archived.
+
+What should you do?
+
+A. Configure a new issuance policy for the custom EFS certificate template.
+B. Configure the custom EFS certificate template to reenroll all certificate holders.
+C. Select the Automatically Enroll Certificates command in the Certificates console.
+D. Configure a logon script that runs the gpupdate.exe /force command for the users.
+
+Answer: B
+
+Justification:
+
+This is a really simple question complicated by the introduction of some very advanced concepts. The ability to archive private keys is new to Windows Server 2003. Once again, the only decent information I could find on it was in a whitepaper available from MS’s site. It’s a very complex process (as if CA wasn’t complicated enough as is).
+
+However, it still falls under the category of a “critical change” to the certificate. MS says on their site that any time you make such a change to a cert, you open the Certificate Template and click “Reenroll All Certificate Holders”.
+
+
+28. You are the security analyst for Contoso. The network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. All client computers run Windows XP Professional. The perimeter network contains an application server, which is accessible to external users. You view the logs on your intrusion-detection system (IDS) and on the router and discover that very large numbers of TCP SYN packets are being sent to the application server. The application server is responding with SYN-ACK packets to several different IP addresses, but is not receiving ACK responses.
+<br>You not that all incoming SYN packets appear to be originating from IP addresses located within the perimeter network's subnet address range. No computers in your perimeter network are configured with these IP addresses. The router logs shows that these packets are originating from locations on the Internet.
+<br>You need to prevent this type of attack from occurring until a patch is made available from the applicat on vendor. Because of budget constraints, you cannot add any new hardware or software to the network. Your solution cannot adversely affect legitimate traffic to the application server.
+
+What should you do?
+
+A. Relocate the application server to the company intranet. Configure the firewall to allow inbound and outbound traffic on the ports and protocols used by the application. 
+B. Configure network ingress filters on the router to drop packets that have local addresses but that appear to originate from outside the company network. 
+C. Create access control lists (ACLs) and packet filters on the router to allow perimeter network access to only authorized users and to drop all other packets originating from the Internet. 
+D. Configure the IDS on the perimeter network with a response rule that sends a remote shutdown command to the application server in the event of a similar denial-of-service attack. 
+
+
+Answer: B
+
+
+29. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All computers on the network are members of the domain. All servers run Windows Server 2003 and all client computers run Windows XP Professional. You are planning a security update infrastructure. You need to find out which computers are exposed to known vulnerabilities. You need to collect the information on existing vulnerabilities for each computer every night. You want this process to occur automatically.
+
+What should you do?
+
+A. Schedule the secedit command to run every night.
+B. Schedule the mbsacli.exe command to run every night.
+C. Install Microsoft Baseline Security Analyzer (MBSA) on one of the servers. Configure Automatic Updates on all other computers to use that server.
+D. Install Software Update Services (SUS) on one of the servers. Configure the SUS server to update every night.
+
+Answer: B
+
+Justification: All you are going for here is automating a data collection process. Therefore D and A are out, as they are there to actually *do* something. C is nonsense. The answer is B. The mbsacli.exe is a somewhat-limited command line version of the MBSA.
+
+
+
+30. You are a network administrator for Contoso. The network contains a perimeter network. The perimeter network contains four Windows Server 2003, Web Edition computers that are configured as a Network Load Balancing cluster. The cluster hosts an e-commerce Web site that must be available 24 hours per day. The cluster is locate din a physically secure data center and uses an Internet-addressable virtual IP address. All servers in the cluster are configured with Hisecws.inf templates. You need to implement protective measures against the cluster's most significant security vulnerability.
+What should you do?
+
+A. Use Encrypting File System (EFS) for all files that contain confidential data stored on the cluster. 
+B. Use packet filtering on all inbound traffic to the cluster. 
+C. Use Security Configuration and Analysis regularly to compare the security settings on all servers in the cluster with the baseline settings. 
+D. Use intrusion detection on the perimeter network. 
+
+
+Answer: C
+
+
+31. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All computers on the network are members of the domain. The domain contains a Windows Server 2003 computer named Contoso5. You are planning a public key infrastructure (PKI) for the company. You want to deploy a certification authority (CA) onContoso5. You create a new global security group named Cert Administrators. You need to delete the tasks to issue, approve, and revoke certificates to members of the Cert Administrators group.
+
+What should you do?
+
+A. Add the Cert Administrators group to the Cert Publishers group in the domain. 
+B. Configure the Certificates Templates container in the Active Directory configuration naming context to assign the Cert Administrators group the Allow - Write permission.
+C. Configure the CertSrv virtual directory onContoso5 to assign the Cert Administrators group the Allow 
+D. Assign the Certificate Managers role to the Cert Administrators group. 
+
+Answer:D 
+
+
+
+32. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The network contains 10 domain controllers and 50 servers in application server roles. 
+All servers run Windows Server 2003. The application servers are configured with custom security settings that are specific to their roles as application servers. Application servers are required to audit account logon events, object access events, and system events. Application servers are required to have passwords that meet complexity requirements, to enforce password history, and to enforce password aging. Application servers must also be protected against man-in-the-middle attacks during authentication. You need to deploy and refresh the custom security settings on a routine basis. You also need to be able to verify the custom security settings during audits. 
+What should you do?
+
+A. Create a custom security template and apply it by using Group Policy.
+B. Create a custom IPSec policy and assign it by using Group Policy.
+C. Create and apply a custom Administrative Template.
+D. Create a custom application server image and deploy it by using RIS.
+
+Answer: A
+
+Justification:
+This question is almost identical to Question 3, except the decoy answers are different. A custom security template applied via GPO, say through an OU, would be the easiest way to handle this.
+
+
+
+33. You are a network administrator for Contoso. The network consist of a single Active Directory domain. The domain name isContoso.com. The network contains three Windows Server 2003 domain controllers. You are creating the recovery plan for the company. 
+According to the existing backup plan, domain controllers are backed up by using normal backups each night. The normal backups of the domain controllers include the system state of each domain controller. Your recover plan must incorporate the following organization requirements:
+<br>• Active Directory objects that are accidentally or maliciously deleted must be recoverable.
+• Active Directory must be restored to its most recent state of quickly as possible.
+• Active Directory database replication must be minimized.
+
+You need to create a plan to restore a deleted organizational unit (OU). Which two actions should you include in your plan? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Restart a domain controller in Directory Services Restore Mode. 
+B. Restart a domain controller in Safe Mode. 
+C. Use the Ntdsutil to perform an authorative restore operation of the Active Directory database. 
+D. Restore the system state by using the Always replace the file on my computer option. 
+E. Use the Ntdsutil utility to perform an authoritative restore operation of the appropriate subtree. 
+
+Answer:A,E 
+
+
+
+34. You are a network administrator for Contoso Inc. The network consists of a single Active Directory forest as shown in the exhibit. Your company's written security policy requires that all domain controllers in the child1.franklin.com domain must accept a LAN Manager authentication level of only NTLMv2. You also want to restrict the ability to start a domain controller to the Domain Admins group. You need to configure the domain controllers in the child1.franklin.com domain to meet the new security requirements.
+<p>Which two actions should you take? (Each correct answer presents part of the solution.)(Choose two)
+
+A. Import the Rootsec.inf security template into the Default Domain Controllers Policy Group Policy object (GPO) on the child1.franklin.com domain. 
+B. Import the Rootsec.inf security template into the Default Domain Policy Group Policy object (GPO) in the child1.franklin.com domain. 
+C. Import the Securedc.inf security template into the Default Domain Controllers Policy Group Policy object (GPO) in the child1.franklin.com domain. 
+D. Import the Securedc.inf security template into the Default Domain Policy Group Policy object (GPO) in the child1.franklin.com domain. 
+E. Run the system key utility (sys key) on each domain controller in the child1.franklin.com domain. In the Account Database Key dialog box, select the Password Startup option. 
+F. Run the system key utility (sys key) on each domain controller in the child1.franklin.com domain. In the Account Database Key dialog box, select the Store Startup Key Locally option. 
+
+Answer:C,E 
+
+
+
+
+35. You are the network administrator for Contoso. The network contains a Windows Server 2003 Web server that hosts the company intranet. The human resources department uses the server to publish information relating to vacations and public holidays. This information does not need to be secure.
+
+The finance department wants to publish payroll information on the server. The payroll information will be published in a virtual directory named Payroll, which was created under the default Web site on the server.
+
+The company's written security policy states that all payroll-related information must be encrypted on the network. You need to ensure that all payroll-related information is encrypted on the network. To preserve performance, you need to ensure that other information is not encrypted unnecessarily. You obtain and install a server certificate.
+
+What else should you do?
+
+A. Select the Require secure channel (SSL) check box for the default Web site.
+B. Assign the Secure Server (Require Security) IPSec policy option for the server.
+C. Select the Encrypt contents to secure data check box for the Payroll folder.
+D. Select the Require secure channel (SSL) check box for the Payroll virtual directory.
+
+Answer: D
+
+This question is more subtle than it appears. Answers A & B would both work, but would result in *all* traffic being encrypted. The parameters of the question clearly rule these two out.
+
+Checking the “Encrypt contents to secure data” check box on the Payroll folder in the file system will encrypt the files *on the server*, but not in transit.
+
+The answer is D.
+
+
+
+36. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com.Contoso's perimeter network contains 50 Web servers that host the company's public Internet site. The Web servers are not members of the domain. 
+<p>The network design team completed a new design specification for the security of servers in specific roles. The network design requires that security settings must be applied to Web servers. These settings include password restrictions, audit settings, and automatic update settings.
+<p>You need to comply with the design requirements for securing the Web servers. You also want to be able to verify the security settings and generate a report during routine maintenance. You want to achieve these goals by using the minimum amount of administrative effort. What should you do?
+
+A. Create a custom security template named Web.inf that contains the required security settings. Create a new organizational unit (OU) named WebServers and move the Web servers into the new OU. Apply Web.inf to the WebServers OU. 
+B. Create a custom security template named Web.inf that contains the required security settings, and deploy Web.inf to each Web server by using Security Configuration and Analysis. 
+C. Create an image of a Web server that has the required security settings, and replicate the image to each Web server. 
+D. Manually configure the required security settings on each Web server. 
+
+Answer: A
+
+Justification:
+
+Manually configuring the required security settings on each web server is the most labor-intensive way you could possibly go about this. Therefore, D can’t be right.
+
+Creating an image of a web server in the proper configuration and applying that image to all the servers *would* work, but it would take a while to copy all the image data, plus you would have to take the servers down in the future when you make changes to the security settings.
+
+Security Configuration and Analysis *can* be used to apply a security template to a local system, but it really is mostly used to determine the effects that your experimental template will have. It is used more on the development side rather than in implementation.
+
+Once you have created your Web.inf security template, the best way to deploy it would be to import it into a GPO. Applying the new GPO to an OU that contains all the web servers would work just fine, plus when you make changes to the Web.inf template in the future, you simply would re-import it and all your web servers are updated. Ergo, the answer is A.
+
+
+
+37. You are the network administrator for Contoso. The network consists of an internal network and a perimeter network. The internal network is protected by a firewall. The perimeter network is exposed to the Internet. You are deploying 10 Windows Server 2003 computers as Web servers. The servers will be located in the perimeter network. The servers will host only publicly available Web pages. You want to reduce the possibility that users can gain unauthorized access to the servers. You are concerned that a user will probe the Web servers and find ports or services to attack.
+
+What should you do?
+
+A. Disable File and Printer Sharing on the servers.
+B. Disable the IIS Admin service on the servers.
+C. Enable Server Message Block (SMB) signing on the servers.
+D. Assign the Secure Server (Require Security) IPSec policy to the servers.
+
+Answer: A
+
+Justification:
+
+Answers C & D are both encryption mechanisms that require *both* ends to be configured for it. They help to prevent man-in-the-middle attacks, but even if they were set up on both ends, they do nothing to protect the servers themselves.
+
+The IIS Admin service, otherwise known as inetinfo.exe, is required for your websites to run. Definitely don’t want to disable that!
+
+File and Printer Sharing is definitely a no-no on a public web server. This is really the primary type of service a hacker will exploit. By default, this is installed on a 2003 server. So A must be the answer.
+
+
+38. You are the systems engineer for Contoso. The network consists of three Windows NT 4.0 domains in a master domain model configuration. The servers on the network run either Windows NT Server 4.0 or Windows 2000 Server. All domain controllers run Windows NT Server 4.0. The network also contains 10 UNIX-based application servers.
+
+All host name resolution services are provided by a UNIX-based server running the latest version of BIND, which currently hosts the zone for the contoso.com domain. All NetBIOS name resolution services are provided by two Windows 2000 Server WINS servers.
+
+The company is in the process of migrating to a single Windows Server 2003 Active Directory domain based network. The new domain is named contoso-ad.com, and it will be hosted in an Active Directory-integrated zone that is stored on the domain controllers. Servers that are not domain controllers will not be updated at this time.
+
+The migration plan requires that all computers must use DNS to resolve host names. [..something..] and computer redundancy for the Windows-based DNS servers. You upgrade the domain controllers in the master domain to Windows Server 2003. You also migrate all user and computer accounts to the new Active Directory domain. The DNS zone on the Windows Server 2003 computers is configured as shown in the exhibit.
+
+[Exhibit not available]
+
+You now need to configure the required redundancy between the Windows-based DNS servers and the UNIX DNS server computers.
+
+Which two actions should you take? (Each correct answer presents part of the solution.) (Choose two)
+
+A. On a Windows Server 2003 DNS server, create a secondary zone that uses the UNIX-based DNS server as the master server.
+B. On the UNIX-based DNS server, create a secondary zone that uses a Windows-based DNS server as the master server.
+C. On a Windows Server 2003 DNS server, create a stub zone that uses the UNIX-based DNS server as the master server.
+D. Add a delegation in the contoso.com zone that delegates authority of the contoso-ad.com zone to a Windows Server 2003 DNS server.
+E. Configure the contoso-ad.com zone to not replicate WINS-specific resource records during zone transfers.
+
+Answer: B,E
+
+Justification: I realize this question is hacked up. A critical part of it is missing. However, it seems obvious to me what they are asking. You have ad-integrated zones and you need a backup of those zones on your UNIX servers. The only answers that make any sense are B & E.
+
+
+39. You are the network administrator for contoso.com. The network consists of a single Active Directory forest that contains three domains. Each domain contains domain controllers that run Windows 2000 Server and domain controllers that run Windows Server 2003. The DNS Server service is installed on all domain controllers. All client computers run Windows XP Professional. You need to add an additional DNS zone that is hosted on at least one DNS server on each domain. You want to configure the zone to allow secure updates only. What should you do?
+
+A. Configure the new zone on DNS servers in the root domain. Configure stub zones that refer to DNS servers in the other two domains.
+B. Configure the new zone as a primary zone on one DNS server. Configure other DNS servers in the three domains as secondary servers for this zone. Enable the DNS Security Extensions (DNSSEC) protocol.
+C. Configure the new zone as an Active Directory-integrated zone on DNS servers in the three domains. Store the zone data in the DNS directory partition named Domain DNS Zones.
+D. Configure the new zone as an Active Directory-integrated zone on DNS servers in the three domains. Store the zone data in the DNS directory partition named Forest DNS Zones.
+
+Answer: D
+
+Justification:
+
+A question that seems easy, but they throw some weird answers in there to confuse you. Again, process of elimination is required.
+
+Answer A can’t be right because the question specifically requires the zone to be hosted on at least one DNS server in each domain.
+
+They do make a point that all clients are Win XP, and each domain contains at least one DNS server running 2003. This would *allow* you to run DNSSEC on this new zone. As I understand it, DNSSEC is a mechanism that uses public/private keys to validate that the responses you receive to your queries came from a valid copy of the zone. In other words, I don’t think it allows for dynamic updates. And since normal primary/secondary zones don’t either, I’m pretty sure this answer is wrong. Although it is quite distracting to have this answer in there!
+
+The DNS directory partitions “Forest DNS Zones” and “Domain DNS Zones” are default application directory partitions. Putting something in the Forest DNS Zone partition is the broadest method of replication… it actually replicates the zone to *all* 2003 DCs in the forest! The Domain DNS Zones partition is domain-wide, rather than forest-wide. Actually, both answers would work because you are putting the zone into each domain anyway.
+
+I’m forced to assume by the wording of the question that they want the most global replication possible of this new zone. Therefore, I am going with answer D. Another question worded in the crappiest way possible.
+
+
+
+40. You are the network administrator for Contoso, Ltd. The network consists of a single Active Directory forest. The functional level of the forest is Windows Server 2003. The forest root domain is contoso.com. Contoso, Ltd. recently merged with another company named Fabrikam, whose network consists of a single Active Directory forest. The functional level of the Fabrikam forest is Windows Server 2003. The forest root domain for Fabrikam is fabrikam.com. You need to create a forest trust relationship between the two forests. Each company has dedicated connections to the Internet. You need to configure DNS to support the forest trust relationship. You want to maintain Internet name resolution capability for each company's network.
+
+What should you do?
+
+A. Configure the contoso.com DNS servers to forward to the fabrikam.com DNS servers. Configure the fabrikam.com DNS servers to forward to the contoso.com DNS servers.
+B. Configure conditional forwarding of fabrikam.com on the contoso.com DNS servers. Configure conditional forwarding of contoso.com on the fabrikam.com DNS servers.
+C. Configure a standard primary zone for contoso.com on one of the fabrikam.com DNS servers. Configure a standard primary zone for fabrikam.com on one of the contoso.com DNS servers.
+D. Configure an Active Directory-integrated zone for fabrikam.com on the contoso.com DNS servers. Configure an Active Directory-integrated zone for contoso.com on the fabrikam.com DNS servers.
+
+Answer: B
+
+This one is pretty easy, but let’s go through the wrong answers first.
+
+Answer A actually seems like it will result in a loop, you forward to them, they forward to you. No one would ever be able to resolve anything but the stuff in contoso.com and fabrikam.com domains. Therefore, you lose your ability to resolve stuff on the internet.
+
+Regardless of whether you configure a Standard Primary, or an Active Directory Integrated zone, you incur the administrative overhead of having to maintain the other company’s DNS structure on your end. Not the most efficient way to go about things.
+
+Simple conditional forwarding, once again, saves the day. The answer is B.
+
+
+
+41. You are the system engineer for Contoso. The network consists of a single Active Directory domain named contoso-ad.com. All servers run Windows Server 2003. The network is connected to Internet by a dedicated T3 line.
+
+Contoso is partnered with Fabrikam. Fabrikam’s network consists of a single Active Directory forest that contains two domains. All servers in the network run Windows 2003 Server. The partner network is also connected to the Internet by a dedicated T3 line. The partner network is accessible by a VPN connection that was established between the two networks. The VPN connection was tested and was verified to provide a functional connection between the two networks.
+
+Users from both companies need to connect to resources located on each other’s network. A forest trust relationship exists between the two companies' forests to allow user access to resources.
+
+Users in your company report that they can access resources on the partner network, but that it can take up to several minutes for the connection to be established. This problem is most pronounced during the morning. You verify that there is sufficient available bandwidth on the connection between the two networks to provide access. You also verify that both network's routing tables are configured correctly to route requests to the appropriate destinations. When you attempt to connect to a server in the partner network by host name using the ping command, the connection times out. However, when you attempt to connect to the server a second time by IP address by using the ping command, you receive a response within a few seconds. You need to improve the performance of the network connection between the two networks.
+
+What should you do?
+
+A. Add the partner network's domain names and DNS server addresses to the forwarders list on your DNS servers.
+B. Update the root hints list on your DNS servers to include the host names and IP addresses of the partner network's DNS servers.
+C. Disable recursion on the DNS servers in both companies' networks.
+D. Add the partner network's DNS server addresses to the 006 DNS Servers scope option in your DHCP scope.
+
+Answer: A
+
+Justification:
+
+This question is tough for me because I see a couple of answers that could work. Let’s go through each one and see which is best.
+
+Adding the partner network’s DNS server addresses to the DHCP scope would simply add those DNS servers into the list that the client machines could use for resolution. *Eventually*, the client computers would query those DNS’s, so this would work, however it won’t make anything faster. In fact, this option is probably the least likely of the 4 to improve performance, in my opinion.
+
+Disabling recursion is something you do when you want to decrease the workload of your DNS server. It will force the clients to perform iterative queries, which requires more bandwidth. Certainly, this will not improve performance, so it can’t be this one.
+
+Now we get to the difficult part. Updating the root hints list on your DNS server to include the host names and IP addresses of the partner network’s DNS servers *would* also work, because when you want to find stuff on their domains, their DNS’s are indeed the roots. After your DNS servers give their best shot at resolving your query, and they can’t, they wind up querying the servers listed in the root hints to track down the authoritative DNS server for that domain. So, technically, this would work.
+
+However, I am inclined to think that this will take more time than the simple conditional forwarding suggested by the first answer. Therefore, I am going to roll with answer A.
+
+
+
+42. You are the systems engineer for Contoso. The network consists of a single Active Directory domain named Contoso.com. All servers run Windows Server 2003. A Windows Server 2003 computer named ContosoDNS1 functions as the internal DNS server and has zone configured as shown in the exhibit.[Exhibit not available]
+
+
+The network is not currently connected to the Internet.Contoso maintains a separate network that contains publicly accessible Web and mail servers. These Web and mail servers are members of a DNS domain named Contoso.com. TheContoso.com zone is hosted by a UNIX-based DNS server named UNIXDNS, which is running the latest version of BIND. The company plants to allow users of the internal network to access Internet-based resources. The company's written security policy states that resources located on the internal network must never be exposed to the Internet.
+
+The written security policy states that the internal network's DNS namespace must never be exposed to the Internet. To meet these requirements, the design specifies that all name resolution requests for Internet-based resources from computers on the internal network must be sent fromContosoDNS1. The current design also specified that UNIXDNS must attempt to resolve any name resolution requests before sending them to name servers on the Internet. You need to plan a name resolution strategy for Internet access. You need to configureContosoDNS1 so that it compiles with company requirements and restrictions.
+
+What should you do?
+
+A. Delete the root zone from ContosoDNS1. Configure ContosoDNS1 to forward requests to UNIXDNS.
+B. Copy the cache.dns file from the Windows Server 2003 installation CD- ROM to the C:\Windows\System32\Dns folder on ContosoDNS1.
+C. Add a name server (NS) resource record for UNIXDNS to your zone. Configure UNIXDNS with current root hints.
+D. On ContosoDNS, configure a secondary zone named contoso.com that uses UNIXDNS as the master server. Configure UNIXDNS to forward requests to your ISP's DNS servers.
+
+Answer: D
+
+Justification:
+
+Deleting the root zone from ContosoDNS1, and configuring ContosoDNS1 to forward its requests to UNIXDNS implies that UNIXDNS would now be hosting the records for the internal Contoso.com domain. This would expose their internal DNS structure to the internet.
+
+Replacing the cache.dns file on ContosoDNS1 with the one from the install CD is a nonsense answer. This is only necessary if the DNS cache gets corrupted and you can’t clear it from the MMC tool, or your root hints get lost for some reason.
+
+Making UNIXDNS a name server in your zone would also expose the internal DNS structure to the internet. The thing about current root hints, I think, is a bogus thing they threw in there to make the answer look more plausible.
+
+Configuring a secondary zone of contoso.com on your server would allow the internal users to query for your internet resources without hitting UNIXDNS. However, they then go and screw up this answer by saying that UNIXDNS will forward requests to the ISP’s DNS servers, when the question requires that UNIXDNS must first try to resolve requests before sending them out onto the internet. If it is forwarding those requests, then its not doing that now, is it?
+
+I’m leaning towards answer D, simply because it seems like the *least wrong* of the 4. But I’m not 100% happy with it.
+
+
+
+43. You are a network administrator for Contoso. The network contains two Windows Server 2003 computers named ContosoA and ContosoB. These servers host an intranet application. Currently, 40 users connect to ContosoA and 44 users connect to ContosoB. The company is adding 35 employees who will need access to the intranet application. Testing shows that each server is capable of supporting approximately 50 users without adversely affecting the performance of the application. You need to provide a solution for supporting the additional 35 employees. The solution must include providing server fault tolerance. You need to minimize the costs and administrative effort required by your solution.
+
+You add a new server named ContosoC to the network and install the intranet application on.
+
+What else should you do?
+
+A. Use Network Load Balancing Manager to configure ContosoA, ContosoB, and ContosoC in a Network Load Balancing Cluster. 
+B. Use Cluster Administrator to configureContosoA,ContosoB, andContosoC as a three-node server cluster. Use the Majority Node Set option. Configure the cluster so that all three nodes are active. 
+C. Use Cluster Administrator to configureContosoA,ContosoB, andContosoC as a three-node server cluster. Configure the cluster so that two nodes are active and one node is a hot standby node. 
+D. Use DNS load balancing to utilize all three servers by using the same virtual server name. 
+
+Answer:A 
+
+Justification:
+
+Although it doesn’t explicitly say that the servers are running standard or web edition; generally speaking, real clusters cost more money because they require enterprise or datacenter edition.
+
+DNS round-robin would sort of work, but it doesn’t provide any fault tolerance. If one of the servers went down, about 1/3 of the people would be handed IP address of a downed server.
+
+An NLB cluster would provide fault tolerance and would spread the users out over the three servers. The total number of users is 119, and this configuration could actually handle 150 users according to the parameters of the question. Therefore this option must be the answer.

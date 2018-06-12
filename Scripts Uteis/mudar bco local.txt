@@ -1,0 +1,286 @@
+Brasil	*
+	
+Mapa do Site	|	Brasil Home	|	Worldwide	
+Microsoft	*
+	Procurar no Microsoft.com por:
+Ajuda e Suporte	 
+Página principal do site de Ajuda e Suporte	|	Centro de Suporte do Produto	|	Pesquisar	|	Comunidades técnicas	
+Como mover bancos de dados do SQL Server para um novo local usando as funções Desanexar e Anexar no SQL Server
+Ver produtos para os quais este artigo se aplica.
+ID do artigo	:	224071
+Última revisão	:	quarta-feira, 23 de agosto de 2006
+Revisão	:	11.1
+Nesta página
+Sumário
+Mais Informações
+Pré-requisitos
+Como mover o banco de dados de usuário
+Movendo exemplos de bancos de dados
+Movendo o modelo de banco de dados
+SQL Server 7.0
+SQL Server 2000 e SQL Server 2005
+Movendo o banco de dados MSDB
+SQL Server 7.0
+SQL Server 2000 e SQL Server 2005
+Como mover o banco de dados mestre
+Movendo o banco de dados tempdb
+Referências
+Sumário
+Este artigo descreve como alterar o local dos dados e arquivos de log para qualquer banco de dado SQL Server 7.0, SQL Server 2000 ou SQL Server 2005.
+
+Voltar para o início
+Mais Informações
+As etapas a serem seguidas para mudar o local de alguns bancos de dados do sistema SQL Server diferem das etapas a serem seguidas para mudar o local dos bancos de dados de usuário. Estes casos especiais são descritos separadamente
+
+Observação Os bancos de dados do sistema SQL Server 7.0 não são compatíveis com SQL Server 2000. Não anexe os bancos de dados mestre, modelo, msdb ou os bancos de dados de distribuição do SQL Server 7.0 ao SQL Server 2000. Se estiver usando o SQL Server 2005, poderá apenas anexar bancos de dados do SQL Server 2005 a uma instância. Todos os exemplos neste artigo assumem que o SQL Server está instalado no diretório D:\Mssql7 com todos os banco de dados e arquivos de log localizados no diretório padrão D:\Mssql7\Data. Os exemplos movem os dados e arquivos de log para todos os bancos de dados para E:\Sqldata.
+
+Voltar para o início
+Pré-requisitos
+•	Fazer backup atual de todos os bancos de dados, especialmente do mestre, a partir de seu local atual.
+•	Você deve ter permissões de admnistrador(es).
+•	Você deve saber o nome e o local atual de todos os dados e arquivos de log para o banco de dados.
+
+Observação Você pode determinar o nome e o local atual de todos os arquivos usados em um banco de dados com o procedimento armazenado sp_helpfile:
+
+use <database_name>
+go
+sp_helpfile
+go
+
+•	Você deve ter acesso exclusivo ao banco de dados que está sendo movido. Se tiver problemas durante o processo e não puder acessar um banco de dados movido ou não for possível iniciar o SQL Server, examine o log de erro do SQL Server e os manuais online do SQL Server para obter informações adicionais sobre os erros encontrados.
+
+Voltar para o início
+Como mover o banco de dados de usuário
+O seguinte exemplo move o banco de dados de nome mydb, que contém um arquivo de dados, Mydb.mdf e um arquivo de log, Mydblog.ldf. Se o banco de dados que você está movendo tem dados ou arquivos de log adicionais, especifique todos em uma lista delimitada por vírgulas em um procedimento sp_attach_db armazenado. O procedimento sp_detach_db não muda independentemente de quantos arquivos o banco de dados contém, porque os arquivos não são listados.
+1.	Desanexe o banco de dados, conforme abaixo:
+
+use master    go    sp_detach_db 'mydb'    go
+
+2.	A seguir, copie os dados e arquivos de log do local atual (D:\Mssql7\Data) para o novo local (E:\Sqldata).
+3.	Reanexe o banco de dados apontando para os arquivos no novo local, conforme a seguir:
+
+use master
+  go
+  sp_attach_db 'mydb','E:\Sqldata\mydbdata.mdf','E:\Sqldata\mydblog.ldf'
+  go
+
+Verifique a alteração no local dos arquivos usando sp_helpfile:
+
+use mydb
+   go
+   sp_helpfile
+   go
+
+Os valores da coluna filename devem refletir os novos locais.
+
+Voltar para o início
+Movendo exemplos de bancos de dados
+Para mover os exemplos de bancos de dados pubs e Northwind (SQL Server 7.0 ou SQL Server 2000) ou os exemplos de banco de dados AdventureWorks e AdventureWorksDW (SQL Server 2005), siga o mesmo procedimento usado para mover os bancos de dados de usuário.
+
+Voltar para o início
+Movendo o modelo de banco de dados
+SQL Server 7.0
+1.	Verifique se o SQL Server Agent não está em execução no momento.
+2.	Execute o mesmo procedimento para mover bancos de dados de usuários.
+SQL Server 2000 e SQL Server 2005
+No SQL Server 2000 e no SQL Server 2005, os bancos de dados do sistema não podem ser desanexados usando o procedimento armazenado sp_detach_db. A execução da instrução sp_detach_db 'model' não funciona e a seguinte mensagem de erro é exibida:
+Servidor: Msg 7940, Nível 16, Estado 1, Linha 1
+Os bancos de dados do sistema mestre, modelo, msdb, e tempdb não pôde ser desanexado.
+Para mover o banco de dados modelo, é necessário iniciar o SQL Server junto com o sinalizador de rastreamento 3608 para que o SQL Server não recupere nenhum banco de dados exceto o banco de dados mestre.
+
+Observação Não será possível acessar qualquer banco de dados de usuário após fazer isso. Nenhuma outra operação deve ser realizada, a não ser as etapas descritas abaixo usando o sinalizador de traço. Para adicionar o sinalizador de traço 3608 como parâmetro de inicialização do SQL Server, execute as seguintes etapas:
+1.	No SQL Server Enterprise Manager, clique com o botão direito no nome do servidor e clique em Propriedades.
+2.	Na guia Geral, clique em Parâmetros de inicialização.
+3.	Adicione o seguinte parâmetro novo:
+-T3608
+Se estiver usando o SQL Server 2005, poderá usar o SQL Server Configuration Manager para alterar os parâmetros de inicialização do serviço SQL Server. Para obter mais informações sobre como alterar os parâmetros de inicialização, visite o seguinte site da Microsoft Developer Network (em inglês):
+http://msdn2.microsoft.com/en-us/library/ms190737.aspx (http://msdn2.microsoft.com/en-us/library/ms190737.aspx)
+Após mover o sinalizador de rastreamento 3608, execute as seguintes etapas:
+1.	Interrompa e reinicie o SQL Server.
+2.	Desanexe o banco de dados modelo usando os seguintes comandos:
+
+use master
+   go
+   sp_detach_db 'model'
+   go
+
+3.	Mova os arquivos Model.mdf e Modellog.ldf da pasta D:\Mssql7\Data para a pasta E:\Sqldata.
+4.	Anexe novamente o banco de dados modelo usando os seguintes comandos:
+
+use master
+   go
+   sp_attach_db 'model','E:\Sqldata\model.mdf','E:\Sqldata\modellog.ldf'
+   go
+
+5.	Remova o sinalizador de rastreamento -T3608 dos parâmetros de inicialização no SQL Server Enterprise Manager ou no SQL Server Configuration Manager.
+6.	Interrompa e reinicie o SQL Server. É possível verificar a alteração nos locais de arquivo usando procedimento armazenado sp_helpfile. Por exemplo, use o seguinte comando:
+
+use model
+   go
+   sp_helpfile
+   go
+
+Voltar para o início
+Movendo o banco de dados MSDB
+SQL Server 7.0
+Observação Se estiver usando este procedimento enquanto move os bancos de dados msdb e modelo, a ordem para anexar deve ser modelo primeiro e msdb. Execute as seguintes etapas:
+1.	Verifique se o SQL Server Agent não está em execução no momento.
+2.	Execute o mesmo procedimento para mover bancos de dados de usuários.
+Observação Se o SQL Server Agent estiver em execução, o procedimento sp_detach_db armazenado não terá êxito e a seguinte mensagem será exibida:
+Servidor: Msg 3702, Nível 16, Estado 1, Linha 0
+Não é possível cancelar o banco de dados 'msdb' porque está sendo usado no momento.
+Execução DBBC concluída. Se o DBBC imprimiu mensagens de erro, entre em contato com o administrador de sistema.
+SQL Server 2000 e SQL Server 2005
+Para mover o banco de dados MSDB, é necessário primeiro iniciar o SQL Server junto com o sinalizador de rastreamento 3608 para que o SQL Server não recupere nenhum banco de dados, exceto o banco de dados master. Para adicionar o sinalizador de rastreamento 3608, execute as etapas na seção "Movendo o banco de dados de modelo". Após adicionar o sinalizador de traço 3608, executa as seguintes etapas:
+1.	Interrompa e reinicie o SQL Server.
+2.	Certifique-se de que o serviço SQL Server Agent não está sendo executado no momento.
+3.	Desanexe o banco de dados msdb como segue:
+
+use master go sp_detach_db 'msdb' go
+
+4.	Mova os arquivos Msdbdata.mdf e Msdblog.ldf do local atual (D:\Mssql8\Data) para o novo local (E:\Mssql8\Data).
+5.	Remova o sinalizador de traço -T3608 da caixa dos parâmetros de inicialização no Enterprise Manager.
+6.	Interrompa e reinicie o SQL Server.
+
+Observação Se tentar anexar novamente o banco de dados msdb iniciando o SQL Server junto com o sinalizador de rastreamento -T3608, a seguinte mensagem de erro será exibida:
+Servidor: Msg 615, Nível 21, Estado 1, Linha 1
+Não foi possível encontrar a tabela de banco de dados ID 3, nome 'modelo'.
+7.	Reanexe o banco de dados msdb da seguinte maneira:
+
+use master
+go 
+sp_attach_db 'msdb','E:\Mssql8\Data\msdbdata.mdf','E:\Mssql8\Data\msdblog.ldf' 
+go
+
+Observação Se usar este procedimento junto com a movimentação do banco de dados modelo, estará tentando desanexar o banco de dados msdb enquanto desanexa o banco de dados modelo. Ao fazer isto, a ordem para reanexar deve ser o banco de dados modelo primeiro e depois o banco de dados msdb. Se reanexar o banco de dados msdb primeiro, receberá a seguinte mensagem de erro ao tentar reanexar o banco de dados modelo:
+Msg 0, Nível 11, Estado 0, Linha 0
+Ocorreu um erro grave no comando atual. Os resultados, se houverem, devem ser descartados.
+Neste caso, é necessário desanexar o banco de dados msdb, reanexar o banco de dados modelo e reanexar o banco de dados msdb,
+
+Após mover o banco de dados MSDB, a seguinte mensagem de erro poderá ser exibida:
+Erro 229: permissão EXECUTE negada no objeto 'ObjectName', banco de dados 'mestre', proprietário 'dbo'.
+Este problema ocorre porque a corrente de propriedade foi quebrada. Os proprietários do banco de dados para os bancos de dados MSDB e mestre não são os mesmos. Neste caso, o proprietário do banco de dados MSDB foi alterado. Como solução alternativa para este problema, execute as seguintes instruções do Transact-SQL. É possível fazer isto usando o utilitário de linha de comando Osql.exe (SQL Server 7.0 e SQL Server 2000) ou o utilitário de linha de comando Sqlcmd.exe (SQL Server 2005):
+
+USE MSDB 
+Go 
+EXEC sp_changedbowner 'sa' 
+Go
+
+Para obter mais informações, clique no número abaixo para ler o artigo na Base de Dados de Conhecimento Microsoft (a página pode estar em inglês):
+272424 (http://support.microsoft.com/kb/272424/) A corrente de propriedade do objeto através dos bancos de dados dependem do login mapeado para os proprietários do objeto
+
+Voltar para o início
+Como mover o banco de dados mestre
+1.	Altere o caminho para os dados e os arquivos de log mestres no SQL Server Enterprise Manager.
+
+Observação Aqui também é possível alterar o local do log de erro.
+2.	Clique com o botão direito do mouse em SQL Server no Enterprise Manager e clique em Propriedades.
+3.	Clique em Parâmetros de inicialização para consultar as seguintes entradas:
+
+-dD:\MSSQL7\data\master.mdf
+   -eD:\MSSQL7\log\ErrorLog
+   -lD:\MSSQL7\data\mastlog.ldf
+
+-d é o caminho totalmente qualificado para o arquivo de dados do banco de dados mestre.
+
+-e é o caminho totalmente qualificado para o arquivo de log de erro.
+
+-l é o caminho totalmente qualificado para o arquivo de log do banco de dados mestre.
+4.	Altere estes valores, conforme segue:
+a. 	Remova as entradas atuais para os arquivos Master.mdf e Mastlog.ldf.
+b. 	Adicione novas entradas especificando o novo local:
+
+-dE:\SQLDATA\master.mdf
+      -lE:\SQLDATA\mastlog.ldf
+
+5.	Interrompa o SQL Server.
+6.	Copie os arquivos Master.mdf e Mastlog.ldf para o novo local (E:\Sqldata).
+7.	Reinicie o SQL Server.
+Observação Se estiver usando o SQL Server 2005, use o SQL Server Configuration Manager para alterar o caminho para os dados mestre e para os arquivos de log.
+
+Voltar para o início
+Movendo o banco de dados tempdb
+É possível mover os arquivos de tempdb usando a instrução ALTER DATABASE.
+1.	Determine os nomes de arquivo lógicos para o banco de dados tempdb usando o sp_helpfile, como segue:
+
+use tempdb go sp_helpfile go
+
+O nome lógico para cada arquivo está contido na coluna nome. Este exemplo usa nomes de arquivos padrão do tempdev e templog.
+2.	Use a declaração ALTER DATABASE, especificando o nome de arquivo lógico, como segue:
+
+use master go Alter database tempdb modify file (name = tempdev, filename = 'E:\Sqldata\tempdb.mdf') go Alter database tempdb modify file (name = templog, filename = 'E:\Sqldata\templog.ldf') go
+
+Você deve receber as seguintes mensagens confirmando a mudança:
+Arquivo 'tempdev' modificado em sysaltfiles. Excluir arquivo antigo antes de reiniciar o SQL Sever.
+
+Arquivo 'templog' modificado em sysaltfiles. Excluir arquivo antigo antes de reiniciar o SQL Sever.
+3.	Usar sp_helpfile em tempdb não confirmará estas alterações até que o SQL Server seja reiniciado.
+4.	Interrompa e reinicie o SQL Server.
+
+Voltar para o início
+Referências
+Para obter informações adicionais, clique nos números abaixo para ler os artigos na Base de Dados de Conhecimento Microsoft (alguns artigos podem estar em inglês):
+274188 (http://support.microsoft.com/kb/274188/) O tópico "Solução de problemas de usuários órfãos" está incompleto no manual online
+246133 (http://support.microsoft.com/kb/246133/) Como transferir logins e senhas entre instâncias do SQL Server
+168001 (http://support.microsoft.com/kb/168001/) Os logons e permissões de usuário em um banco de dados podem estar incorretas após a restauração do banco de dados
+
+Para obter informações adicionais, consulte os seguintes manuais:
+Microsoft Corporation
+Microsoft SQL Server 7.0 System Administration Training Kit
+Microsoft Press, 2001
+Microsoft Corporation (em inglês)
+MCSE Training Kit: Microsoft SQL Server 2000 System Administration (http://www.microsoft.com/MSPress/books/4885.asp)
+Microsoft Press, 2001
+Microsoft Corporation (em inglês)
+Microsoft SQL Server 2000 Resource Kit (http://www.microsoft.com/MSPress/books/4939.asp)
+Microsoft Press, 2001
+
+Voltar para o início
+A informação contida neste artigo aplica-se a:
+•	Microsoft SQL Server 7.0 Standard Edition
+•	Microsoft SQL Server 2000 Standard Edition
+•	Microsoft SQL Server 2005 Standard Edition
+•	Microsoft SQL Server 2005 Express Edition
+•	Microsoft SQL Server 2005 Developer Edition
+•	Microsoft SQL 2005 Server Enterprise
+•	Microsoft SQL 2005 Server Workgroup
+
+Voltar para o início
+Palavras-chave: 
+	kbinfo KB224071
+
+Voltar para o início
+	
+Pesquisar suporte(KB)
+	 	
+Pesquisa Avançada
+Traduções deste artigo
+	 	
+Centros de suporte relacionados
+
+    * SQL Server 2000
+    * SQL Server 2005
+
+Outras Opções de Suporte
+
+    * Entre em Contato com a Microsoft
+      Numeros de Telefone, Calculo de Preco e Opcoes de Suporte, Ajuda Online e mais.
+    * Servico ao Cliente
+      Para assistencia nao tecnica relativa a compras de produto, assinaturas, servicos online, eventos, cursos de treinamento, vendas corporativas, problemas de pirataria e mais.
+    * Grupos de Noticias
+      Fazer uma pergunta a outros usuarios. Grupos de debate e Foruns sobre produtos especificos da Microsoft, tecnologias e servicos.
+
+Ferramentas da Página
+
+    * Imprima esta página
+    * Envie esta página por e-mail
+    * Microsoft no Mundo
+    * Salvar tópico nas configurações pessoais
+    * Ver configurações pessoais
+    * Enviar Feedback
+    *
+      Windows Live ID
+
+
+Fale Conosco |Entre em contato
+©2007 Microsoft Corporation. Todos os direitos reservados. Nota Legal |Marcas comerciais |Política de Privacidade

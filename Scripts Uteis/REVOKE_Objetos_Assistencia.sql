@@ -1,0 +1,6 @@
+revoke insert, update on dbo.aa_TiposRestricoesPacotes to "siga - gerencia"
+revoke insert on dbo.aa_TiposRestricoesProcedimentos to "siga - gerencia"
+revoke insert, update, delete on dbo.Conselhos from  "Prestadores"
+revoke insert,update,delete on Guias from "SGF-Processa Retorno","siga - supervisor"
+revoke insert , update, delete on dbo.Procedimentos_Guias from "siga - supervisor"
+revoke insert, delete,update on dbo.Proxima_Guia from "Criar novo numero de Guia"

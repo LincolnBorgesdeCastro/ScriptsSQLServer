@@ -1,0 +1,11 @@
+SELECT count(*)
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE'
+ AND table_name <> 'dtproperties'
+
+
+SELECT count(*)
+
+ FROM sysobjects
+WHERE xtype = 'U'
+ AND name <> 'dtproperties'

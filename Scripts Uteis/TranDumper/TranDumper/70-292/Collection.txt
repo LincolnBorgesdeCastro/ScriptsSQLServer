@@ -1,0 +1,116 @@
+
+ 1. You are the network administrator for Contoso. The network configuration is shown in the Network exhibit. A DHCP server on the local subnet is configured to assign IP addresses to client computers in the 10.10.22.20 - 10.10.22.254 range. All client computers connect to the Internet by using the server named ContosoNAT. ContosoNAT is a Windows 2003 Server that has Routing and Remote Access installed. ContosoNAT has the NAT/Basic Firewall routing protocol enabled. The network interfaces on ContosoNAT are configured as shown in the following table. Interface name IP address Connect to Ethernet1 10.10.22.10 LAN Ethernet2 131.107.100.202 Internet The configuration of the NAT/Basic Firewall routing on ContosoNAT is shown in the NAT Configuration exhibit: Client computers are unable to connect to the Internet You run the ping command from a command prompt on Windows XP Professional computer on the local network, and you receive the following result. C:\>ping 10.10.22.10 Pinging 10.10.22.10 with 32 bytes of data: Request timed out: Request timed out: Request timed out: Request timed out: Ping statistics for 10.10.22.10: Packets: Sent = 4, Received = 0, Lost = 4 (100% loss), You need to ensure that client computers are able to connect to the Internet. Which two actions should you perform? (Choose two) 
+
+A. Configure the DHCP server to assign a default gateway of 131.107.100.202 to client computers. B. Configure the DHCP server to assign a default gateway of 131.107.100.201 to client computers. C. Configure the NAT/Basic Firewall interface type for Ethernet1 to be a private interface. D. Configure the NAT/Basic Firewall interface type for Ethernet2 to be a public interface. E. Configure the outbound port filters on Ethernet1 to allow all network protocols. F. Configure the outbound port filters on Ethernet2 to allow all network protocols. 
+
+answer: C, D 
+
+2. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The network contains 15 Windows Server 2003 computers that function as intranet Web servers. You install a Windows Server 2003 computer named Contoso7 with Routing and Remote Access. the Internet. Contoso7 uses an internal LAN IP address of 10.10.1.1 The 15 intranet Web servers use a DNS server named Server3 for local host name resolution. Each of the 15 intranet Web servers uses static IP configuration as shown in the TCP/IP properties exhibit. The Web servers also require Internet access to display certain public Web content within intranet Web pages. All the Web servers are configured with the Internet Explorer LAN settings shown in the LAN Settings exhibit. Local network users report that only the local Web content on the intranet Web servers appears. You attempt to access public Web pages from one of the intranet Web servers and confirm that it cannot access public Internet Web content. You want the 15 intranet Web servers to access public Internet Web content. What should you do? 
+
+A. On the DHCP server, create DHCP client reservation for each of the Web servers. B. In the Internet Explorer LAN settings, use a proxy server address of 10.10.1.1 and a port number of 8080. C. In the Internet Explorer LAN settings, select Automatically detect settings. D. Configure the Internet Explorer LAN settings to use an automatic configuration script pointing to http://Contoso7:8080/arrat.dll? Get.Routing.Script. E. Configure TCP/IP properties of each Web server to use 10.10.1.1 as the default gateway. 
+
+Answer: E 
+
+3. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The functional level of the domain is Windows Server 2003. You install Terminal Services on all domain controllers. However, your technical support specialists report that they cannot use Terminal Services to access any domain controllers. Which action or actions should you perform to solve this problem? (Choose all that apply) 
+
+A. Install Remote Desktop for Administration. B. Require the support specialists to use a console session to connect to the terminal servers. C. Add the Remote Administrators group to the Account Operators group. D. Add the support specialists to the Remote Desktop group. E. Modify the Default Domain Controller Group Policy object (GPO) to grant the Log on locally user right to the support specialists. 
+
+answer: A, D 
+
+4. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003, and all client computers run Windows XP Professional. You install Terminal Server on three member servers named Contoso1, Contoso2, and Contoso3. You add a domain group named HR to the Remote Desktop Users group on all three terminal servers. One week later, you discover that files on Contoso1 and Contoso2 were deleted by a user named Tess, who is a member of the HR group. You need to prevent Tess from connecting to any of the terminal servers. What should you do? 
+
+A. On all three terminal servers, modify the RDP-Tcp connection permissions to assign the Deny B. On all three terminal servers, modify the RDP-Tcp connection permissions to assign the Allow -Guest Access permission to Tess's user account. C. In the properties of Tess's user account, disable the Allow logon to a terminal server option. D. On all three terminal servers, modify the RDP-Tcp connection permissions to assign the Deny E. In the properties of Tess's user account, enable the End session option. 
+
+Answer: C 
+
+5. You are the network administrator for Contoso. Your network consists of a single Active Directory domain Contoso.com. All network servers run Windows Server 2003. A single server running Terminal Server is available to remote users. Your help desk staff is responsible for monitoring user activity on the terminal server. The staff is also responsible for sending message to users about new programs and about modifications to the terminal server. A company developer writes a script that will log the relevant user information in a file and provide pop-up messages as needed. You need to ensure that the script runs every time a user logs on to the terminal server. What should you do? 
+
+A. Deploy a client connection object for remote users. Configure the client connection object to run the script. B. On the terminal server, configure the RDP-Tcp properties with the name of the script. Override other settings. C. In the Default Domain Group Policy object (GPO), select the Start a program on startup option and specify the name of the script. D. On the terminal server, configure the RDP client properties with the name of the script. 
+
+Answer: B 
+
+6. You are the network administrator for Contoso. The network consists of a single Active Directory forest. The forest contains one domain named Contoso.com. The network contains two subnets named subnet A and subnet B. The two subnets are connected by a router. The network also contains four Windows Server 2003 computers, 300 Windows 2000 Professional computers, and 25 Windows NT Server 4.0 computers. Three of the servers are configured as shown in the following table. The DNS zone currently records for only Windows 2000 Professional computers. Each client computer is configured to transmit name resolution requests to ContosoSrvA and ContosoSrvC. Users are able to access all resources on the network. You plan to change the TCP/IP settings for each client computer to remove the pointer to ContosoSrvC. You need to ensure that the client computers can continue to access e-mail. What should you do? 
+
+A. In the advanced TCP/IP settings, enable NetBIOS over TCP/IP. B. In the advanced TCP/IP settings, enable Lmhosts lookup. C. In the properties of Contoso.com, add a name server (NS) resource record for ContosoSrvC. D. In the properties of Contoso.com, enable WINS forward lookup. 
+
+Answer: D 
+
+7. You are the network administrator for Contoso. Your network consists of two Active Directory domains. Each department has its own organizational unit (OU) for departmental user accounts. Each OU has a separate Group Policy object (GPO). A single terminal server named ContosoTerm1 is reserved for remote users. In addition, several departments have their own terminal servers for departmental use. Your help desk reports that user sessions on ContosoTerm1 remain connected even if the sessions are inactive for days. Users in the accounting department report slow response times on their terminal server. You need to ensure that users of ContosoTerm1 are automatically logged off when their sessions are inactive for more than two hours. Your solution must not affect users of any other terminal servers. What should you do? 
+
+A. For all accounting users, change the session limit settings. B. On ContosoTerm1, use the Terminal Services configuration tool to change the session limit settings. C. Modify the GPO linked to the Accounting OU by changing the session limit settings in user-level group polices. D. Modify the GPO linked to the Accounting OU by changing the session limit settings in computer-level group polices. Answer: B 
+
+8. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003, and all client computers run Windows 2000 Professional. Your company is organized in three departments. Each department corresponds to a separate organizational unit (OU). Computer accounts for each department reside in the corresponding OU. Domain users report that their accounts are locked out after three unsuccessful attempts to log on. You need to increase your account lockout setting to five unsuccessful attempts to log on. You also need to ensure that you can review all unsuccessful attempts to log on to the domain or to log on locally to client computers. The new settings must be applied to a limited number of objects. What should you do? To answer, drag the appropriate security policy settings to the correct locations in the work are A. To answer, drag !!! 
+
+A. Contoso = Audit Account Logon Events B. Domain = Audit Logon Events C. Users = Account Lockout Settings 
+
+Answer: A 
+
+9. You are the administrator of Contoso's network. Your accounting department has a Windows Server 2003 computer named ContosoSrv A. This computer hosts a secured application that is shared among several users in the accounting department. All users of the application must log on locally to ContosoSrv A. You decide to create desktop shortcuts that point to the application. These shortcuts must be available only to new users of ContosoSrvA. Which folder or folders from the above exhibit should you modify on Server? (Choose all that apply. To answer, select the appropriate folder or folders in the work are A.) 
+
+A. Administrator B. All Users C. Default User D. MZimmerman E. RHunter F. User 
+
+Answer: C 
+
+10. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All five domain controllers run Windows Server 2003, and all client computers run Windows XP Professional. The domain's audit policy ensures that all account logon events are audited. A temporary employee named King uses a client computer named Contoso1. When King's temporary assignment concludes, his employment is terminated. Now you need to learn the times and dates when King logged on to the domain. You need to accomplish this goal by reviewing the minimum amount of information. What should you do? A. Log on to Contoso1 as a local Administrator. Use Event Viewer to view the local security log. Use the Find option to list only the events for King's user account. B. Log on to Contoso1 as a local Administrator. Use Event Viewer to view the local security log. Use the Find option to list only the events for the Contoso1 computer account. C. Use Event Viewer to view the security log on each domain controller. Use the Find option to list only the events for King's user account. D. Use Event Viewer to view the security log on each domain controller. Set a filter to list only the events for King's user account. E. Use Event Viewer to view the security log on each domain controller. Set a filter to list only the events for the Contoso1 computer account. 
+
+Answer: D 
+
+11. You are the network administrator for Contoso. The network consist of a single Active Directory domain Contoso.com. All network servers run Windows Server 2003. User profiles are stored in a folder named Profileshome, which is located on a member server named Server1. Profileshome is shared as Profiles. A change in business rules requires you to create a template account for users in the engineering department. All user accounts that are created from the template will use roaming profiles. Each profile name will be based on user name. All profiles must be stored in a central location. You create the template and name it T-Engineer. Now you need to add information about profile location to TEngineer. What should you do? (To answer, drag the appropriate path or paths to the correct location or locations in the dialog box.) 
+
+A. 
+
+Answer:A 
+
+12. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003. You use a script written in Microsoft Visual Basic, Scripting Edition (VBScript) to create new user accounts. You need to modify the script and enable all new user accounts created from the script. What should you do? (To answer, drag the appropriate line or lines of code to the correct location or locations in the work are A.) 
+
+a. I am not sure about this one. 
+
+Answer: A 
+
+13. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. The functional level of the domain is Windows 2000 native. Some network servers run Windows 2000 Server, and others run Windows Server 2003. All users in your accounting department are members of an existing global distribution group named Global-1. You create a new network share for the accounting users. You need to enable the members of Global-1 to access the file share. What should you do? 
+
+A. Raise the functional level of the domain to Windows Server 2003. B. Change the group type of Global-1 to security. C. Change the group scope of Global-1 to universal. D. Raise the functional level of the forest to Windows Server 2003. 
+
+Answer: B 
+
+14. You are the network administrator for Contoso. All network severs run Windows Server 2003. Business hours are 9:00 A. M. to 5:00 P.M., Monday through Friday. Folder Location Contents ContosoOrders D:\ContosoOrders Files Receivables.mdb, Payables.mdb For several months, users frequently access both databases in ContosoOrders. One Monday morning, a user tells you that she needs to edit Receivables.mdb as it existed at 5:00 P.M. on the previous Thursday. You need to modify ContosoB to enable the appropriate editing. You must ensure that other users can continue to access current data without interruption. First, you map a drive to \\ContosoB\ContosoOrders. Which two additional actions should you perform? (Choose two) 
+
+A. Access the properties of \\ContosoB\ContosoOrders. B. Access the properties of \\ContosoB\ContosoOrders\Receivables.mdb. C. Restore the Friday version of Receivables.mdb. D. Restore the Thursday version of the Receivables.mdb. E. Copy the Friday version of Receivables.mdb. F. Copy the Thursday version of Receivables.mdb. 
+
+answer: B, E 
+
+15. You are the network administrator for Contoso. The network includes a file server named Contoso41, which runs Windows Server 2003. You create a Automated System Recovery (ASR) disk for Contoso41. You back up the System State data on a backup server. Three weeks later, the data on the system drive for Contoso41 becomes corrupted by a virus. When you restart Contoso41, you cannot access the Boot menu. You need to begin the recovery process for Contoso41. Which three actions should you perform? (To answer, drag the appropriate action that you should perform first to the First Action box. Continue dragging actions to the appropriate numbered boxes until you list all three required actions in the correct order.) 
+
+A. Insert the original windows 2003 installation cd-rom into testking41. Restart testking41 B. Press the F2 key when you are prompted C. Insert the ASR disk into testking41 
+
+Answer: A, B, C – I have put them in order on the test they will not be in the right order. 
+
+16. You are the network administrator for Contoso. The network contains eight DNS servers. You use a DNS namespace named Contoso.com in the network. All eight DNS servers must be configured to allow host named in the contoso.com namespace to be resolved. The following table specifies how each server will be configured to support the contoso.com namespace. There are currently many incorrect name server (NS) records in the Contoso.com zone. You delete all the existing records. You now need to add back the NS records for only the other servers that will host the Contoso.com zone. Which server or servers should be added as name servers to the Contoso.com zone? (To answer, drag the appropriate server or servers to the correct location or locations in the dialog box.) To answer, drag !!! 
+
+A. When you drag and drop there are 8 DNS server to pick from. You will only user 1, 2, 3, 4. You will not use 5, 6, 7, 8. Also put think in order 1-4. 
+
+Answer: A 
+
+17. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003, and all client computers run Windows XP Professional. You use the Backup utility to schedule a full backup of ContosoDC1 every night. You ensure that the Active Directory configuration is also backed up. One week later, ContosoDC1 stops accepting logon requests. On investigation, you discover that the Active Directory configuration is corrupt. You need to restore ContosoDC1 as a functioning domain controller. Which two actions should you perform? (Choose two) 
+
+A. Restart ContosoDC1 in Directory Services Restore Mode. B. Demote ContosoDC1 to a member server. C. Run the ntbackup systemstate command on ContosoDC1. D. Run the Backup utility and select the option to restore the System State data. E. Run the ntdsutil command on ContosoDC1. 
+
+answer: A, D 
+
+18. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003, and all client computers run Windows XP Professional. A user named King uses a client computer named Contoso1. This computer has a locally attached tape device. You grant King the necessary permission to perform backups of a member server named ContosoSrvB. King runs the Backup utility on Contoso1 to back up the files located on ContosoSrvB. You need to use your client computer to view the most recent backup logs for ContosoSrvB. What should you do? 
+
+A. Use Notepad to view the contents of the backup report located on ContosoSrvB. B. Use Notepad to view the contents of the backup report located on Contoso1. C. Use Event Viewer to view the contents of the application log located on ContosoSrvB. D. Use Event Viewer to view the contents of the application log located on Contoso1. 
+
+Answer: B 
+
+19. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003. The domain contains five domain controllers and five member servers. A member server named ContosoA has a locally attached tape device. You have a total of seven backup tapes to use for ContosoA. You need to back up all data on ContosoA every week. You do not need to back up all data every day. You must have the ability to completely restore ContosoA to its state on the previous day by using a maximum of two tapes. Which backup types should you use? (To answer, drag the appropriate backup type to the corresponding backup schedule.) 
+
+A. Every Week = Normal B. Every Day = Differentail 
+
+Answer: A, B 
+
+20. You are the network administrator for Contoso. The network consists of a single Active Directory domain named Contoso.com. All network servers run Windows Server 2003, and all client computers run Windows XP professional. A file server named ContosoFileSrv is configured as a stand-alone Distributed File System (DFS) root. The disk configuration of ContosoFileSrv is shown in the following table. Disk Volume Contents Disk0 MAIN System files Disk1 DATA Database files Disk1 USERS Files and data for users USERS hosts a shared folder named User Data. You use Group Policy to deploy the Previous Versions client software to all client computers. However, users report that they cannot access any previous version of any of the files in User Data. From your client computer, you open the Properties dialog box of User Data, as shown in the exhibit.' You need to enable all users to access previous versions of the file in User Data. To achieve this goal, you will modify ContosoFileSrv. What should you do? 
+
+A. Start the Distributed Link Tracking Client service. B. Create a DFS link to User Data. C. Enable shadow copies of USERS. D. Disable quota management on USERS. 
+
+Answer: C 

@@ -1,0 +1,185 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>TranDumper (Readme)</title>
+	<link href="TD_Style.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+	BODY {
+		background-color: darkblue;
+		background-image: url(./images/bg2.gif);
+	}
+
+	TABLE {
+		background-color: grey;
+		width: 90%;
+	}
+
+	TR.Candy {
+		background-image: url(./images/BlackBG.gif);
+		vertical-align:middle;
+	}
+
+	TH.Title {
+		color:#FFFFFF;
+		font-size: 14px;
+	}
+
+	.TxtBox {
+		color:#000000;
+		font-weight: normal;
+		background-color: #FFFFFF;
+		border-width:1px; border-style:solid; border-color:#B0B0B0;
+		padding:10px;
+		width: 90%;
+	}
+
+	</style>
+</head>
+
+<body>
+<br/>
+<a name="WhatIs"></a>
+<table border="1" cellpadding="5" cellspacing="0">
+	<tr class="Candy">
+		<th class="Title">Oque é TranDumper?</th>
+	</tr>
+</table>
+<div class="TxtBox">
+	<span class="MustRead">TranDumper</span>  é um <span class="MustRead">FREEWARE</span> 
+    desenvolvido para ajudar você a ler o braindumps que você encontrar.<br/>
+    Este programa converte os braindumps (e outros .txt's) para um formato que
+    permita a você utilizá-lo como se fosse um programa de simulados. Qualquer
+    modificação feita no TranDumper (código ou dump text file) deve ser
+    liberado como <b>freeware</b>.<br/>
+	<br/>
+    Você pode ajudar a traduzir a interface de usuário do TranDumper. Os
+    arquivos a serem traduzidos (TD_Readme.html, Trandumper.html) devem ser
+    colocados em uma pasta com 2 letras representando o país.<br/>
+    No momeno, Trandumper esta pronto para : <b>DE, FR, SP, IT</b>.<br/>
+	<br/>
+    Obrigado por usar TranDumper.
+</div>
+
+<br/><br/>
+<a name="HowToFormat"></a>
+<table border="1" cellpadding="5" cellspacing="0">
+	<tr class="Candy">
+		<th class="Title">Como formatar o arquivo texto para o TranDumper?</th>
+	</tr>
+</table>
+<div class="TxtBox">
+    Para exemplo de como usar o TranDumper, você pode ver um diretório de
+    exemplo. Você pode ler braindumps com pouca ou nenhuma modificação para o
+    dumps. Veja o <b>sample_plain.txt</b>  para uma explicação do arquivo de dump,
+    ou veja <b>sample_enhanced.txt</b>  que mostra o uso de características
+    mais avançadas.<br/>
+	<br/>
+    Você somente deve realizar alguma alterações na formatação do dump para
+    ter certeza de que o TranDumper lerá ele apropriadamente. Você simplemente
+    necessita salva a página web do dump como plain text (*.txt) e então
+    verificar a formatação do seu arquivo dump como abaixo:
+	<ol>
+		<li>O assunto deve começar com um número e um ponto em uma nova linha.<br/>
+          EXEMPLO:&nbsp;<span class="MustRead">1.</span>&nbsp;&nbsp;or&nbsp;&nbsp;<span class="MustRead">99.</span> 
+          (Número máximo de questões: <b>400</b>)<br/><br/></li>
+		<li>Uma linha em branco é <b>obrigatória</b> entre o texto da questão
+          e respostas com múltipla-escolha.<br/><br/></li>
+		<li>As opções de resposta devem começar com caracter alfanumérico e
+          um ponto ou a ")".<br/>
+          EXEMPLO:&nbsp;<span class="MustRead">a.&nbsp;&nbsp;a)&nbsp;&nbsp;A.</span>
+          (Número máximo de respostas: <b>15</b>)<br/><br/></li>
+		<li><b>RESPOSTAS DEVEM ESTAR EM UMA LINHA.</b><br/>
+          O formato das respostas deve ser escrito como se segue para ser
+          corretamente reconhecido.<br/>
+          EXEMPLO:&nbsp;<span class="MustRead">Ans:a,c&nbsp;&nbsp;&nbsp;Answer: b&nbsp;&nbsp;&nbsp;&nbsp;Ans : bc&nbsp;&nbsp;&nbsp;Answer: b,c and d</span><br/><br/></li>
+		<li>Se existir qualquer explicação ou comentário para a resposta, uma
+          linha em branco é&nbsp; <b>obrigatória</b> entre a linha da última
+          opção de resposta e a explicação ou comentário</li>
+		<li>Todas as opções de seleção e respostas são <span class="MustRead">case-insensitive</span>.
+          Isto é, ambos <span class="MustRead">Ans:</span>  e <span class="MustRead">ANS:</span> 
+          são sintaxes aceitas.</li>
+	</ol>
+</div>
+
+<br/><br/>
+<a name="HowToRun"></a>
+<table border="1" cellpadding="5" cellspacing="0">
+	<tr class="Candy">
+		<th class="Title">Como executar o TranDumper?</th>
+	</tr>
+</table>
+<div class="TxtBox">
+    <b>Requisitos:</b> Internet Explorer 5.0 ou superior e resolução de vídeo
+    800x600. 
+	TranDumper <b>somente</b> pode ser executado em browsers compatíveis com o
+    IE. Ele usa um ActiveX (File System object of scripting engine para abrir o
+    arquivo local). E também porque o Trandumper.html contém muitos VBscripts.
+	<ol>
+	<li>Garanta que você possui <span class="MustRead">Internet Explorer 5.0 ou
+      superior</span> instalado. TranDumper <span class="MustRead" style="color:#FF0000">NÂO
+      PODE</span> rodar no IE 3.x OU 4.x.<br/><br/></li>
+	<li>Instale o TD na pasta local, cada dump deve estar em uma subpasta. Por
+      favor de uma olhada no exemplo que ve mcom o TD.<br/><br/></li>
+	<li>Porque ele deve abrir arquivos locais, é recomendado que a <b>configuração
+      de segurança</b> do seu browser seja configurada para <b>médio </b>ou <b>baixa.</b>
+      Pode ocorrer do <b>Internet Explorer pedir a confirmação para confiar no ActiveX</b> 
+      que estiver rodando. Para prosseguir você deve cliar em &quot;Yes&quot;.<br/><br/></li>
+	<li>Não use o PWS (Personal Web Server) ou IIS para rodar o TD (TranDumper).
+      O diretório de instalação não pode ser qualquer diretório&nbsp;
+      &quot;Virtual&quot; do IIS ou PWS.<br/><br/></li>
+	<li>O TD somente pode ser executado <b>localmente</b>. TD <b>não roda</b>
+      com um web site.<br/><br/></li>
+	</ol>
+</div>
+
+
+
+<br/><br/>
+<a name="Credits"></a>
+<table border="1" cellpadding="5" cellspacing="0">
+	<tr class="Candy">
+		<th class="Title">Créditos</th>
+	</tr>
+</table>
+<div class="TxtBox">
+    <span class="MustRead">Contribuição para o desenvolvimento do TranDumper:</span><br/>
+	<ul>
+	<li><b>Version 1.0:</b> Criada por <b>Peter Pan</b>, a grande versão. O
+      coração da versão 3.0x ainda é baseada em sua versão original.<br/><br/></li>
+	<li><b>Version 1.1:</b> <b>JT</b>  realizou algumas modificações no estilo.<br/><br/></li>
+	<li><b>Version 2.1x:</b> <a href="mailto:delphi@ip.pt">Delphi</a>  melhorou
+      a performance e adicionou novas características: conjunto de questões
+      sequenciais, respostas randômicas, subconjuntos de questões.<br/><br/></li>
+	<li><b>Version 2.2x:</b> <a href="mailto:TrandumpFeedback@yahoo.com">Synvox</a> 
+      introduziu CSS, melhorias visuais: elementos de questões coloridos,
+      feedback nas cores vermelho/verde, limpeza do código para melhor
+      compatibilidade com o HTML4.<br/><br/></li>
+	<li><b>Version 3.0:</b> <a href="mailto:TrandumpFeedback@yahoo.com">Synvox</a>:
+      reestruturação completa da interface com o usuário, melhor navegação,
+      janela de revisão foi completamente reescrita, substituiu o scrore de
+      1000 pontos por %Error, otimização do código. Tradução para Alemão
+      feita por <a href="mailto:Bouchi@gmx.net">Bouchi</a>. Por favor se inspire
+      neste exemplo para realizar a tradução para a lingua de seu país.<br/><br/></li>
+	<li><b>Version 3.1:</b> <a href="mailto:TrandumpFeedback@yahoo.com">Synvox</a>:
+      Correção de Bug, mudanças simples nos gráficos. Liberação oficial da
+      versão 3.x.<br/><br/></li>
+	<li><b>Version 3.1:</b> <a href="mailto:niltonpinheiro@msn.com">Nilton Pinheiro</a>:
+      Tradução para Português-Brasil e alteração no score.
+      versão 3.x.<br/><br/></li>
+
+  <hr color="#000000" size="1"/><br/>	
+	<li>Chrome graphics: <a href="http://themes.521.2ya.com/">Project 521</a><br/><br/></li>
+	<li>Graphical elements inspired from: <a href="http://www.psplinks.com/content/Backgrounds.html">PSP Tutorial Links</a><br/><br/></li>
+	<li>Country flags: <a href="http://lwtchost.ctc.edu/Offices/registration/international/flags.html">Lake Washington Technical College</a></li>
+	</ul>
+</div>
+
+<p>
+	<button onClick="document.location='Start.html'"><b>Voltar</b></button>
+</p>
+
+</body>
+</html>
+

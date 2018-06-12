@@ -1,0 +1,1503 @@
+70-219 Design Windows 2000 Directory Service
+
+Incial version from http://www.mcsebraindumps.com/70-219/DarthVader.php
+Adapted to trandumper V2.0(sequencial version) by Delphi with corrections. 
+
+
+
+
+1. Which goal is accomplished as a direct result of an upgrade to Windows 2000 Active Directory? (Fabricam Q1-1)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. increased control and increased capability to standardize applications and computer configurations throughout the company
+b. online availability of data for vendors and customers
+c. automated paper-based business processes
+d. reduction of the total cost of ownership of IT systems during the first year after the upgrade 
+e. increased security for existing client computers
+
+Answer: a
+
+<p>For A -> (Emphasis on capability not concern of implemenation.Delagation, MSI's and OUS.)</p>
+<p>For B -> (No web connection mentioned)</p>
+<p>For C -> (No use of MSI for apps mentioned, although capable)</p>
+<p>For D -> (Slow upgrade, nervous, not specific, TCO will only show later)</p>
+<p>For E -> (No Ipsec or encryption mentioned, although capable)</p>
+
+
+2. The database administrator for the human resources department attempts to upgrade the SAP application that will integrate with Active Directory and add new classes. The installation fails. What is the most likely cause of this failure? (Fabricam Q1-2)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. The administrator trying to install the application is not in the Schema Administrators group.
+b. The administrator trying to install the application does not have permissions to create Group Policy objects (GPOs)
+c. The administrator trying to install the application is not in the Domain Administrators group for the local domain
+d. The administrator trying to install the application is not in the Enterprise Administrators group.
+e. The service account for the application is not a part of the Enterprise Administrators group.
+
+Answer: a
+
+<p>(New classes echo New Schema!)</p>
+
+<p>For A ->(Group required to make changes to the Schema, also for Echange 5.5 AD connector. The application requires changes to be made to the standard AD schema)</p>
+<p>For B ->(GPO's not relevant to SAP classes)</p>
+<p>For C ->(Not Sufficient, needs to be the first installation administrator)</p>
+<p>For D ->(As Above)</p>
+<p>For E ->(Service accounts are used for bootup and logon procedures ie log as part of the system.The service account may also be used for alterations later on. More commonly you would find a service account and a separate installation account)</p>
+
+
+3. How should you design the sites and site links for Fabrikam, Inc.? (Choose one of the following five answer choices.) (Fabricam Q1-3)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Create one site each for Atlanta, Dallas, and Phoenix. Create SMTP site links between Atlanta and Dallas and between Dallas and Phoenix. Between Atlanta and Dallas, schedule the links to replicate from 12:00 midnight to 2:00 A.M. Dallas local time. Between Dallas and Phoenix, schedule the links to replicate from 3:00 A.M. to 5:00 A.M., Dallas local time. 
+b. Create one site each for Atlanta, Dallas, and Phoenix. Create SMTP site links between Atlanta and Dallas and Phoenix. Between Atlanta and Dallas and between Dallas and Phoenix, schedule the links to replicate from 2:00A.M. to 4:00 A.M., Dallas local time. 
+c. Create one site each for Atlanta, Dallas, and Phoenix. Create IP site links between Atlanta and Dallas and between Dallas and Phoenix. Between Atlanta and Dallas, schedule the links to replicate from 12:00 midnight to 2:00 A.M., Dallas local time. Between Dallas and Phoenix, schedule the links to replicate from 3:00 A.M. to 5:00 A.M., Dallas local time. 
+d. Create one site each for Atlanta, Dallas, and Phoenix. Create IP site links between Atlanta and Dallas and between Dallas and Phoenix. Between Atlanta and Dallas and between Dallas and Phoenix, schedule the links to replicate from 2:00 A.M., Dallas local time. 
+e. Create one site that will contain all three locations.
+
+Answer: d
+
+<p>Smtp uses 80 % more bandwidth than IP. Rule out A and B. The major difference between answer C and D is the hours of replication. The time difference between locations would result in replication occuring during business hours if you used Answer C. Remember, two shifts per day on an average 9 to 5 day and then a shift for the evening.</p>
+<p>(Smtp can and should be used for unreliable or slow connections. There was not enough info to state the lines were bad, nor what their oppinion of a slow line is.) </p>
+<p>(12 1am 2 3 4 5 6 7)open for rep (8 9 10 11 12 1pm 2 3 4 5 6 7 8 9 10 11) Buss. hrs</p>
+
+
+4. Which upgrade path should you use for Fabrikam, Inc.? (Fabricam Q1-4)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Upgrade the Dallas account domain.Use this domain as the root domain. Separately upgrade the three Windows NT 4.0 resource domains to Windows 2000. Consolidate these three domains into one domain. 
+b. Separately upgrade the four Windows NT 4.0 domains to Windows 2000. Upgrade these domains in place. Use the existing trust-relationship structure. 
+c. Upgrade the four Windows NT 4.0 domains to Windows 2000. Upgrade these domains in place. Re-establish the previous two-way explicit trust relationships. 
+d. Create a new root domain.Upgrade the three Windows NT 4.0 resource domains to Windows 20000. Upgrade the Windows NT 4.0 account domain for Dallas to Windows 2000. Consolidate all of the accounts into the root domain. 
+
+Answer: a
+
+<p>For B -> (Need a root located at HQ as a starting point)</p>
+<p>For C -> (Previous structure would have used one way trusts ie Master-Resource)</p>
+<p>(Always upgrade the account domain first)</p>
+
+
+5. How many domains should Fabrikam, Inc., have at the end of the upgrade project? (Fabricam Q1-5)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. one domain for the entire company
+b. one domain for Atlanta and Phoenix, and one domain for Dallas
+c. one domain for each location
+d. four domains corresponding to the Windows NT 4.0 domain structure
+
+Answer: a
+
+<p>For B -> (Separate domains are only required for different password policies)</p>
+<p>For C -> (You may set the ability to reset passwords if locations are OU's)</p>
+
+
+6. Which Windows 2000 site design should you implement for Fabrikam, Inc.? (Fabricam Q1-6)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Continue using the existing WAN lines. Create one site that contains all three locations.
+b. Upgrade the WAN lines to 44.736Mbps. Create one site that contains all three locations.
+c. Upgrade the WAN lines to 1.544Mbps. Create one site that contains all three locations.
+d. Upgrade the WAN lines to 1.544Mbps. Create one site each for Dallas, Atlanta,and Phoenix.
+e. Continue using the existing WAN lines. Create one site each for Dallas, Atlanta,and Phoenix.
+
+Answer: e
+
+<p>For A -> (Silly - replication over WAN)</p>
+<p>For B -> (No money)</p>
+<p>For C -> (No money)</p>
+<p>For D -> (No money)</p>
+<p>For E -> (Isolates replication traffic and allows schedules)</p>
+
+
+7. How should you design DNS to support Windows 2000 for Fabrikam, Inc.? (Fabricam Q1-7)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Use the existing DNS servers, and upgrade them to support SRV records. To support secondary zones, add additional DNS servers that run Windows 2000.
+b. Install Microsoft DNS server on Windows 2000 computers, and integrate DNS into Active Directory.
+c. Use the existing DNS servers, and upgrade them to support dynamic update
+d. Add new DNS servers that run the latest version of BIND.
+
+Answer: c
+
+<p>For A -> (Existing DNs is UNiX, need a W2K to be the root)</p>
+<p>For B -> (Offers security and performance, just what MS want)</p>
+<p>For C -> (What about srv records)</p>
+<p>For D -> (8.1.2 will do, but will also cost money) (Still no AD at root) (The latest version supports both SRV and DDNS but lacks features required for implementing AD such as DNS replication roles) also whos going to pay?</p>
+
+
+8. Where should you locate the server services for Windows 2000? (Fabricam Q1-8)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. In Dallas, locate a schema operations master, a domain naming master, an infrastructure operations master, a RID master, a PDC emulator, and a global catalog. In both Atlanta and Phoenix, locate one of each of the following: a RID Master, an infrastructure operations master, a PDC emulator, and a global catalog.
+b. In Dallas, locate a schema operations master, a domain naming master, an infrastructure operations master, a RID master, a PDC emulator, and a global catalog. In both Atlanta and Phoenix, locate a RID master, a domain naming master, a PDC Emulator, and a global catalog. 
+c. In Dallas, locate a schema operations master, a domain naming master, an infrastructure operations master, a RID master, a PDC emulator, and a global catalog. In both Atlanta and Phoenix, locate one infrastructure operations master and one global catalog.
+d. In Dallas, locate a schema operations master, a domain naming master, an infrastructure operations master, a RID master, a PDC emulator, and a global catalog. Locate one global catalog in Atlanta and one global catalog in Phoenix.
+
+Answer: d
+
+<p>Before you begin note that a schema operations master and a domain naming master must remain in the first domain created (root). There can be only one per forest. There can be one Infra master, RID and PDC emulator per domain. The GC and Infra master must be on separate servers.An infra master is responsible for updating removal and addition of users to groups within the domain and the updates thereof to the other DC's.</p>
+<p>For A -> (The wheels fall off here)</p>
+<p>For B -> (Whoops!!)</p>
+<p>For C -> (Whoops!!, single domain here!) </p>
+<p>For D -> (GCs are good for local authentication, the sucessfull queries for the DC's that is)</p>
+
+
+9. You want to implement Windows 2000 to minimize the impact of replication on WAN traffic for Fabrikam, Inc. What should you do? (Fabricam Q1-9)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Define Group Policy objects (GPOs) only at the domain and organizational unit (OU) levels.
+b. Use SMTP site links for replication.Optimize the site link schedule.
+c. Define policies and procedures so that only global groups are included in universal groups.
+d. Use IP site links for replication. Optimize the replication schedule.
+e. Reduce the number of attributes replicated by the global catalog.
+
+Answer: d
+
+<p>For A -> (Helps replication data amount, not significant enough)</p>
+<p>For B -> (80 % more bandwidth utilization than IP (choice D))</p>
+<p>For C -> (Why not makes things worse? Do we need universal if we have one domain, as they allow you to log on to any domain in the forest, nup , global groups will do thank you)</p>
+<p>For D -> (Yes please)</p>
+<p>For E -> (Inaccurate updates versus efficientcy, I dont want his/her job)</p>
+
+
+10. You need to create a design that will allow you to grant permissions to a set of resources that are on three servers in the Dallas office. You need to grant these permissions to users throughout the entire company after the upgrade. What should you do? (Fabricam Q1-10)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Create local groups on each resource server that is on the Dallas location, and grant these groups access to the resources. create one global group for the domains , and add the members who need to gain access to the resources. Add the global groups to the local group. 
+b. Create a domain local group in the domain and add the members who need to gain access to the resources. Add the global groups to the domain local group.
+c. Create a domain local group in the domain in which the resources exist and grant this group access to the resources. Create one global group for the domain or domains, and add the members who need to gain access to the resources. Add the global groups to the domain local group.
+d. Create local groups on each resource server that is on the Dallas location, and grant these groups access to the resources. Grant each local group access to the resource on its respective server. Create one global group for the domain or domains. And add the members who need to gain access to the resources. Create a universal group. Add the global groups to the universal group add the universal group to the domain local group.
+
+Answer: c
+
+<p>For A -> (The correct group is Domain Local, we are not in a workgroup here)</p>
+<p>For B -> (members must be added to global)</p>
+<p>For C -> (looks good, AGLP)</p>
+<p>For D -> (As per A)</p>
+<p>Remember the AGLP model: Account to Global to Local then assign permission. Perhaps it hould read AGDLP (Domain local). </p>
+
+
+11. How should you design the implementation of Group Policy for the Fabricam, Inc., sales department? (Choose one of the following five answer choices.) (Fabricam Q1-11)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. Create domain-level Group Policy objects (GPOs) for company-wide policies. Set sales-specific policies in the top-level sales organizational unit (OU). Use site-level GPOs to set location-specific policies as necessary.
+b. Create domain-level Group Policy objects (GPOs) for company-wide policies. Set sales-specific policies in the top-level Atlanta, Dallas, and Phoenix organizational units (OUs)
+c. Create domain-level Group Policy objects (GPOs) for company-wide policies. Enable the No Override setting for the domain level GPOs. Set sales-specific policies in the top-level sales organizational unit (OU). Use site-level GPOs to set location-specific information as necessary. Enable Block Inheritance for the GPO that is in the sales OU
+d. Create domain-level Group Policy objects (GPOs) for company-wide policies. Enable No Override for the domain-level. Set location-specific policies in the top-level Atlanta, Dallas, and Phoenix or organizational unit (OU). Set department-specific policies in the top-level Atlanta, Dallas, and Phoenix organizational unit (OU). Enable Block Inheritance for the GPO that is in the sales OU.
+e. Create one domain-level group policy object (GPO) for sales. Grant read only and apply group policy permissions to only the sales department security group.
+
+Answer: a
+
+<p>For A -> (The MS way. The more specific the requirement, the lower the level of configuration. Tested linking a site policy to an OU. Bear in mind the multiple polices can be applied to an OU. The story also mentions no filtering, which deals with No Overide and Block inheritance)</p>
+<p>For B -> (All ous underneath will get effected, not just sales)</p>
+<p>For C -> (No override will kick butt)</p>
+<p>For D -> (As per C)</p>
+<p>For E -> (What if the different locations required different settings ? You cant set read and apply to a different specific conditions on the same condition, only to the policy as a whole)</p>
+<p>"Initially, Group Policy will be designed to redirect folders, to define logon scripts that will be customized for each department at each location"</p>
+
+
+12. What is the most critical decision you have to make before you implement your Active Directory? (Fabricam Q1-12)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/fabricam.htm')">Case Study - Fabricam</button></p>
+
+a. The name of the first domain
+b. The number of domains
+c. The number of users
+d. The DNS
+
+Answer: d
+
+<p>For A -> (I assume Active Directory Name)</p>
+<p>For B -> (no limit, not so,do a calculation on the maximium character length of a FQDN, in this case though, not an issue)</p>
+<p>For C -> (no limit, yeagh right MS.16 mill or so)</p>
+<p>For D -> (Vital)</p>
+<p>Active Directory uses DNS as its location service, enabling computers to find the location of domain controllers. To find a domain controller in a particular domain, a client queries DNS for resource records that provide the names and IP addresses of the Lightweight Directory Access Protocol (LDAP) servers for the domain. LDAP is the protocol used to query and update Active Directory, and all domain controllers run the LDAP service. *You cannot install Active Directory without having DNS on your network*, because Active Directory uses DNS as its location service. However, you can install DNS separately without Active Directory.</p>
+
+
+13. You must decide how your Active Directory design will be affected by the factors that influence the business strategies of General Business Consultants. Move each business factor to the appropriate component in your Active Directory design. <B>(Use all business factors. Use each business factor only once)</B> (GBC Q1)
+<p><B>Active Directory Design Components:</B></p>
+<p>1. Forests</p>
+<p>2. Sites</p>
+<p>3. Number of domains</p>
+<p>4. OUs</p>
+<p>5. Security Group membership</p>
+<p></p>
+<p><B>Business Factors:</B></p>
+<p>A. Each resort must have independent control. </p>
+<p>B. Resort administrative control is divided among five departments. </p>
+<p>C. All member logon requests must avoid using the WAN line. </p>
+<p>D. It must be easy to move a member's user object from one resort to another resort. </p>
+<p>E. Directory replication cannot be scheduled during times of peak usage. </p>
+<p>F. There are many employee positions at each resort. </p>
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. A ---> 1
+b. B ---> 4
+c. C ---> 3
+d. D ---> 5 
+e. E ---> 2
+f. F ---> 4
+
+Answer: a,b,c,d,e,f
+
+<p>A ---> 1 (Forests determine independancy)</p>
+<p>B ---> 4 (Ous can be represented by departments)</p>
+<p>C ---> 3 (Domains allow logon, sites are for replication issues, sites may contain one or many domains - more accurate GC placement would be a better choice)</p>
+<p>D ---> 5 (the movetree has some issues: see explanation below)</p>
+<p>E ---> 2 (the purpose of sites)</p>
+<p>F ---> 4 (Positions == OU's)</p>
+<p></p>
+<p>Supported MOVETREE Operations</p>
+<p></p>
+<p>The following operations are supported with the MOVETREE utility:</p>
+<p>- Move an object or a nonempty container to a different domain. Valid only within the same forest.</p>
+<p>- Move Domain Local and Global groups between domains without members and within domains with members. Valid only within the same forest.</p>
+<p>- Move Universal groups with members within and between domains. Valid only within the same forest.</p>
+<p></p>
+<p>Unsupported MOVETREE Operations:</p>
+<p>- Local and Domain Global groups that contain members. Universal group memberships remain intact so that security is not compromised. Associated object data. This includes group policies, user profiles, logon scripts, users' personal data, encrypted files, smart cards, and public key certificates. Group policies would need to be applied to the users, groups, or computers. New smart cards and certificates would need to be issued from the Certificate Authority in the new domain. Use additional scripts or management tools, such as the Remote Administration Scripts, in conjunction with MOVETREE, to perform these additional steps.</p>
+
+
+
+14. How should you design the domain and forest structure for the members? (GBC Q2)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Use the generalbusinessconsultants.com for the forest root and a single domain.
+b. Add a DNS zone named members to each unique resort DNS name. Create a separate Active Directory tree in each resort forest.
+c. In the generalbusinessconsultants.com forest, create a separate Active Directory tree for each resort.
+d. Add a DNS zone named members to each unique resort DNS name. Create a separate Active Directory forest for each resort.
+
+Answer: a
+
+<p>(members = GBC not resort employees and must be independant of the resorts) (Members log on to one big GBC domain) </p>
+
+
+15. Which General Business Consultants business need or needs should you implement by using GPO's? (Choose all that apply) (GBC Q2)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Configure the desktop settings for the resort employees.
+b. Automatically assigning IP addresses to wireless devices.
+c. Updating the software on the kiosks.
+d. Configuring user logon requests to avoid using the WAN line.
+
+Answer: a,c
+
+<p>For A -> (As per requiremnts, resort specific)</p>
+<p>For B -> (Whatever)</p>
+<p>For C -> (touchscreens, WDM complient drivers)</p>
+<p>For D -> (would place GC's locally, better choice)</p>
+
+
+16. Resort employees must be able to update member records. Which trust relationship should you configure between the member domain and each resort domain? (GBC Q3)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Default trust
+b. Two-Way transitive trust
+c. One-Way trust, where resort trusts member
+d. One-Way trust, where member trusts resort
+
+Answer: d
+
+<p>For A -> (two way, not required)</p>
+<p>For B -> (default)</p>
+<p>For C -> (Wrong way)</p>
+<p>For D -> (User accounts will be located at GBC S. Jose = members)</p>
+
+
+17. You must implement DNS services for one of the resorts which set or sets of steps should you perform? (Choose all that apply) (GBC Q4)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Install Microsoft DNS server on two servers, configure a sub-domain of the resort's Internet domain.
+b. Install Microsoft DNS server on two servers, configure a sub-domain of the generalbusinessconsultants.com zone.
+c. Install Microsoft DNS server on two servers. Use these servers for the generalbusinessconsultants.com zone that is integrated into AD.
+d. Upgrade the resort's existing DNS services to support Active Directory SRV records.
+e. Migrate the resort's top-level domain to Microsoft DNS server.
+
+Answer: a,c
+
+<p>For A -> (a separate web presence is required, and internal domain is possible)</p>
+<p>For B -> (Lets hope the 3rd party DNS zones want to be integrated)</p>
+<p>For C -> (leads off A, two for fault tolerance)(Emphasis on "that is ", implying the sub domain)</p>
+<p>For D -> (what about DDNS)</p>
+<p>For E -> (Sure...your ISP wont mind!!)</p>
+
+
+18. You need to design a DNS domain and forest structure that meets the internal needs of the resorts. What should you do? (GBC Q5)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Create a DNS zone named AD as a sub-domain of the resort's existing Internet domain name. Assign this domain name to the Active Directory forest root. 
+b. Create a DNS zone named generalbuisnessconsultants. Use the zone as a delegate to the resort's Internet domain name. Assign this domain name to the Active Directory forest root.
+c. Create a DNS zone that has the same name as the resort. Use this zone as a delegate to generalbusinessconsultats.com. Add this domain name to the generalbusinessconsultats Active Directory forest.
+d. In the generalbusinessconsultats.com domain, create a sub-domain that has the same name as the resort. Use this zone as a delegate to the generalbusinessconsultats.com. Assign this domain name to the Active Directory forest root.
+
+Answer: a
+
+<p>For A -> (Yeah baby, 1 domain for the net and one internal)</p>
+<p>For B -> (delgated zone, from the ISP DNS ...ok?)</p>
+<p>For C -> (Resorts and members are different domains and entities)</p>
+<p>For D -> (As per C)</p>
+<p></p>
+<p>(AD: "Resort".com)</p>
+
+
+19. You must decide how many Windows 2000 Server computers you need to host the domain controllers and global catalog servers for phase 1 of the General Business Consultants implementation plan. What is the minimum number of servers that you should use? (GBC Q7)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. 15
+b. 20
+c. 25
+d. 27
+e. 33
+
+Answer: d
+
+<p>6 resorts = 6, 1 extra for fault tolerance per domain = 12</p>
+<p>6 members= 6 add 1 extra each = 12 </p>
+<p>1 x schema master</p>
+<p>1 x GC at IT HQ</p>
+<p>1 x infra master (cant be same as GC)</p>
+<p></p>
+<p>12+12+1+1+1 = 27</p>
+
+
+20. You need to choose the top-level OU that will support a resort's internal business requirements. Which top-level OU should you use? (GBC Q8)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Job positions
+b. Resorts
+c. Departments
+d. User, computer, printer, kiosk, and file share objects
+
+Answer: c
+
+<p>For A -> (lower level)</p>
+<p>For B -> (Domains)</p>
+<p>For C -> (top ous)</p>
+<p>For D -> (lowerlevel)</p>
+
+
+21. How many forests should you create for phase 1 of the General Business Consultants implementation plan? (GBC Q9)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. 1
+b. 2
+c. 6
+d. 7
+e. 13
+
+Answer: d
+
+<p>members.GBC.Com (Employees)=1 6x AD."resort".Com (Resorts, independant)=6 </p>
+<p></p>
+<p>1+6=7</p>
+
+
+22. You are deciding how you should support the requirements of the General Business Consultants members, resort employees, and resort departments. You need to decide which technologies are the most appropriate to meet the requirements of each group. Move each technology to the most appropriate group. <B>(Use all technologies. Use each technology only once)</B> (GBC Q10)
+<p></p>
+<p><B>Groups:</B></p>
+<p>1. Resort Employees </p>
+<p>2. Members</p>
+<p>3. Resort departments</p>
+<p></p>
+<p><B>Technology:</B></p>
+<p>A. Unique schema</p>
+<p>B. Intrasite replication</p>
+<p>C. Delegated Administrative rights</p>
+<p>D. Intersite replication</p>
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Resort employees = intrasite replication
+b. Members = intersite replication & unique schema
+c. Resort departments = Delegated administrative rights
+
+Answer: a,b,c
+
+<p>resort employees = intrasite replication (local only)</p>
+<p>members = intersite replication(logon anywhere) and unique schema (as per story)</p>
+<p>resort departments = Delegated administrative rights (as per story)</p>
+
+
+23. You need to configure replication for General Business Consultants. Which two steps should you take? (Choose Two)  (GBC Q11)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. Set the interval to 180 minutes. Set the schedule to 1:00 A.M. to 6:00 A.M. local time at each resort.
+b. Create Intrasite links between the member and resort domain controllers that are located at each resort.
+c. Set the interval to 60 minutes. Set the schedule to 11:00 A.M. to 4:00 P.M local time at each resort.
+d. Create Intrasite links on the member domain controllers that are located at each resort and at the San Jose IT center.
+e. Create inter-forest RPC connections between the resort and member forests.
+
+Answer: a,d
+
+<p>For A -> (Good time for replication)</p>
+<p>For B -> (you do not want replication between members and resorts)</p>
+<p>For C -> (Avoid during peak usage, like normal office hours)</p>
+<p>For D -> (specific links ensures replication locally is optimised by using the specified servers only, due to LAN bandwidth needs or Hardware specs)</p>
+<p>For E -> (as per B)</p>
+<p></p>
+<p>(I am assuming either D is a typo and should read Intersite, or they are reffering to explicit replication partners. Dont like D if it is intrasite as it there is not enough info to support the need, but must choose 2, so D it is)  (To confirm D does infact read Intersite)</p>
+
+
+24. You must decide how many forests General Business Consultants should use. Which business or technical factor or factors should influence your decision? (Choose all that apply) (GBC Q12)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/gbc.htm')">Case Study - GBC</button></p>
+
+a. All member logon requests must avoid using the WAN line.
+b. Both smart-card authentication and password authentication will be used for security.
+c. Each resort will want to be able to add applications that might uniquely change the Directory schema of its internal operating domain. 
+d. It will not be necessary for employees of one resort to access information about employees of another resort.
+e. Membership will exceed 2 million.
+f. The resorts do not want General Business Consultants or any other resort to have any authority to change user permissions for their employees 
+g. Directory replication cannot be scheduled during times of peak usage.
+
+Answer: b,c,d,f
+
+<p>For A -> (Domains)</p>
+<p>For B -> (Replication)</p>
+<p>For C -> (A schema is forest specific)</p>
+<p>For D -> (Forests allow independance and the need for resource access if required)</p>
+<p>For E -> (Who cares) </p>
+<p>For F -> (As per D, could be delegated though, forest are a good method to ensure independancy, give them their own forest )</p>
+<p>For G -> (Sites)</p>
+<p></p>
+<p>NOTES:</p>
+<p></p>
+<p><B>Determining the Number of Forests for Your Network</B></p>
+<p></p>
+<p><B>Creating a Single Forest Environment</B></p>
+<p>A single forest environment is simple to create and maintain. All users see a single directory through the global catalog, and do not need to be aware of any directory structure. When adding a new domain to the forest, no additional trust configuration is required. Configuration changes only need to be applied once to affect all domains.</p>
+<p></p>
+<p><B>Creating a Multiple-Forest Environment</B></p>
+<p>If administration of your network is distributed among many autonomous divisions, it might be necessary to create more than one forest.Because forests have shared elements, such as schema, it is necessary for all the participants in a forest to agree on the content and administration of those shared elements. Organizations such as partnerships and conglomerates might not have a central body that can drive this process. In short-lived organizations like joint ventures, it might not be realistic to expect administrators from each organization to collaborate on forest administration.</p>
+<p></p>
+<p>It might be necessary to create more than one forest if individual organizations:</p>
+<p>- Do not trust each other's administrators.</p>
+<p>- Cannot agree on a forest change policy. </p>
+<p>- Want to limit the scope of a trust relationship. </p>
+<p>- Incremental Costs for an Additional Forest</p>
+<p>- Each forest you create incurs a fixed management overhead as follows.</p>
+<p></p>
+<p>Some features that are available within a forest are not available between forests, such as the following:</p>
+<p>- You can only use default UPNs if a user account is in a different forest than the computer being used for logging on. Default UPNs are required because a domain controller in the computer's forest will not find a user account with a matching UPN in the global catalog. The user account appears in the global catalog of a different forest. The domain controller handling the logon must then use the <DNS-domain-name> portion of the UPN to try to find a domain controller to verify the user's identity. </p>
+<p>- Logging on using a smart card relies on a user principal name. Default UPNs must be used for a cross-forest logon process that uses smart cards to work. </p>
+<p>- You can move security principals between domains in the same forest, but they must be cloned between domains in separate forests. Cloning is not as transparent to an end user as moving a user between domains. For more information about cloning, see "Determining Domain Migration Strategies" in this book. (Yes read it also - very important stuff) In cases where it is not important for all users to have a consistent view of the directory, it might be appropriate to have multiple forests. For example, consider a company such as an Internet service provider (ISP) that hosts Active Directory on behalf of several companies. The users in the different client companies have no reason to share a consistent view of the directory. Additionally, there is no reason to have a transitive trust relationship between the companies. In this case, maintaining separate forests is useful and appropriate.</p>
+
+
+25. You must decide how your active Directory design will be affected by the factors that influence Hiabuv Toys business strategies. Move each business factor to the Active Directory design component that it most influences. <B>(Use all business factors. Use business factors only once.)</B> (Hiabuv Q1)
+<p></p>
+<p><B>Active Directory Design factors</B></p>
+<p>1. Forest design </p>
+<p>2. Site Design</p>
+<p>3. Domain Design</p>
+<p>4. Organization Unit design</p>
+<p></p>
+<p><B>Components Business Factors</B></p>
+<p>A. Hiabuv Toys is acquiring Wide World Importers</p>
+<p>B. The Montreal office will be permanently closed</p>
+<p>C. The European offices will operate independently of the North American offices.</p>
+<p>D. IT support tasks will be performed at the North American and European technical support centers.</p>
+<p>E. Manufacturing facilities are being built in Germany</p>
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. A ---> 1
+b. B ---> 4
+c. C ---> 3
+d. D ---> 4
+e. E ---> 2
+
+Answer: a,b,c,d,e
+
+<p>A ---> 1 (separate web presence)
+<p>B ---> 4 (Separate issue for future replication, to be taken over by Toronto)
+<p>C ---> 3 (separate GPOs can be assigned with domains)
+<p>D ---> 4 (delegation)
+<p>E ---> 2 (will be part of HIABEU, replication-sites more important)
+
+
+26. Engineering users want to be able to continue to administer their own resources after the Windows 2000 implementation. What should you do to enable this goal? (Hiabuv Q2)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. Create a domain for the engineering department. Create an engineering organizational unit. Grant the engineering department complete administrative control of its OU. Move computer and user objects into the domain. 
+b. Create a domain for the engineering department. Locate this domain on the same level as the North America domain. Grant the engineering department complete administrative control of its domain. Move computer and user objects into the domain.
+c. Create a separate OU for the engineering department. Locate this OU in the North America domain. Grant the engineering department complete administrative control of its OU. Move computer and user objects into the OU.
+d. Create a separate forest for the engineering department. Grant the engineering department complete administrative control of this forest. Move computer and user objects into the forest.
+
+Answer: c
+
+<p>For A ->(being removed)</p>
+<p>For B -> (As per A)</p>
+<p>For C -> (HIABNA took over HIABENG previuosly, would be a good place to put it)</p>
+<p>For D -> (Separate forest means a separate domain, not wanted)</p>
+
+
+27. You must integrate Europe and North America in AD. What should you do? (Hiabuv Q3)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. Create one forest for Hiabuv Toys. Create a sub-domain for each site.
+b. Create one forest and one domain for Hiabuv Toys. Name the domain hiabuvtoys.com. Create a Europe OU. Locate this OU in hiabuvtoys.com.
+c. Create one forest for Hiabuv Toys. Create one sub-domain each for Canada, the US, Mexico and Germany.
+d. Create one forest for Hiabuv Toys. Create one domain for Europe and one domain for North America.
+
+Answer: d
+
+<p>(Refering to HIABNA and HIABEU)</p>
+<p></p>
+<p>For A -> (HIABNA is not a site, the locations are)</p>
+<p>For B -> (Separate password GPOs are required)</p>
+<p>For C -> (Expands on the existing structure, does not consolidate)</p>
+
+
+28. After the Montreal office is permanently closed, how many sites should you use for the hiabuvtoys.com domain tree? (Hiabuv Q4)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. 12
+b. 13
+c. 14
+d. 15
+
+Answer: c
+
+<p>9 from the USA, 1 from Canada (excludes MONT), 1 from Europe, 1 from Mexico, 1 from Frankfurt and 1 for Detroit</p>
+<p></p>
+<p>9+1+1+1+1+1=14</p>
+
+
+29. Which server roles should you implement for Hiabuv Toys? (Hiabuv Q5)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. One schema operations master, one domain-naming master, one RID master, one PDC emulator, one infrastructure operations master.
+b. One schema operations master, one domain-naming master, two RID master, two PDC emulator, two infrastructure operations master.
+c. One schema operations master, one domain-naming master, three RID masters, three PDC emulator, three infrastructure operations master. 
+d. One schema operations master, one domain-naming master, four RID masters, four PDC emulator, four infrastructure operations master.
+
+Answer: c
+
+<p>Europe.hiabuvtoys.com</p>
+<p>Northamerica.hiabuvtoys.com</p>
+<p>Both of these domains are child domains of an unpopulated hiabuvtoys.com forest root domain</p>
+<p>1 schema master per forest/enterprise</p>
+<p>1 domain naming master per enterprise</p>
+<p>1 pdc emulator per domain</p>
+<p>1 RID per domain</p>
+<p>1 Infra per domain</p>
+<p>1 GC per location</p>
+
+
+30. After the Windows 2000 implementation is complete, which domain name or names should you use in the internal DNS for Hiabuv Toys? (Choose all that apply) (Hiabuv Q6)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. Oklahomacity.hiabuvtoys.com
+b. Europe.hiabuvtoys.com
+c. Boston.hiabuvtoys.com
+d. Chicago.hiabuvtoys.com
+e. Northamerica.hiabuvtoys.com
+
+Answer: b,e
+
+<p>For A -> (site)</p>
+<p>For C -> (Site)</p>
+<p>For D -> (site)</p>
+
+
+31. Which factor or factors should you consider when designing the domain naming strategy for Hiabuv Toys? (Choose all that apply) (Hiabuv Q7)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. Local administrators will perform basic account administration.
+b. The company wants to implement separate security policies for Europe and North America.
+c. The WAN line to Europe will be upgraded.
+d. The company wants to have an Internet presence.
+
+Answer: b,d
+
+<p>For A -> (Ou delegation)</p>
+<p>For B -> (yes)</p>
+<p>For C -> (Will still remain in a separate domain)</p>
+<p>For D -> (External and internal Domain names)</p>
+
+
+32. You must decide whether to place Europe in AD as a domain or as an OU. Which factor should most influence your decision? (Hiabuv Q8)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. Available WAN bandwidth
+b. Geographic distribution
+c. The company's plans for expansion in Europe.
+d. The current and proposed IT administrative structures and security policies in Europe
+
+Answer: d
+
+<p>For A -> (sites)</p>
+<p>For B -> (Sites, wan links)</p>
+<p>For C -> (scalable)</p>
+<p>For D -> (passwords) </p>
+
+
+33. You must design the site topology for Hiabuv Toys. Which factor or factors should have the most influence on your design? (Choose all that apply) (Hiabuv Q9)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. The existing DNS naming structure
+b. Number of locations
+c. Cost of WAN bandwidth
+d. Available WAN bandwidth
+e. Number of departments
+
+Answer: b,c,d
+
+<p>For A ->(not site related)</p>
+<p>For B -> (yes)</p>
+<p>For C -> (There was no mention of cost issues at present)</p>
+<p>For D -> (Yes, the fact that it is minimal does not stop you from planning the sites according to bandwidth supported)</p>
+<p>For E -> (OUs)</p>
+<p></p>
+<p>They clearly state bandwidth usage is minimal. With the introduction of AD the GCs on the DC's will be doing a little more talking. Sites minimize cost by using schedules anyway.</p>
+
+
+34. What should you do to prepare for the transfer of employees from the Montreal office to the Toronto office? (Hiabuv Q10)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. Create separate domains for Montreal and Toronto. Move the Users account to the Toronto domain when the Montreal domain is removed.
+b. Create separate forests for Montreal and Toronto. Move the Users account to the Toronto domain when the Montreal domain is removed.
+c. Create separate OUs for Montreal and Toronto. Move the Users account to the Toronto OU when the Montreal OU is removed.
+d. Create separate OUs for Montreal and Detroit. Move the Users account to the Detroit OU when the Montreal OU is removed.
+
+Answer: c
+
+<p>(A and B are silly and dont tie in with the AD structure)</p>
+<p>For C -> (the most logical option)</p>
+<p>For D -> (Lets keep things local)</p>
+<p></p>
+<p>(They also clearly state Toronto will be the drop zone)</p>
+
+
+35. Which strategy should You us to integrate World Wide into Hiabuv in the AD structure? (Hiabuv Q11)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/hiabuv.htm')">Case Study - Hiabuv</button></p>
+
+a. In Hiabuv.com create a subdomain for WWI.com
+b. Create a froest for Haibuv.com. Create a second forest for WWI.com
+c. Create a forest for Hiabuv.com. Integrate WWI.com into the existing Forest.
+d. When the aquisition of WWI is complete Register 1 new domain name. 
+
+Answer: c
+
+<p>(no comments - answer must be validated)</p>
+
+
+36. You must decide how your Active Directory design will be affected by the factors that influence the business strategies of ProseWare Corporation. Move each business factor to the appropriate component in your Active Directory design. <B>(Use all business factors. Use each only once)</B> (PWC Q1)
+<p></p>
+<p><B>Active Directory Design Components:</B></p>
+<p>1. Forest structure</p>
+<p>2. Site Structure</p>
+<p>3. Domain structure</p>
+<p>4. Organizational unit structure</p>
+<p>5. Explicit trust relationships</p>
+<p></p>
+<p><B>Business Factors:</B></p>
+<p>A. Availability of IW shares from the corporate customer domains.</p> 
+<p>B. Classification of information workers into occupational roles and administration of IW's by ProseWare Corporation employees.</p>
+<p>C. Unique authentication requirements of IW's</p>
+<p>D. Existing WAN connectivity and utilization rates</p>
+<p>E. Division of ProseWare Corporation into departments</p>
+<p>F. Schema modification policy</p>
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. A ---> 5
+b. B ---> 4
+c. C ---> 3
+d. D ---> 2
+e. E ---> 4
+f. F ---> 1
+
+Answer: a,b,c,d,e,f
+
+<p>A ---> 5  (needed for access)</p>
+<p>B ---> 4  (delegation)</p>
+<p>C ---> 3  (domain specific)</p>
+<p>D ---> 2  (sites = replication)</p>
+<p>E ---> 4  (Domains used for locations, department = OU's)</p>
+<p>F ---> 1  (forest specific)</p>
+
+
+37. How many forests and domains should you create for ProseWare Corporation? (PWC Q2)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. One forest and three domains
+b. Two forests and three domains
+c. Three forests and five domains
+d. Four forests and four domains. 
+
+Answer: a
+
+<p>Resource(1 domain).pw_master(1domain).corp(1 domain).(prosware.com(internet))</p>
+
+
+38. How many sites should you create for ProseWare Corporation? (PWC Q3)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. 1
+b. 2
+c. 4
+d. 6
+
+Answer: c
+
+<p>New York, Chicago, LA, Atlanta</p>
+
+
+39. Which ProseWare Corporation planned upgrade will require you to modify the schema? (PWC Q4)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. Smart cards and PKI certificates will be implemented.
+b. The two corporate customers will want to be able to view the ProseWare Corporation file shares in their own global catalogs. 
+c. The existing Windows NT domains will be consolidated and upgraded.
+d. Microsoft Exchange 5.5 will be upgraded to 2000.
+
+Answer: d
+
+<p>For A -> (Exchange 2000 will allow this, the schema would have already been changed)</p>
+<p>For B -> (they can view them, and are already AD integrated, dont need to save them or modify their attributes)</p>
+<p>For C -> (standard)</p> 
+<p></p>
+<p>(Any installation or upgrade of exchange extends the schema of the users attributes eg emails address, exchange tasks etc)</p>
+<p>(There is also the corrolation of groups and DLs)</p>
+
+
+40. Which task(s) must you perform to implement the required Windows 2000 design for ProseWare Corporation? (Choose all that apply) (PWC Q5)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. Create two explicit one-way trust relationships. Configure these trusts so that the ProseWare Corporation IW domain trusts a domain in each of the two corporate customer forests. 
+b. Create two one-way trust relationships. Configure these trusts so that a domain in each of two corporate customer forests trusts thee ProseWare Corporation IW domain.
+c. Create shortcut trust between the employee domain and the IW domain.
+d. Create sites and Intersite replication schedules for NY, Atlanta, and Los Angeles.
+e. Install domain controllers in NY, Atlanta, and LA
+f. Configure DNS and Global Catalog services in NY, Atlanta, and LA
+g. Set replication schedules between ProseWare Corporation and the corporate customer forests. 
+h. Integrate DNS into Active Directory.
+i. Move the infrastructure operations master that is on the domain controller to a domain controller that is not hosting a global catalog.
+j. Create transitive trusts between ProseWare Corporation and two corporate customer forests.
+k. Request that ProseWare Corporation file share objects be added to the corporate customers' global catalogs.
+
+Answer: a,d,e,f,h,i,k
+
+<p>For A -> (allows acces into prosware)</p>
+<p>For B -> (Nulled by A)</p>
+<p>For C -> (Not in the same forest, need access via root)</p>
+<p>For D -> (Replication for AD)</p>
+<p>For E -> (Local GC's, for local logon and queries)</p>
+<p>For F -> (local queries resolved)</p>
+<p>For G -> (separate forests, different schemas)</p>
+<p>For H -> (Automatic)</p>
+<p>For I -> (Standard procedure, required if more than one DC installed or else changes wont be replicated)</p>
+<p>For J -> (Separate entities require explicit trusts)</p>
+<p>For K -> (Beter faster accesss, only the pointers though)</p>
+
+
+41. You need to migrate ProseWare Corporation's existing Windows NT domains into Active Directory. Move the tasks needed to achieve this goal to the migration plan, and arrange them in the correct order. <B>(Use only tasks that apply)</B> (PWC Q6)
+<p></p>
+<p><B>Migration Plan:</B></p>
+<p>1 ----> </p>
+<p>2 ----> </p>
+<p>3 ----> </p>
+<p></p>
+<p><B>Possible Tasks:</B></p>
+<p>A. Move users from the PW_MASTER domain to the resource domain at there location. Upgrade the PW_MASTER PD to Windows 2000, and create the Active Directory root domain. Upgrade each resource domains PDC to Windows 2000, creating a separate child domain for each location.<B>(x)</B></p>
+<p>B. Upgrade all of the BDCs of each NT 4 domain to Win2k domain controllers. </p>
+<p>C. Create a new NT 4 domain and add to this domain user accounts for each IW. Migrate the WinNT domain to Win2k.<B>(x)</B> Create an explicit transitive trust relationship between the employee domain and the corporate customer domain. </p>
+<p>D. Upgrade the PW_Master PDC to Win2k, creating a Win2k domain all employee user accounts. Attach this domain to the root domain. </p>
+<p>E. Upgrade the Win NT 4 resource domain PDCs to Win2k, designating each as a child domain of the employee domain. Create new OU's in the employee domain. Move the computer security groups and other security groups into the new OU's. Decommission the child domains. </p>
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. 1 ----> D
+b. 2 ----> E
+c. 3 ----> B
+
+Answer: a,b,c,
+
+<p>First eliminate the wrong answers: <B>(x)</B></p>
+<p></p>
+<p>Leaves us with BDE, now the correct order.</p>
+<p>1 ----> D (need to upgrade account domain first)</p>
+<p>2 ----> E (Then resource domains)</p>
+<p>3 ----> B (Then remaining BDC's)</p>
+<p></p>
+<p>(I would like to have seen decomission as the last part of B, Lets assume the BDCs were taken off line.)</p>
+<p>(To confirm. the question stands as is)</p>
+
+
+42. Which step or steps should you take to design the DNS structure and the AD domains? (Choose all that apply)  (PWC Q7)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. Create a subzone for each ProseWare Corporation location.
+b. Create a subzone for any necessary child domains of the proseware.com tree. 
+c. Create a forest root named corp.proseware.com
+d. Create a subzone for any necessary child domains of the corp.proseware.com tree.
+e. Create a forest named proseware.com
+
+Answer: c,d
+
+<p>For A -> (locations are OU's)</p>
+<p>For B -> (Corp.etc is the root. The ISP also won't be to happy)</p>
+<p>For C -> (need a root)</p>
+<p>For D -> (need DNS resolution coming through the root)</p>
+<p>For E -> (The internet name)</p>
+
+
+43. Which requirement should affect your domain migration strategy? (PWC Q8)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. Schedule for employee client computer upgrades to Win2k Prof.
+b. Maintaining employee accounts and passwords
+c. Protecting the current domain structure
+d. Maintaining IW (Information Worker) accounts and passwords
+
+Answer: b
+
+<p>For A -> (Can support pre windows clients with PDC emulators)</p>
+<p>For B -> (always the highest priority)</p>
+<p>For C -> (Flat as apposed to DNS integrated)</p>
+<p>For D -> (Trusts)</p>
+
+
+44. What should you use as the top level OU's for PWC employees? (PWC Q9)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/pwc.htm')">Case Study - ProseWare</button></p>
+
+a. Business Administration, HR, IT, Marketing, Consulting
+b. NY, Chicago, Atlanta, LA
+c. employees, recruiting, IW, accounting, corporate customers, Project
+d. user objects, computer objects, printer objects, file sharing objects
+
+Answer: a
+
+<p>(not any comments)</p>
+
+
+45.Which upgrade plan should you use for Trey Research? (Trey Q1)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Create a root domain. Upgrade the Washington DC PDC for the account domain to Windows 2000. Upgrade the company BDCs at every site. Make each site a child domain of the Washington DC domain.
+b. Create a root domain. Upgrade the two account domains to Windows 2000 and make the resource domains into sub-domains of the account domains.
+c. Create a root domain. Upgrade the two account domains to Windows 2000, upgrade the resource domains, and then consolidate the resource domains into the account domains.
+d. Create a root domain. Upgrade the San Francisco, CA account domain to Windows 2000. Upgrade the BDCs at the Seattle, Boston and San Diego sites.
+
+Answer: c
+
+<p>For A -> (There are 2 account domains, cant upgrade all DCs due to application programs)</p>
+<p>For B -> (Need to upgrade the resource domains)</p>
+<p>For C -> (recommended procedure)</p>
+<p>For D -> (what about washington)</p>
+<p></p>
+<p>(The apps can still be supported on an nt4 BDC)</p>
+
+
+46. You need to design the group policy hierarchy that should be applied to a user in the human resources department for technical staff at the Boston research facility. In which order should you apply the Group Policy objects (GPO's)? (Trey Q2)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Domain GPO, Boston site GPO, human resources GPO, Boston OU GPO.
+b. Boston site GPO, domain GPO, human resources GPO, Boston OU GPO.
+c. Boston site GPO, domain GPO, Boston OU GPO, human resources GPO.
+d. Domain GPO, Boston OU GPO, Boston site GPO, human resources GPO.
+
+Answer: c
+
+<p>(Highest to lowest)</p>
+
+
+47. How should you implement the administration of group policy? (Select all that apply) (Trey Q3)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Enable departmental administrators at each location to edit GPOs that apply to their departmental OU's.
+b. Enable domain administrators at each location to edit GPOs that apply to their departmental OU's.
+c. Enable departmental administrators to create Group Policy objects to link GPO's to sites, domains, and organizational units, and to edit site-level and domain-level GPO's.
+d. Enable domain administrators to create Group Policy objects to link GPO's to sites, domains, and organizational units, and to edit site-level and domain-level GPO's.
+
+Answer: a,d
+
+<p>For A -> (More granular)</p>
+<p>For B -> (not delegated enough)</p>
+<p>For C -> (to much control)</p>
+<p></p>
+<p>Enterprise administrators will be a small group contained in a separate top-level domain to manage the entire organization. </p>
+<p>Domain administrators will be granted rights to the entire domain. </p>
+<p>Branch administrators will be granted rights for operations at the physical locations.</p>
+<p>Departmental administrators will have localized rights based on their specific roles.</p>
+<p>The departmental and branch administrators of resource domains are not granted administrative rights for the corresponding account domains.</p>
+
+
+48. You must decide how many domains to create for Trey Research. What is the most important factor that you should consider when deciding whether to create more than one domain? (Trey Q4)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. The requirement that different companies have different account lockout policies.
+b. The number of resources in a domain.
+c. The requierment that each company has different available bandwidth.
+d. The number of users in a domain.
+
+Answer: a
+
+<p>(no comments)</p>
+
+
+49. You upgrade the Trey Research client computers and domain controllers to Windows 2000 as planned. You must now choose the locations for the server services. Move each service to the appropriate location or locations. <B>(Use all the server services. You might need to reuse server services)</B> (Trey Q5)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+<table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=155 valign=top>
+  <B>Locations</B>
+  </td>
+  <td width=228 valign=top>
+  <B>Server Services</B>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p>Washington, D.C.</p>
+  </td>
+  <td width=228 valign=top>
+  <p>Global catalog</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p>Boston</p>
+  </td>
+  <td width=228 valign=top>
+  <p>DNS</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p>San Francisco</p>
+  </td>
+  <td width=228 valign=top>
+  <p>RID master</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p >&nbsp;</p>
+  </td>
+  <td width=228 valign=top>
+  <p>Schema operations master</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p>&nbsp;</p>
+  </td>
+  <td width=228 valign=top>
+  <p>Infrastructure operations master</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p>&nbsp;</p>
+  </td>
+  <td width=228 valign=top>
+  <p>PDC emulator</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=155 valign=top>
+  <p>&nbsp;</p>
+  </td>
+  <td width=228 valign=top>
+  <p>Domain naming master</p>
+  </td>
+ </tr>
+</table>
+
+a. <table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=239 colspan=2 valign=top>
+  <B>Washington, D.C.</B>
+  </td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>Global catalog</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>RID master</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</td>
+  <td width=239 colspan=2 valign=top>
+  <p>Schema operations master<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>Infrastructure operations master</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>Domain naming master</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>PDC emulator</p>
+  </td>
+ </tr>
+</table>
+b. <table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=239 colspan=2 valign=top>
+  <B>Boston</B>
+  </td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>DNS</p>
+  </td>
+ </tr>
+</table>
+c. <table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=239 colspan=2 valign=top>
+  <B>San Francisco</B>
+  </td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>Global catalog</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>RID master</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>Infrastructure operations master</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>PDC emulator</p>
+  </td>
+ </tr>
+</table>
+d. <table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=239 colspan=2 valign=top>
+  <B>Boston</B>
+  </td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>Global catalog</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>RID master</p>
+  </td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>PDC emulator</p>
+  </td>
+ </tr>
+</table>
+e.  <table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=239 colspan=2 valign=top>
+  <B>San Francisco</B>
+  </td>
+  <td>&nbsp;</td>
+ </tr>
+ <tr>
+  <td><p>&nbsp;</p></td>
+  <td width=239 colspan=2 valign=top>
+  <p>DNS</p>
+  </td>
+ </tr>
+</table>
+
+Answer: a,b,c       
+
+<p>Before you begin note that a schema operations master and a domain naming master must remain in the first domain created (root)There can be only one per forest. There can be one Infra master, RID and PDC emulator per domain.The GC and Infra master must be on separate servers.An infra master is responsible for updating removal and addition of users to groups within the domain and the updates thereof to the other DC's</p>
+
+
+50. You need to grant permissions to a set of resources that are managed on three domain controllers in the Washington, D.C., facility. You need to grant these permissions to users at all facilities. What should you do? (Trey Q6)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Create a domain local group in the local domain, and grant this group access to the resources.
+b. Create a universal group in the root domain, and grant this group access to the resources. Create one global group in the appropriate domain or domains, and add to this group the users who need access to the resources. Add the global groups to universal group. 
+c. Create a security group in the local domain, and grant this group access to the resources. Create one global group in the appropriate domain or domains, and add to this group the users who need access to the resources. Add the global groups to the security group.
+d. Create a global group in the root domain, and grant this group access to the resources. Create onother global group in the appropriate domain or domains, and add to this group the users who need access to the resources. Add the secondary global group to first global group.
+
+Answer: a
+
+<p>(Remember universal groups are replicated y the GC's, try and avoid them as much as needed)</p>
+
+
+51. Which change must you make to DNS to prepare for the implementation of Windows 2000? (Trey Q7)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Provide DNS services that will support incremental zone transfers.
+b. Provide DNS services that will replace WINS services.
+c. Provide DNS services that will support SRV records.
+d. Provide DNS services that will support dynamic updates.
+
+Answer: c
+
+<p>For A -> (traffic issue)</p>
+<p></p>
+<p>The advertisment of services is vital for locating the domain controllers</p>
+
+
+52. How should you implement DNS naming strategy for Trey Research? (Trey Q8)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Use the existing DNS infrastructure. Use four domains named treyresearch.com, corp.treyresearch.com, parnelli-aerospace.treyresearch.com and corp.parnelli-aerospace.treyresearch.com
+b. Upgrade the existing DNS infrastructure. Retain the current naming strategy.
+c. Use the existing DNS infrastructure. Use two domains named treyresearch.com and parnelli-aerospace.treyresearch.com.
+d. Upgrade the existing DNS infrastructure. Use three domains named treyresearch.com, corp.treyresearch.com, and parnelli-aerospace.treyresearch.com.
+
+Answer: d
+
+<p>(The standard structure is not sufficient, upgrade is imenent, ruling out A and C)</p>
+<p></p>
+<p>For B -> (Consolidation is required where possible)</p>
+
+
+53. How should you design the DNS for Trey Research? (Trey Q9)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/trey.htm')">Case Study - Trey</button></p>
+
+a. Retain the existing UNIX DNS service. Plan your DNS scheme independent of your Active Directory plans.
+b. Retain the existing UNIX DNS service. On this service, configure the zones required for Windows 2000.
+c. Upgrade the existing UNIX DNS service. On this service, configure the zones required for Windows 2000.
+d. Upgrade the existing UNIX DNS service. Plan your DNS scheme independent of your Active Directory plans.
+
+Answer: c
+
+<p>(Upgrades are needed ruling out A and B)</p>
+<p></p>
+<p>For C -> (needed as no dynamic updates)</p>
+<p>For D -> (Silly, DNS is vital for AD resolution)</p>
+
+
+54. Which two Adatum Corporation business factors should influence your Active Directory naming strategy? (Adatum Q1)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/adatum.htm')">Case Study - Adatum</button></p>
+
+a. Number of users
+b. Possible sale of Adatum Corporation name.
+c. Avaliable bandwith.
+d. Expected rate of growth.
+e. Cost of bandwith
+f. Organizational Unit hierarchy.
+
+Answer: b,f
+
+<p>For B -> (Separate web and internal names)</p>
+<p>For F -> (Administration delegation)</p>
+
+
+55. Which Adatum Corporation business factor necessitates a multiple domain Active Directory design? (Adatum Q2)
+
+
+a. Requiring local IT staff to maintain local resources.
+b. Need for differing security policies.
+c. Individual infrastructure management control at the New York and Sydney offices.
+d. Need to minimize downtime.
+
+Answer: b
+
+<p>For A -> (can be done with ous)</p>
+<p>For B -> (Requires domains esspecially password)</p>
+<p>For C -> (Could be done with ous)</p>
+<p>For D -> (silly)</p>
+
+
+56. You are designing Adatum Corporation's OU hierarchy. Which business factors should have the most influence on your design?  (Adatum Q3)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/adatum.htm')">Case Study - Adatum</button></p>
+
+a. Number of users.
+b. Expected growth.
+c. Departments.
+d. Security
+
+Answer: c
+
+<p>For A -> (not sufficient users to limit)</p>
+<p>For B -> (ous are scalable)</p>
+<p>For C -> (Delegate password resets etc....for 8 departments)</p>
+<p>For D -> (Domains)</p>
+<p></p>
+<p><B>(there are a total of 7 choices in the real exam)</B></p>
+
+
+57. Adatum Corporation is considering using the domain names listed below in a design that uses only the default Windows 2000 Trusts. Identify the Kerberos re-ferral path that is traversed when a user in  newyork.west.adatum.com accesses resources located in sydney.east.adatum.com. Move the appropriate domain names to the trust path list and arrange them in correct order. (Use only domain names that apply.) (Adatum Q4)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/adatum.htm')">Case Study - Adatum</button></p>
+<p></p>
+<p><B>Trust Path List Possible Domain Names</B></p>
+<p>(1)-adatum.com</p>
+<p>(2)-west.adatum.com</p>
+<p>(3)-east.adatum.com</p>
+<p>(4)-newyork.west.adatum.com</p>
+<p>(5)-london.west.adatum.com <B>(x)</B></p>
+<p>(6)-sanjose.west.adatum.com <B>(x)</B></p>
+<p>(7)-sydney.east.adatum.com</p>
+<p>(8)-bangkok.east.adatum.com <B>(x)</B></p>
+<p>(9)-newdehli.east.adatum.com <B>(x)</B></p>
+<p></p>
+<p>New York ______ West ______</p>
+<p>Adatum.com  _______</p>
+<p>Sydney ______ East ______</p>
+
+a. 4,2,1,3,7
+b. 4,2,3,7
+c. 2,3,7
+d. 4,2,3,1,9
+
+Answer: a
+
+<p><B>(x)</B> -> not useable</p>  
+<p>The biggest question is do we bypass adatum.com and do we need to trust the source domain ie New York</p>
+<p></p>
+<p><B>Shortcut trusts:</B></p>
+<p>Before an account can be granted access to resources by a domain controller of another domain, Windows 2000 must determine whether the domain containing the desired resources (target domain) has a trust relationship with the domain in which the account is located (source domain). To make this determination for two domains in a forest, Windows 2000 computes a trust path between the domain controllers for these source and target domains. A trust path is the series of domain trust relationships that must be traversed by Windows 2000 security to pass authentication requests between any two domains. Computing and traversing a trust path between domain trees in a complex forest can take time, which can be reduced with shortcut trusts. Shortcut trusts are two-way transitive trusts that enable you to shorten the path in a complex forest. You explicitly create shortcut trusts between Windows 2000 domains in the same forest. A shortcut trust is a performance optimization that shortens the trust path for Windows 2000 security to take for authentication purposes. The most effective use of shortcut trusts is between two domain trees in a forest.</p>
+<p></p>
+<p>As We were told to use the standard trusts shortcut trusts dont apply.</p>
+<p></p>
+<p>For B -> ((full path reqired)</p>
+<p>For C -> (silly)</p>
+<p>For D -> (includes 9 that is not usable)</p>
+
+
+58.You are considering the following domain hierarchy for Adatum Corporation:
+<p>adatum.com</p>
+<p></p>
+<p>east.</p>
+<p>bangkok.</p>
+<p>newdelhi.</p>
+<p>sydney.</p>
+<p></p>
+<p>west.</p>
+<p>newyork.</p>
+<p>london.</p>
+<p>sanjose.</p>
+<p></p>
+<p>There is a one-to-one relationship between sites and locations. A domain is associated with only one location. Additionally, adatum.com and west.adatum.com will be managed in the New York location. </p>
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/adatum.htm')">Case Study - Adatum</button></p>
+<p></p>
+<p>How should you design the server services at the New York location?  (Adatum Q5) </p>
+
+a. One schema operations master, one domain naming master, nine domain controllers, two global catalog servers and three PDC emulators.
+b. One schema operations master, three domain naming master, three domain controllers, three global catalog servers and three PDC emulators.
+c. One schema operations master, one domain naming master, six domain controllers, two global catalog servers and three PDC emulators.
+d. One schema operations master, six domain naming master, six domain controllers, six global catalog servers and six PDC emulators.
+
+Answer: c
+
+<p>One schema operations master, one domain naming master must remain in the first domain. --> So Answers B and D are invalid.</p>
+<p></p>
+<p>Global catalog and infra master must be on different servers. For fault tolerance a minimum of two servers is required per domain (that takes us to 12 DC's, just for the west). It is then safe to assume fault tolerance is not the main issue of the question. (10 Dcs is a minimum for entire organization)</p>
+
+
+59. Adatum Corporation decides to enter into a joint venture with one of the vendors. This venture will result in the creation of a third company that will require its own Internet presence. Systems administration duties for the new company will be shared equally by Adatum Corporation and vendor. Adatum Corporation and vender currently have separate Active Directory forests. Which modifications should you make to Active Directory to support the joint venture requirements? (Adatum Q6)
+
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/adatum.htm')">Case Study - Adatum</button></p>
+
+a. Create a new domain for the new company. Create this domain as a subdomain of the forest root for Adatum Corporation forest.
+b. Create a new tree for the new company. Create this tree in the vendor's forest.
+c. Create a new tree for the new company. Create this tree in Adatum Corporation's forest.
+d. Create a new forest for the new company. Assign appropriate trusts between Adatum Corporation's forest and the new forest.
+
+Answer: d
+
+<p>Emphasis on own internet presence. Adatums web presence is a separate issue as they wish to sell etc. Assume the new company requires the same web presence as company name (note joint venture not merger with Adatum)</p>
+<p></p>
+<p>For A -> (more appropriate for a merger)</p>
+<p>For B -> (and achieve absolutely nothing, why not)</p>
+<p>For C -> (new tree, same forest equals same web DNS structure)</p>
+<p>For D -> (yes)</p>
+
+
+60. A proposed design for Adatum Corporation is shown below:
+<p></p>
+<table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=228 valign=top>
+  <B>San Jose Site    </B>
+  </td>
+  <td width=228 valign=top>
+  <B>New York Site</B>
+  </td>
+ </tr>
+ <tr>
+  <td width=228 valign=top>
+  <p>sj1 west.adatum.com </p>
+  </td>
+  <td width=228 valign=top>
+  <p>ny1 west.adatum.com</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=228 valign=top>
+  <p>sj2 west.adatum.com</p>
+  </td>
+  <td width=228 valign=top>
+  <p>ny2 west.adatum.com</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=228 valign=top>
+  <p>sj3 west.adatum.com</p>
+  </td>
+  <td width=228 valign=top>
+  <p>ny3 west.adatum.com</p>
+  </td>
+ </tr>
+</table>
+<p></p>
+<p>The servers are named SJ1, SJ2, SJ3 and NY1, NY2 and NY3. SJ3 and NY3 are bridgehead servers. You want to create a new user on NY1. You must identify the steps for default replication of that user to every domain controller in the New York and San Jose sites. </p>
+<p></p>
+<p>Given this proposed design, move the replication steps needed to achieve this goal to the list of steps and arrange them in correct order. (Choose only replication steps that apply.)  (Adatum Q7)</p>
+<p></p>
+<p><button onClick="parent.up.openwindow('./70-219/casestudy/adatum.htm')">Case Study - Adatum</button></p>
+<p></p>
+<p>Ordered List of Replication Steps</p>
+<p></p>
+<p>Possible Replication Steps:</p>
+<p>1. Create the user.</p>
+<p>2. NY1 notifies its replication partner or partners.</p>
+<p>3. NY1 sends data to SJ3. <B>(x)</B></p>
+<p>4. NY2 and NY3 begin pull replication from NY1.</p>
+<p>5. NY3 notifies its replication partner or partners.</p>
+<p>6. NY3 sends data to SJ3. <B>(x)</B></p>
+<p>7. SJ1 and SJ2 begin pull replication from SJ3.</p>
+<p>8. SJ3 notifies its replication partner or partners.</p>
+<p>9. SJ3 begins to pull replication from NY3</p>
+<p></p>
+<table border=1 cellspacing=0 cellpadding=0>
+ <tr>
+  <td width=228 valign=top>
+  <B>San Jose Site    </B>
+  </td>
+  <td width=300 valign=top>
+  <B>New York Site</B>
+  </td>
+ </tr>
+ <tr>
+  <td width=228 valign=top>
+  <p>sj1 west.adatum.com </p>
+  </td>
+  <td width=300 valign=top>
+  <p>ny1 west.adatum.com (User)</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=228 valign=top>
+  <p>sj2 west.adatum.com</p>
+  </td>
+  <td width=300 valign=top>
+  <p>ny2 west.adatum.com</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=228 valign=top>
+  <p>sj3 west.adatum.com (B)</p>
+  </td>
+  <td width=300 valign=top>
+  <p>ny3 west.adatum.com (B)</p>
+  </td>
+ </tr>
+</table>
+
+a. 1,2,4,6,8,7
+b. 1,2,4,5,6,8,9
+c. 1,2,3,5,7,9
+d. 1,3,8,9,4
+e. 1,2,4,5,9,8,7
+
+Answer: e
+
+<p>"the important thing to note in the question is that data is automatically pushed between bridgehead servers", unless a latency period has been specified.To control traffic, DCUSNs are also compared between each DC in the current domain first.</p>
+<p>In summary, a site link directs information arbitrarily to any domain controller in a site. Establishing a bridgehead server provides some ranking or criteria for choosing which domain controller should be preferred as the recipient for inter-site replication. This bridgehead server then subsequently distributes the directory information via intra-site replication.</p>
+<p>You provide information about the cost of a site link, times when the link is available for use and how often the link should be used. Active Directory uses this information to determine which site link will be used to replicate information. Customizing replication schedules so replication occurs during specific times, such as when network traffic is low, will make replication more efficient.Within a site, each domain controller has the potential to act as a bridgehead server if needed. If you specify one or more computers to be preferred bridgehead servers, only a single domain controller acts as the bridgehead server at any given time. Although Active Directory does select another preferred bridgehead server for use in the event of failure, while this rerouting takes place, there is a period of time in which no inter-site replication will occur.</p>
+<p></p>
+<p><B>Replication follows a simple "Notify-Pull-Notify-Pull" pattern.</B> Here are the replication steps you must follow:</p>
+<p>First: Create the new user at NY1</p>
+<p>Second: NY1 then NOTIFIES its rep partners, which are NY2 and NY3.</p>
+<p>Third: NY2 and NY3 then begin PULL replication from NY1.</p>
+<p>Fourth: NY3 then NOTIFIES its rep partner, which is its bridgehead partner, SJ3.</p>
+<p>Fifth: SJ3 then begins PULL replication from NY3.</p>
+<p>Sixth: SJ3 then NOTIFIES its rep partners, which are SJ1 and SJ2.</p>
+<p>Seventh: SJ1 and SJ2 then begin PULL replication from SJ3.</p>
+
+

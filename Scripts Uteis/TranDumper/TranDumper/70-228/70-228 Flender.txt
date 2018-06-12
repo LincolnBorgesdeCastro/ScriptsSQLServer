@@ -1,0 +1,1531 @@
+This dump is Flender's 70-228 exam, passed on October 29th.
+All questions come from Victor's dump but with corrections.
+
+
+      1. You are the administrator of two Mircosoft Windows 2000 computers. One 
+      computer is running Internet Information Services (IIS), and the other is 
+      running SQL Server 2000. Company partners need to connect by means of the 
+      Internet and query data stored on the SQL Server computer. Some of these 
+      partners have computers that do not use Microsoft operating systems or Web 
+      browsers.
+
+      You need to configure the IIS and SQL Server 2000 computers to allow 
+      access to data by means of the IIS virtual directory. IIS uses Basic 
+      Authentication to allow access to the virtual directory.
+
+      Only company partners should have access to the SQL Server computer by 
+      means of the Internet. The partners should NOT be allowed to make ad hoc 
+      queries. You want to be able to audit successful and failed logins to the 
+      SQL Server computer.
+
+      You want to allow the partners access to the SQL Server computer while 
+      keeping your security scheme as simple as possible. Which two actions 
+      should you take? (Each correct answer represents part of the solution. 
+      Choose two.)
+
+      a. Configure the IIS virtual directory to allow URL queries.
+
+      b. Configure the IIS virtual directory to allow template queries.
+
+      c. Create a new Windows user account.
+      Create a corresponding Windows Authenticated login on the SQL Server 
+      computer. Configure the IIS virtual directory to always use this login 
+      when connecting to the SQL Server computer.
+
+      d. Create a Windows Authenticated login on the SQL Server computer for the 
+      IIS Internet Guest Account.
+      Configure the IIS virtual directory to always use the Internet Guest 
+      Account when connecting to the SQL Server computer.
+
+      e. Create a Windows Authenticated login for each company partner on the 
+      SQL Server computer.
+      Configure the IIS virtual directory to use Windows Integrated 
+      Authentication when connecting to the SQL Server computer.
+
+ANSWER: B, C
+
+
+      2.You are a database administrator in the Los Angeles branch office of a 
+      speciality foods supplier. A mainframe database at the headquaters 
+      contains all company data. Each branch office contains a SQL Server 2000 
+      computer that imports regional data from the mainframe database.
+
+      The server in Los Angeles contains a Data Transformation Services (DTS)
+      package that uses OLE DB to connect to the company's mainframe database.
+      The DTS package extracts and transforms data about buyers and products
+      for that region. The DTS package then writes the data to the SQL Server
+      database in Los Angeles.
+
+      You need to configure a SQL Server computer for the new branch office in 
+      Sydney. You want to copy the Los Angeles package and modify it so that it 
+      writes data to the SQL Server database in Sydney.
+
+      You use the DTS Designer to modify the DTS package so that it imports 
+      regional data from the mainframe database to the server in Sydney. The 
+      modified DTS package runs successfully on the server in Los Angeles. You 
+      save this DTS package to the server in Sydney, but the server in Sydney 
+      cannot connect to the mainframe database.
+
+      You want to enable the server in Sydney to connect to the mainframe 
+      database. What should you do?
+
+      a. Change the connection properties in the DTS package so that the package 
+      uses new login credentials to connect to the mainframe database.
+
+      b. Modify the workflow in the DTS package so that the server in Syndey is 
+      included.
+
+      c. On the server in Sydney, install an OLE DB provider for the mainframe 
+      database.
+
+      d. On the server in Sydney, delete and then re-create the DTS package.
+
+ANSWER: C
+
+
+      3. You are the administrator of a SQL Server 2000 computer.
+      You are creating a data transformation services package.
+      As the first step in this process, you need to load data from text files
+      into a database table. These text files contain data on new stores that join
+      your franchise.
+      The text files list the data columns in the following format:<BR><BR>
+      <FONT FACE="times new roman" size="2">storeID, storeName, address, city, state,
+      postalCode, managerID, storeTypeID, facilityID.</FONT><BR><BR>
+      The destination table is configured as shown.
+      <BR><BR><img src="./70-228/images/Pic228-131.jpg"><BR><BR>
+      You want to load the data into the table as quickly as possible. What should you do?
+
+      a. Use a Bulk Insert Task to read the data into a temporary table.
+      Use an Execute SQL task to import the appropriate data into the destination table. 
+
+      b. Create and edit a format file to select the columns you want to import.
+      Use a bulk insert task, and then specify the format file to import the appropriate
+      data into the destination table. 
+
+      c. Use a transform data task to import the data. Use Microsoft ActiveX
+      transformation scripts to write the appropriate data to the appropriate columns
+      in the destination table. 
+
+      d. Create and edit a format file to select the columns you want to import.
+      Use a transform data task, and then specify the format file to import the
+      appropriate data into the destination table. 
+
+Answer: B 
+
+
+      4. You are the administrator of a SQL Server 2000 computer at a bank's headquarters.
+      Customers can access their accounts from headquarters or from branch offices.
+      The server at headquarters maintains a master copy of all account data for all customers.
+      When a customer deposits or withdraws funds at a branch office, the customer's new
+      balance must be reflected on the computers at that office and at headquarters.
+      You want to minimize latency between the headquarters and branch offices. You want
+      to copy account data between the server at headquarters and the servers at the branch
+      offices. What should you do? 
+
+      a. Implement merge replication. Use the DATETIME (Later Wins) conflict resolver.
+      Schedule replication for off-peak hours. 
+
+      b. Implement transactional replication. Allow immediate-updating subscribers.
+      Schedule replication to run continuously. 
+
+      c. Create a data transformation services package on the server at headquarters.
+      Configure the DTS package to import new account data from each of the servers at the
+      branch offices and write it to all other servers. Schedule the DTS package to run
+      during off-peak hours. 
+
+      d. Add all branch office servers to the headquarters server as linked servers.
+      Create a job on the headquarters server. Configure the job to query each linked server
+      for new account data and write this data to the other servers. Schedule the job to run
+      every three minutes. 
+
+      e. Configure log shipping between the headquarters server and the branch office servers.
+      Configure the headquarters server as the primary server and the branch office servers as
+      secondary servers. Schedule log backups and log shipping to run every 10 minutes. 
+
+Answer: B
+
+
+      5. You are the administrator of 20 SQL Server 2000 computers. The servers are located
+      in 10 company offices around the world. You work in the New York City. You need to
+      configure several dozen alert responses on each server. In the future, you will need
+      to modify these alert responses periodically. You want to reduce the amount of time you
+      spend managing alert responses. You also want to manage the alert responses from the
+      New York City. What should you do? 
+
+      a. Use SQL Enterprise Manager to manage the alert responses on all company servers. 
+
+      b. Configure alert forwarding on the remote servers. 
+
+      c. Write Transact-SQL scripts that can be used to set up alert responses on the remote servers. 
+
+      d. Write stored procedures that can be used to set up alert responses on the remote servers. 
+
+Answer: B 
+
+
+      6. You are the administrator of a SQL Server 2000 computer that contains a database.
+      Users report that queries to this database respond slowly. You use System Monitor to examine
+      the subsystems on your server and receive the results shown in the exhibit.
+      <BR><BR><img src="./70-228/images/PIC228-110.jpg"><BR><BR>
+      You need to modify the server to accelerate query response time. What should you do? 
+
+      a. Increase the amount of RAM. 
+
+      b. Upgrade to a faster disk subsystem. 
+
+      c. Add a faster network adapter. 
+
+      d. Add an additional processor. 
+
+Answer: D
+
+
+      7. You are the administrator of a SQL Server 2000 computer. The server contains a database
+      named Customers, which is used by a custom client/server application. The database contains
+      more than 1 million rows. Users report that the database responds slowly when they search
+      for customers by using the application. Users search for customers by scrolling through an
+      alphabetical list of customer names. You use SQL profiles to capture information about how
+      the application uses the database. You receive results as shown below: 
+      <BR><BR>
+      <FONT FACE="times new roman" size="2">Event Class Text Data<BR><BR>
+      SQL: Batch completed Select* from customers </FONT><BR><BR>
+
+      You need to improve the application¡¦s performance. What should you do? 
+
+      a. Create additional non-clustered indexes on the CustomerInformation table. 
+
+      b. Rewrite the application so that it uses a user-defined function to return the customer list. 
+
+      c. Rewrite the application so that it uses a query with a WHERE clause to search for customer names. 
+
+      d. Rewrite the application so that is uses a stored procedure to return the customer list. 
+
+Answer: C
+
+
+      8. You are the administrator of 12 SQL Server 2000 computers. These servers are located
+      in company offices throughout the world. You configure a multiserver job on the server
+      in your company's New York City office. You configure this server as a master server,
+      and designate the remaining 11 servers as target servers. 
+
+      After the job completes successfully, you decide to set up a new SQL Server 2000 computer
+      as the master server. The new server will be named JobMaster and the other 12 servers will
+      be target servers. You need to make the New York City server a target server instead of a
+      master server. What should you do? 
+
+      a. On the New York City server, defect all 11 target servers. 
+      On the JobMaster server, enlist the 12 servers as target servers. 
+
+      b. On the JobMaster server, enlist all other servers as target servers. 
+
+      c. On the New York City server enlist the JobMaster server as a target server. 
+      Transfer the multiserver jobs from the New York City server to the JobMaster server. 
+
+      d. On the JobMaster server, enlist the New York City server as a target server. 
+      On the JobMaster server, enlist the other 11 servers as target servers. 
+      On the JobMaster server, defect the New York City server. 
+
+Answer: A 
+
+
+      9. You are the administrator of a Microsoft Windows NT Server 4 0 computer The server
+      is the PDC in your domain and also runs SQL Server 2000. The server has four processors
+      and 1 GB of RAM. Your network consists of 500 client computers that are running Microsoft
+      Windows Millennium Edition. Users report that when they log on in the morning their computers
+      respond slowly and occasionally return error messages. You use System Monitor to monitor
+      processor performance and RAM utilization You discover that the % Total Time and % User Time
+      counters average 90 percent and the % Privileged Time counter averages 20 percent.
+      The Available Mbytes counter averages 800 MB. You need to improve server performance for
+      user logons. What should you do? 
+
+      a. Increase the physical RAM on the computer to 2 GB 
+
+      b. Increase the virtual RAM on the computer to 4 GB 
+
+      c. Configure SQL Server to use only processors 1,2, and 3 
+
+      d. Configure SQL Server to use only processors 0, 1, and 2 
+
+Answer: C
+
+
+      10. You are the administrator of a SQL Server 2000 computer. The server contains a
+      database named Sales. Your company deploys an upgraded version of a customer relationship
+      management application, which accesses the sales database. 
+
+      The sales database contains a table named Customer, which stores information about your
+      company's customers. Users report that they cannot delete information in the CustomerAddress2
+      column. The Customer table is configured in the exhibit:
+      <BR><BR><img src="./70-228/images/PIC228-138.jpg"><BR><BR>
+      You use SQL Profiler to capture the activity of the application and receive the results shown below:
+      <BR><BR><img src="./70-228/images/PIC228-138a.jpg"><BR><BR>
+      You want to configure the Customer table to support the upgraded application. What should you do? 
+
+      a. Alter the table to allow null values in the CustomerAddress2 column. 
+
+      b. Alter the data type of the CustomerAddress2 column to sql_variant. 
+
+      c. Create an UPDATE trigger that changes a null value in the CustomerAddress2 column to an empty string. 
+
+      d. Use an INSTEAD OF trigger to change the value of the CustomerAddress2 column to an empty
+      string whenever the columns value is null. 
+
+Answer: A 
+
+
+      11. You are the administrator of a SQL Server 2000 computer that contains a database.
+      Users report that the database responds slowly when they insert data. You use System Monitor
+      to examine the servers performance and receive the results shown below: 
+
+	<P><DIV align="center">
+	<CENTER>
+	<TABLE border="0" width="311" height="131" bordercolor="#C0C0C0" cellspacing="0" cellpadding="0" bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0" bgcolor="#C0C0C0">
+	<TR>
+		<TD width="90" height="18"><B><FONT size="2" face="MS Sans Serif">Memory</FONT></B></TD>
+		<TD width="73" height="18">&nbsp;</TD>
+		<TD width="22" height="18">&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="163" colspan="2" height="11" valign="top"><B><FONT size="2" face="MS Sans Serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pages/sec</FONT></B></TD>
+		<TD width="22" height="11"><FONT size="2" face="MS Sans Serif">244.443</FONT></TD>
+	</TR>
+	<TR>
+		<TD width="90" height="18">&nbsp;</TD>
+		<TD width="73" height="18">&nbsp;</TD>
+		<TD width="22" height="18">&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="90" height="18"><B><FONT size="2" face="MS Sans Serif">PhysicalDisk</FONT></B></TD>
+		<TD width="73" height="18">&nbsp;</TD>
+		<TD width="22" height="18"><B><FONT size="2" face="MS Sans Serif">_Total</FONT></B></TD>
+	</TR>
+	<TR>
+		<TD width="163" height="8" bgcolor="#C0C0C0" bordercolor="#C0C0C0" bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0" valign="top"><B><FONT size="2" face="MS Sans Serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %Disk Time</FONT></B></TD>
+		<TD width="22" height="8">&nbsp;</TD>
+		<TD width="78" height="8"><FONT size="2" face="MS Sans Serif">240.198</FONT></TD>
+	</TR>
+	<TR>
+		<TD width="90" height="7">&nbsp;</TD>
+		<TD width="73" height="7">&nbsp;</TD>
+		<TD width="22" height="7">&nbsp;</TD>
+	</TR>
+	<TR>
+		<TD width="90" height="1"><B><FONT size="2" face="MS Sans Serif">Processor</FONT></B></TD>
+		<TD width="73" height="1">&nbsp;</TD>
+		<TD width="22" height="1"><B><FONT size="2" face="MS Sans Serif">_Total</FONT></B></TD>
+	</TR>
+	<TR>
+		<TD width="163" colspan="2" height="18" valign="top"><B><FONT size="2" face="MS Sans Serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %Processor Time</FONT></B></TD>
+		<TD width="22" height="18" align="center">
+		<P align="center"><FONT size="2" face="MS Sans Serif">&nbsp;&nbsp;&nbsp;&nbsp;2.000</FONT></TD>
+	</TR>
+	</TABLE>
+	</CENTER>
+	</DIV></P>
+
+	You need to modify the server to improve its performance. What should you do? 
+
+      a. Install a larger hard disk. 
+
+      b. Increase the amount of RAM. 
+
+      c. Increase the size of the virtual memory paging file. 
+
+      d. Add an additional processor. 
+
+Answer: B
+
+
+      12. You are the administrator of a SQL Server 2000 computer. You create a job 
+      to perform several database maintenance tasks. This job must run whenever 
+      the server is restarted.
+
+      You use SQL Server Enterprise Manager to create a new schedule entry for 
+      the job, and specify that the job should start automatically.
+
+      You test the job by restarting the server. You check the job's history and 
+      discover that the job did not run.
+
+      You need the job to to run automatically when the server restarts. What 
+      should you do?
+
+      a. Create a stored procedure that uses sp_start_job to start the job 
+      whenever the MSSQLService service starts
+
+      b. Add another schedule entry to the job, specifically that the job start 
+      hourly, and then disable the job
+
+      c. Change the job's category to Database Maintenance
+
+      d. Configure the SQLServerAgent service to start automatically
+
+ANSWER: D
+
+
+      13. You are the administrator of a Microsoft Windows 2000 computer. The computer
+      is also running SQL Server 2000 and contains a database named Sales. The sales
+      department of your company uses a custom application that has just been upgraded.
+      A user at your company named Pierre reports that when he attempts to run the weekly
+      analysis report, he receives the following error message:
+      <BR><FONT FACE="times new roman">Server.Msg3704, Level 16, State 1 , Line 1
+      User dos not have permission to perform this operation on table Report</FONT><BR><BR>
+      You log on to Pierre's computer, run the program, and receive no error message.
+      You use SQL Profiler to trace database activity while you run the report.
+      You receive the results shown below:<BR><BR>
+      <img src="./70-228/images/PIc228-137.jpg"><BR><BR>
+      You want to allow Pedro to run the report. You also want to minimize administrative
+      overhead. What should you do? 
+
+      a. Add Pierre's login to the db_ddladmin role in the Sales database. 
+
+      b. Create an application role for the sales department's application. Grant the role database owner rights. 
+
+      c. Add Pierre to the db_datawriter role in the Sales database. 
+
+      d. Add Pierre to the local administrators group on the server. 
+
+Answer: A 
+
+
+      14. You have been hired as an administrator of an SQL Server 2000 computer that contains
+      confidential information regarding business development for your company. Company management
+      has created a policy that requires that all offers made to purchase other businesses be
+      removed permanently from the database six months after the offer is made. You must configure
+      the database to comply with this policy and minimize server overhead. What should you do? 
+
+      a. Create a data Transformation Services (DTS) package to remove bids that have a closing
+      date older than six months. 
+
+      b. Create a trigger to delete any bids that have a closing data older than six months. 
+      Bind the trigger to the bids table for all INSERT, UPDATE, and DELETE events. 
+
+      c. Create a stored procedure to delete any bids that have a closing date older than six months. 
+      Use SQL server agent to schedule the stored procedure to run every night. 
+
+      d. Create a view that contains a WHERE clause to exclude bids that have a closing date older than six months. 
+
+Answer: C
+
+
+      15. You are the administrator of a SQL Server 2000 computer. The server is 
+      used to store information for your company's finance department.
+
+      The permissions on the FinanceInfo database are configured as shown in the 
+      exhibit.
+      <BR><BR><img src="./70-228/images/pic228-36.gif"><BR><BR>
+      Bruno is a member of the Accountants database role. He needs to add a new 
+      view to the database.
+
+      You need to configure the database to allow Bruno to add a new view. Which 
+      two actions should you take? (Each correct answer represents part of the 
+      solution. Choose two.)
+
+      a. Add Bruno to the Managers database role.
+
+      b. Add Bruno to the Administrators database role.
+
+      c. Revoke the CREATE TABLE permissions for Bruno.
+
+      d. Revoke the CREATE PROCEDURE permissions for Bruno.
+
+      e. Revoke the CREATE VIEW permissions for Bruno.
+
+ANSWER:A,E
+
+
+      16. You are the administrator of a SQL Server 2000 computer. The server is 
+      used to store sales and product information for your company. A 
+      client/server application accesses the server by activating an application 
+      role named SalesAppRole.
+
+      Several users report that they are unable to use the client/server 
+      application. You test the application and discover that it cannot log on 
+      to the server.
+
+      You examine your security audit logs, which contian the information shown 
+      in the exhibit.
+
+      <BR><BR><img src="./70-228/images/pic228-23.gif"><BR><BR>
+
+      You need to enable the application to log on to the server. What should 
+      you do?
+
+      a. Configure the database permissions to deny Maria access to the database.
+
+      b. Reset the password on the SalesAppRole application role.
+
+      c. Reset the permissions on the SalesAppRole application role.
+
+      d. Add the SalesAppRole application role to the db_owner database role.
+
+      e. Remove Bruno's database user account.
+
+      f. Enable encryption on the password for the SalesAppRole application role.
+
+ANSWER: B
+
+
+      17. You have been hired as an administrator of an SQL Server 2000 computer.
+      The server is used to store information for your company's accounting department.
+      The Permissions on the accounting table are configured as shown below.
+      <BR><BR><img src="./70-228/images/PIC228-143.jpg"><BR><BR>
+      Bruno is a member of the Managers and Salespeople database roles.
+      While working in the table, he reports that he can edit and remove information.
+      However, he cannot view any of the information in the table. You need to allow Bruno
+      to view the information in the Accounting table. Which Transact-SQL statement should you execute? 
+
+      a. GRANT PRIVILEGES ON Accounting TO Bruno
+
+      b. GRANT SELECT ON Accounting TO Bruno WITH GRANT OPTION
+
+      c. REVOKE GRANT OPTION FOR SELECT ON Accounting TO Bruno
+
+      d. REVOKE SELECT ON Accounting FROM Bruno 
+ 
+Answer: D 
+
+
+      18. You are the administrator of a SQL Server 2000 computer. Your company has 
+      client computers that are running Microsoft Windows 2000 Professional and 
+      UNIX. All client computers require access to the server.
+
+      Users with domain accounts will access the server by means of the company 
+      LAN, and external users will access the server by means of the Internet.
+
+      You need to configure the server so that all authorized users can connect 
+      to it. What should you do? (Each correct answer presents part of the 
+      solution. Choose all that apply.)
+
+      a. Configure Windows Authentication.
+
+      b. Configure Mixed Mode Authentication.
+
+      c. Create a login for the Domain Users group.
+
+      d. Create a login for the Guest domain user account.
+
+      e. Create a login for each UNIX user, and set a password for each login.
+
+      f. Create a login for each external user, and set a blank password for 
+      each login.
+
+      g. Create a login named Guest, and set a blank password for the login.
+
+ANSWER: B, C, E
+
+
+      19. You are the administrator of a SQL Server 2000 computer. The server is 
+      used to store information for your company's finance department.
+
+      The permissions on the FinanceData table are configured as shown in the 
+      Database Permissions exhibit.
+      <BR><BR><img src='./70-228/images/pic228-17a.gif'><BR><BR>
+      Stefan's database user account is configured as shown in the Login 
+      Properties exhibit.
+      <BR><BR><img src='./70-228/images/pic228-17b.gif'><BR><BR>
+      Stefan reports that he is unable to delete information from the 
+      FinanceData table. You need to allow him to delete information from the 
+      table.
+
+      Which Transact-SQL statement should you execute?
+
+      a. EXEC sp_droprolemember 'Accountants', 'Stefan'
+
+      b. EXEC sp_droprolemember 'Administrators', 'Stefan'
+
+      c. EXEC sp_addrolemember 'db_datawriter', 'Stefan'
+
+      d. EXEC sp_addrolemember 'db_owner', 'Stefan'
+
+ANSWER: A
+
+
+      20. You have been hired as an administrator of an SQL Server 2000 computer.
+      The SQL Server 2000 computer is located within a Windows NT domain named CORP.
+      The server has been configured to use Windows Authentication.
+      Several users on the network attempt to connect to the server through the use of
+      the SQL Query Analyzer but are unable to. These users are members of a domain user
+      group named DataUsers. The server contains a login for CORP\DataUsers.
+      A new client/server application is being used on the network that uses its own security.
+      The new application will access the server by using a login named Csapp1.
+      You create a domain user account named Csapp1 and add it to the DataUsers
+      domain user group. However, when you try to run the client/server application,
+      you receive the error message:
+      <BR><FONT FACE="times new roman">"The required SQL Server database cannot be accessed."</FONT><BR><BR>
+      You need to ensure that the application runs properly. What should you do? 
+
+      a. Remove the Csapp1 domain user account from the DBUsers domain user group.
+      Create a login for CORP\Csapp1. 
+
+      b. Configure the server for Mixed Mode authentication. Create a login named Csapp1,
+      and configure it to access the application's database. 
+
+      c. Create a local user account on the server, and name it Csapp1.
+      Add a login for BUILTIN\Csapp1. 
+
+      d. Configure an application role in the application's database, and name the role Csapp1.
+      Set the application role password so that it is the same as the Csapp1 user account password. 
+
+Answer: B
+
+
+      21. You are the administrator of a SQL Server 2000 computer. You configure SQL Server
+      to perform auditing. Audit logs are saved in the C:\MSSQL\Audit folder. The server
+      functions normally for several days, but then the MSSQL Server Service shuts down without warning. 
+      You cannot restart the service. You need to restart the MSSQL Server service. What should you do? 
+
+      a. Set the SQLServerAgent services startup method to disabled. 
+      Start the MSSQLServer service. 
+
+      b. Start the MSSQLServer service manually by using the s startup option. 
+
+      c. Start the MSSQLServer service manually by using the m startup option. 
+
+      d. Delete the audit logs from the C:\MSSQL\Audit folder. 
+      Start the MSSQLServer service. 
+
+Answer: D
+
+
+      22. You are the administrator of a SQL Server 2000 computer. The server 
+      belongs to a Microsoft Windows NT domain named DOMAIN1. the server 
+      contains a database named SalesData. Julia is a sales representative who 
+      uses the database. You create a login named DOMAIN1\Julia and manually 
+      configure the permissions necessary for her to perform her job.
+
+      Julia is temporarily reassigned to the marketing department. During her 
+      assignment in the marketing department Julia must not be able to access 
+      the server. However, you must restore her access when she returns to the 
+      sales department.
+
+      You need to configure the appropriate database permissions for Julia. 
+      Which Transact-SQL statement should you execute?
+
+      a. REVOKE ALL TO SalesData FROM 'Julia'
+
+      b. EXEC sp_revokedbaccess 'Julia'
+
+      c. EXEC sp_denylogin 'Julia'
+
+      d. EXEC sp_droplogin 'Julia'
+
+Answer: C
+
+
+      23. You are the administrator of a SQL Server 2000 computer that contains 
+      multiple databases. One of these databases is named CorpSales.
+
+      Your company hires a new employee named Helene. Part of Helene's job will 
+      be to create new tables in the CorpSales database. However she should not 
+      have access to the other databases on the server.
+
+      You create a SQL Server login named Helene. Helene reports that she can 
+      log on to the server but is unable to access the CorpSales database.
+
+      You need to allow Helene access to the CorpSales database. What should you 
+      do?
+
+      a. Create a new database user in the CorpSales database.
+      Map the database user to Helene's login.
+      Grant CREATE TABLE permissions to the database user.
+
+      b. Create a new database role in the CorpSales database.
+      Add Helene's login as a member of the role.
+      Grant CREATE TABLE permissions to the database role.
+
+      c. Change the server's authentication mode to Windows Authentication.
+
+      d. Add Helene's login to the processadmin server role on the server.
+
+Answer: B
+
+
+      24. You are the administrator of an SQL Server 2000 computer. The server
+      contains a database named Sales. The database stored information that
+      employees use to analyze sales data. You configure the database by using
+      the default options. You create the database tables as shown below: 
+
+      (exhibit not available)
+
+      You import data as a batch process each evening. Users report that the database
+      responds slowly when they run the following query: 
+      <BR><FONT FACE="times new roman">
+      SELECT Customers.CustomerName, Invoices.InvoiceID,   Invoices.InvoiceDate,<BR> 
+             OrderDetail.Quantity,   Products.Description, Products.SKU,<BR>   
+             SalesPersons.FirstName, SalesPerson.LastName<BR> 
+      FROM Invoices<BR> 
+      INNER JOIN Customers   ON Invoices.Customer ID   = Customer.CustomerID<BR> 
+      INNER JOIN OrderDetail ON Invoices.Invoice ID    = OrderDetail.InvoiceID<BR>
+      INNER JOIN Products    ON OrderDetail.ProductID  = Products.ProductID<BR>
+      INNER JOIN SalesPerson ON Invoices.SalesPersonID = SalesPerson.SalesPersonID 
+      </FONT><BR><BR>
+      You want to improve the performance of this query. What should you do? 
+
+      a. Create indexes on the foreign key fields. 
+
+      b. Create a view to provide the data that the query will use. 
+
+      c. Create a stored procedure that executes the query. 
+
+      d. Create cascading UPDATE and DELETE triggers to the table. 
+
+Answer: A 
+
+
+      25. You are the administrator of a SQL Server 2000 computer. The server 
+      contains a database named Inventory. The database contains a table that is 
+      used to store information about equipment scheduling. The 
+      EquipmentSchedules table is configured as shown in the exhibit.
+      <BR><BR><img src='./70-228/images/pic228-06.gif'><BR><BR>
+      Users report that some equipment schedules have an end date that is 
+      earlier than the start date. You need to ensure that the start date is 
+      always earlier than or equal to the end date. You also want to minimize 
+      physical I/O. You do not want users to change the Transact-SQL statements 
+      they use to modify data within the database.
+
+      What should you do?
+
+      a. Create a constraint that compares the start date to the end date.
+
+      b. Create a trigger that compares the start date to the end date.
+
+      c. Create a rule that compares the start date to the end date.
+
+      d. Create a stored procedure that tests the start and end dates before 
+      inserting the row into the database.
+
+Answer: A
+
+
+      26. You are the administrator of two Microsoft Windows 2000 Advanced Server computers.
+      On these servers, you are configuring a database that will store accounting information
+      for your company. The data must be available at all times. Interruptions in data
+      connectivity should not last longer than five minutes. Any changes to the database
+      should not require you to reconfigure the client computers. How should you configure the database? 
+
+      a. Configure the database on the two servers as a SQL Server 2000 cluster. 
+
+      b. Configure the database on one server, and then configure a standby database on the second server. 
+
+      c. Configure the database on each server. 
+      Use Microsoft Distributed Transaction Coordinator to keep the two servers perfectly synchronized. 
+
+      d. Configure the database as a federated database, and then partition half the data on each server. 
+
+Answer: A
+
+
+      27. You are the administrator of a SQL Server 2000 computer. The server will 
+      be used to contain data from your company's accounting, enginering, and 
+      production departments.
+
+      Each department is contained in a Microsoft Windows domain users group. 
+      The groups are named Accounting, Engineering, and Production. Members of 
+      each department need to read and modify their data. However, users in one 
+      department should not have access to data in other departments.
+
+      You want to configure the database so that it meets your company's 
+      security requirements. You also want to minimize administration time and 
+      the consumption of server resources.
+
+      Which three actions should you take? (Each correct answer represents part 
+      of the solution. Choose three.)
+
+      a. Create a database for each department.
+
+      b. Create a database for all departments.
+
+      c. Create a Windows-Authenticated login for each department.
+
+      d. Create a named instance of SQL Server 2000 for each department.
+
+      e. Map each domain users group to the processadmin role.
+
+      f. Map each domain users group to the db_datareader and db_datawriter 
+      database roles.
+
+      g. Grant each domain users group SELECT, INSERT, UPDATE, and DELETE 
+      permissions on the database objects that are used by that department.
+
+      Ans:A, C, F
+
+
+      28. You are the administrator of a SQL Server 2000 computer. The server contains
+      a database named Contracts. The server is configured as shown in the server
+      configuration exhibit.
+      <BR><img src='./70-228/images/PIC228-141.jpg'><BR><BR>
+      The database files are configured as shown in the database properties exhibit.
+      <BR><BR><img src='./70-228/images/PIC228-141a.jpg'><BR><BR>
+      The database developers have been creating new tables and indexes without
+      specifying a filegroup. The primary filegroup is reaching its maximum capacity.
+      You want the developers to continue adding new objects, but you do not want then
+      to change the way they create objects. You do not want to run out of disk space.
+      You also want to minimize the time it takes to administer the database. What should you do? 
+
+      a. Back up the existing objects on the PRIMARY filegroup. Drop them from the database.
+      Re-create them on the SECONDARY filegroup. 
+
+      b. Set the file growth on the PRIMARY filegroup to UNLIMITED. 
+
+      c. Set the PRIMARY filegroup so that it is read-only. 
+
+      d. Set the SECONDARY filegroup as the default filegroup. 
+
+Answer: D  
+
+
+      29. You are the administrator of a SQL Server 2000 computer. You import a large amount
+      of data into the contracts database. After the import, you perform a full database backup.
+      You examine the hard disk and discover that the log file has grown from 200 MB to 800 MB.
+      You want to recover disk space as quickly as possible without losing backup information.
+      Which two Transact-SQL statements should you execute?
+      (Each correct answer presents part of the solution. Choose two) 
+
+      a. BACKUP LOG Contracts WITH no_log 
+
+      b. BACKUP LOG Contracts WITH truncate_only 
+
+      c. BACKUP LOG Contracts TO disk= E: \SQLBackup\Contracts_Log.bkp 
+
+      d. ALTER DATABASE Contracts 
+         (Name= Contract_Log.ldf, 
+         FILENAME= E: \Data\Contracts_ldf, 
+         SIZE= 200) 
+
+      e. DBCC ShrinkDatabase (Contracts, 200) 
+
+      f. DBCC ShrinkFile (Contracts_Log, 200) 
+
+Answer: C, F
+
+
+      30. You are the administrator of a new Microsoft Windows 2000 Server computer named CPSRV1.
+      CPSRV1 is a member server in your company's Windows NT 4.0 domain, which is named CPDOMAIN.
+      A separate Windows NT domain named CPUSERS contains all of your company's user accounts.
+      A trust relationship exists between the CPDOMAIN domain and the CPUSERS domain.
+      You are installing SQL Server 2000 on CPSRV1. You specify a service account for each
+      SQL Server service as shown in the following table: <BR><BR>
+	<DIV ALIGN="center">
+	  <CENTER>
+	  <TABLE BORDER="1" CELLSPACING="0">
+	    <TR>
+	      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2"><B>Service </B></FONT></TD>
+	      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2"><B>&nbsp;Service Account </B></FONT></TD>
+	      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2"><B>Account Type</B></FONT></TD>
+	    </TR>
+	    <TR>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">MSSQLServer</FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">CPUSERS\sqlsvr</FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">Domain administrator</FONT></TD>
+	    </TR>
+	    <TR>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">SQLServerAgent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">CPUSERS\sqlagent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT></TD>
+	      <TD BGCOLOR="#CCCCCC" BORDERCOLORLIGHT="#CCCCCC" BORDERCOLORDARK="#999999"><FONT FACE="Arial" SIZE="2">Domain administrator &nbsp;&nbsp;&nbsp;&nbsp; </FONT></TD>
+	    </TR>  </TABLE>  </CENTER></DIV><BR><BR>
+      After the installation is complete, the MSSQLServer service and the SQLServerAgent service
+      do not start. You need to configure the services to start without changing any security
+      settings in either domain. 
+      What should you do? 
+
+      a. Configure the services to run under the local system account 
+
+      b. Add CPSRV1 to the CPUSERS domain 
+
+      c. Add CPUSERS\sqlsvr and CPUSERS\sqlagent to the local administrators group on CPSRV1 
+
+      d. Add CPUSERS\sqlsvr and CPUSERS\sqlagent to the CPUSERS\Domain Admins groups. 
+
+      e. Add CPUSERS\sqlsvr and CPUSERS\sqlagent to the CPUSERS\Domain users groups. 
+
+Answer: C 
+
+
+      31. Your company contains a variety of client computers that will connect to the
+      SQL Server 2000 computer by using a specific Net-Library, as shown in the following table:
+	<BR>
+	<TABLE BORDER="1" BORDERCOLOR="#CCCCCC">
+	  <TR>
+	    <TD ALIGN="center" BGCOLOR="#999999"><B><FONT COLOR="#000000" FACE="Arial">Client-computer</FONT></B></TD>
+	    <TD ALIGN="center" BGCOLOR="#999999"><B><FONT COLOR="#000000" FACE="Arial">Net-Library</FONT></B></TD>
+	  </TR>
+	  <TR>
+	    <TD ALIGN="center" BGCOLOR="#CCCCCC"><FONT FACE="Arial">Microsoft Windows 98</FONT></TD>
+	    <TD ALIGN="center" BGCOLOR="#CCCCCC"><FONT FACE="Arial">Named Pipes </FONT></TD>
+	  </TR>
+	  <TR>
+	    <TD ALIGN="center" BGCOLOR="#CCCCCC"><FONT FACE="Arial">Novell NetWare</FONT></TD>
+	    <TD ALIGN="center" BGCOLOR="#CCCCCC"><FONT FACE="Arial">&nbsp;IPX/SPX </FONT></TD>
+	  </TR>
+	  <TR>
+	    <TD ALIGN="center" BGCOLOR="#CCCCCC"><FONT FACE="Arial">Apple Macintosh</FONT></TD>
+	    <TD ALIGN="center" BGCOLOR="#CCCCCC"><FONT FACE="Arial">TCP/IP </FONT></TD>
+	  </TR>
+	</TABLE><BR><BR>
+      You need to allow the client computers to connect to the SQL Server computer.
+      You also want to minimize the number of configuration changes required on the client computers.
+      Which three actions should you take?(Each correct answer presents part of the solution, Choose three) 
+
+      a. Install SQL Server 2000 as a named instance 
+
+      b. Install SQL Server 2000 as the default instance 
+
+      c. Configure the new instance for Mixed Mode authentication 
+
+      d. Configure the new instance for Windows Authentication 
+
+      e. Configure the server to use the Named Pipes, IPX/SPX, and TCP/IP Net-Libraries 
+
+      f. Configure the server to use the Multiprotocol Net-Library 
+
+Answer: B, C, E
+
+
+      32. You are the administrator of an SQL Server computer. The server is running
+      SQL Server 6.5 and SQL server 7.0. You install a named instance of SQL Server 2000,
+      and then run the SQL Server Upgrade Wizard. On the database selection screen, some
+      of the SQL server 6.5 databases are not listed. You cancel the SQL Server Upgrade Wizard.
+      You need to ensure that the SQL Server 6.5 databases are listed in the wizard.
+      What should you do? 
+
+      a. Uninstall SQL Server 7.0, and then rerun the SQL Server Upgrade Wizard. 
+
+      b. Run the Microsoft SQL Server-switch application, and then rerun the SQL Server Upgrade Wizard. 
+
+      c. Create a data transformation services package that imports the databases from SQL server 6.5 to SQL server 2000, and then execute the package. 
+
+      d. Uninstall SQL Server 2000, and then reinstall SQL Server 2000 as the default instance. 
+
+Answer: B
+
+
+      33. You are the administrator of several SQL Server 2000 computers.
+      You want to retrieve some information from an archived inventory database.
+      You have a full tape backup of the database. The backup's header information shows
+      that the backup uses the SQL_Latin1_General_CP437_BIN collation. However, all existing
+      SQL Server computers in your office are configured to use the SQL_Latin1_General_CP1_CI_AS collation.
+      You do not want to join tables in the inventory database with tables in other databases.
+      You need to restore the inventory database to a SQL Server 2000 computer by using the
+      least amount of administrative effort. What should you do? 
+
+      a. Use the rebuildm utility to rebuild the system databases on an existing SQL Server computer.
+      Configure all the databases on that server to use the SQL_Latin1_General_CP437_BIN collation.
+      Restore the inventory database to the server 
+
+      b. Restore the inventory database to an existing SQL Server computer.
+      Accept the SQL_Latin1_General_CP437_BIN collation for that database. 
+
+      c. Install a new named instance of SQL Server 2000 on an existing SQL Server 2000 computer.
+      Configure the named instance to use the SQL_Latin1_General_CP437_BIN collation.
+      Restore the inventory database to the named instance. 
+
+      d. Install SQL Server 2000 on a new computer.
+      Configure the new server to use the SQL_Latin1_General_CP437_BIN collation.
+      Restore the inventory database to the new server 
+
+Answer: B 
+
+
+      34. You are the administrator of a SQL Server 2000 computer.
+      The Server contains a database that stores product data for your company 
+      You need to run a report that summarizes data about these products.
+      When you run the report it does not complete. 
+      Several users are connected to the database. You execute the sp_lock stored
+      procedure and recieve the following output <BR><BR>
+
+<DIV ALIGN="center">
+  <CENTER>
+  <TABLE BORDER="0" BGCOLOR="#CCCCCC">
+    <TR>
+      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#999999" BORDERCOLORDARK="#999999">
+        <P ALIGN="center"><FONT FACE="Arial"><B>spid</B></FONT></TD>
+      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#999999" BORDERCOLORDARK="#999999">
+        <P ALIGN="center"><FONT FACE="Arial"><B>dbid</B></FONT></TD>
+      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#999999" BORDERCOLORDARK="#999999">
+        <P ALIGN="center"><FONT FACE="Arial"><B>objid</B></FONT></TD>
+      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#999999" BORDERCOLORDARK="#999999">
+        <P ALIGN="center"><FONT FACE="Arial"><B>indID</B></FONT></TD>
+      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#999999" BORDERCOLORDARK="#999999">
+        <P ALIGN="center"><FONT FACE="Arial"><B>Type</B></FONT></TD>
+      <TD BGCOLOR="#999999" BORDERCOLORLIGHT="#999999" BORDERCOLORDARK="#999999">
+        <P ALIGN="center"><FONT FACE="Arial"><B>&nbsp;Mode </B></FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">67</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">DB</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">S </FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">64</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">&nbsp;7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">DB </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">S</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">72</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">DB</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">S</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">72</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">RID</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">S </FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">72</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952 </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">PAG&nbsp; </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">IS</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">72</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">&nbsp;2145623952</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">TAB </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">IS </FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">72</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952 </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">RID </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">S </FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">DB</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">S</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">1</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">RID</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">X </FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952 </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">1</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">PAG</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">IX </FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952 </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">0</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">TAB</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">IX</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">1</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">RID </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">X</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">1</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">PAG&nbsp; </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">IX</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">78</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">7 </FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">2145623952</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">1</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">RID</FONT></TD>
+      <TD>
+        <P ALIGN="center"><FONT FACE="Arial">X </FONT></TD>
+    </TR>
+  </TABLE>
+  </CENTER>
+</DIV><BR><BR>
+      You want the report to complete successfully. What should you do? 
+
+      a. Execute the sp_releaseapplock stored procedure 
+
+      b. Grant SELECT permissions on the Products Table to all users 
+
+      c. Release locks held by 72 
+
+      d. Release locks held by 78 
+
+Answer: D
+
+
+      35. You are the administrator of a SQL Server 2000 computer.
+      The server contains a database named Sales that has two data files and one
+      transaction log file. Each data file is located on its own hard disk and exists
+      in its own filegroup. You perform full database, differential, and transaction log
+      backups on a regular basis. All backups made during a single week are striped across
+      three disk backup devices. A portion of the header information for the current
+      week's backups is shown in the following table<BR><BR>
+<TABLE BORDER="0">
+  <TR>
+    <TD ALIGN="center" BGCOLOR="#CCCCCC">BackupName</TD>
+    <TD ALIGN="center" BGCOLOR="#CCCCCC">&nbsp;BackupType</TD>
+    <TD ALIGN="center" BGCOLOR="#CCCCCC">&nbsp;BackupFinishDate </TD>
+  </TR>
+  <TR>
+    <TD>Sales_db_20000625</TD>
+    <TD ALIGN="center">1</TD>
+    <TD>2000-06-25 21 57 04.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_tl_20000626_1</TD>
+    <TD ALIGN="center">2 </TD>
+    <TD>2000-06-26 11 04 22.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_tl_20000626_2</TD>
+    <TD ALIGN="center">2</TD>
+    <TD>2000-06-26 15 06 33.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_df_20000626</TD>
+    <TD ALIGN="center">5</TD>
+    <TD>2000-06-26 21 15 48.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_tl_20000627_1</TD>
+    <TD ALIGN="center">2</TD>
+    <TD>2000-06-27 11 03 39.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_tl_20000627_2</TD>
+    <TD ALIGN="center">2</TD>
+    <TD>2000-06-27 15 04 59.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_df_20000627</TD>
+    <TD ALIGN="center">5</TD>
+    <TD>2000-06-27 21 31 13.000 </TD>
+  </TR>
+  <TR>
+    <TD>Sales_tl_20000628_1</TD>
+    <TD ALIGN="center">2</TD>
+    <TD>2000-06-28 11 05 16.000 </TD>
+  </TR>
+</TABLE><BR><BR>
+      On June 28, 2000, at 1:47 P M , the hard disk that contains the PRIMARY filegroup fails.
+      You want to recover as much data as possible. What should you do?
+      (Each correct answer presents part of the solution, Choose all that apply) 
+
+      a. Backup the transaction log by using the NO_LOG option 
+
+      b. Backup the transaction log by using the NO_TRUNCATE option 
+
+      c. Restore the most recent full database backup 
+
+      d. Restore the most recent differential backup 
+
+      e. Restore all differential backups in sequence 
+
+      f. Restore all transaction log backups in sequence 
+
+      g. Restore all transaction logs since the most recent differential backup 
+
+Answer: B, C, D, G
+
+
+      36. You are the administrator of a SQL Server 2000 computer.
+      The server contains your company's Accounts database. Hundreds of users access
+      the database each day. Because you have had power interruptions in the past,
+      you want to protect the physical integrity of the Accounts database.
+      You do not want to slow down server operations. What should you do? 
+
+      a. Enable the torn page detection database option for each database. 
+
+      b. Disable write caching on all disk controllers. 
+
+      c. Ensure that the write caching disk controllers have battery backups. 
+
+      d. Create a database maintenance plan to check database integrity and make repairs each night. 
+
+Answer: C
+
+
+      37. You are the administrator of a SQL Server 2000 computer.
+      The server contains a database named Accounting. The data files are configured as shown below:<BR><BR>
+	<TABLE BORDER="1" WIDTH="395" HEIGHT="45" CELLSPACING="0"><TR>
+	<TD WIDTH="96" BGCOLOR="#C0C0C0" HEIGHT="16" ALIGN="left"><FONT FACE="MS Sans Serif" SIZE="2"><B>File Name</B></FONT></TD>
+	<TD WIDTH="107" BGCOLOR="#C0C0C0" HEIGHT="16" ALIGN="left"><FONT FACE="MS Sans Serif" SIZE="2"><B>Location</B></FONT></TD>
+	<TD WIDTH="87" BGCOLOR="#C0C0C0" HEIGHT="16" ALIGN="left"><FONT FACE="MS Sans Serif" SIZE="2"><B>Space (MB)</B></FONT></TD>
+	<TD WIDTH="77" BGCOLOR="#C0C0C0" HEIGHT="16" ALIGN="left"><FONT FACE="MS Sans Serif" SIZE="2"><B>Filegroup</B></FONT></TD></TR><TR>
+	<TD WIDTH="96" HEIGHT="17" ALIGN="left" VALIGN="top"><FONT FACE="MS Sans Serif" SIZE="2">Account_data</FONT></TD>
+	<TD WIDTH="107" HEIGHT="17" ALIGN="left" VALIGN="top"><FONT FACE="MS Sans Serif" SIZE="2">E:\Program Files\</FONT></TD>
+	<TD WIDTH="87" HEIGHT="17" ALIGN="left" VALIGN="top"><FONT FACE="MS Sans Serif" SIZE="2">8000</FONT></TD>
+	<TD WIDTH="77" HEIGHT="17" ALIGN="left" VALIGN="top"><FONT FACE="MS Sans Serif" SIZE="2">Primary</FONT></TD></TR></TABLE><BR><BR>
+      The database has grown to 7 GB. The server has no more available disk space.
+      You need to make more disk space available in the accounting database without affecting
+      system performance. What should you do? 
+
+      a. Compress drive E. 
+
+      b. Add a new hard disk to the server. 
+      Create a new file on the new hard disk as part of the PRIMARY filegroup. 
+
+      c. Add a new hard disk to the server. 
+      Create a new file on the new hard disk as part of a new filegroup. 
+
+      d. Map a network drive to the server. 
+      Create a new data file on the network drive as part of the PRIMARY filegroup. 
+
+      e. Map a network drive on the server. 
+      Create a new data file on the network drive as part of a new filegroup. 
+
+Answer: B
+ 
+
+      38. You are the administrator of an SQL Server 2000 computer.
+      The server contains a database named Sales. The database stored information that employees
+      use to analyze sales data. You configure the database by using the default options.
+      You create the database tables as shown below:
+
+      (exhibit not available)
+
+      You want to improve the performance of this query. What should you do? 
+
+      a. Create indexes on the foreign key fields. 
+
+      b. Create a view to provide the data that the query will use. 
+
+      c. Create a stored procedure that executes the query. 
+
+      d. Create cascading UPDATE and DELETE triggers to the table. 
+
+Answer: A
+
+
+      39. You are the administrator of a SQL Server 2000 computer. You are 
+      configuring a database for an inventory application. The hard disks on 
+      your server are configured as shown in the exhibit.
+      <BR><img src='./70-228/images/pic228-62.gif'><BR><BR>
+      The operating system files are located on drive C. Your database will 
+      store a maximum of 6 GB of data and requires a maximum of 2 GB of disk 
+      space for the transaction log.
+      You want to optimize database performance. What should you do?
+
+      a. Add a 2-GB transaction log to drive D, a 3-GB data file to drive E, and 
+      a 3-GB data file to drive F
+
+      b. Add a 1-GB transaction log to drive C, a 1-GB transaction log to drive 
+      D, a 3-GB data file to drive E, and a 3-GB data file to drive F
+
+      c. Add a 1-GB transaction log to drive E, a 1-GB transaction log to drive 
+      F, a 3-GB data file to drive E, and a 3-GB data file to drive F
+
+      d. Add a 2-GB transaction log to drive F, a 3-GB data file to drive D, and 
+      a 3-GB data file to drive E
+
+ANSWER: A
+
+
+      40. You are the administrator of a SQL Server 2000 computer. The server 
+      contains your company's investment-tracking database. Each day, 100 
+      operators make approximately 5,000 changes to customer investments. In 
+      addition, daily and monthly reports are created from the investment data.
+
+      Developers at your company need to optimize the database application. They 
+      need a sample of database query activity to discover if they can speed up 
+      the transactions. The developers also want to replay the sample on another 
+      SQL Server computer.
+
+      You need to capture the sample, but you want to minimize any increase to 
+      the workload of the server. What should you do?
+
+      a. Run SQL Profiler on a client computer.
+      Configure SQL Profiler to monitor database activity, and log data to a 
+      .trc file.
+
+      b. Run SQL Profiler on the server.
+      Configure SQL Profiler to monitor database activity, and log data to a 
+      database table.
+
+      c. Run System Monitor on a client computer.
+      Configure System Monitor to monitor database activity, and log data to a 
+      .blg file.
+
+      d. Start SQL Server from a command prompt.
+      Specify trace flag 1204 to enable verbose logging.
+
+ANSWER: A
+
+
+      41. You have been hired as an administrator of an SQL Server 2000 computer.
+      The server contains a database named Assets. The database is configured as shown in the exhibit: 
+      <BR><img src='./70-228/images/PIC228-144.jpg'><BR><BR>
+      Users of the database frequently require details about parts.
+      Database users search for parts information using the following query: 
+      <P><FONT FACE="Arial" SIZE="2">
+      SELECT Parts.SKU, Locations.Description, Manufacturer.Name,<BR>
+      PartsLocations.City, PartsLocations.LastInventoried <BR>
+      FROM Parts<BR>
+      INNER JOIN Manufacturer ON Parts.ManufacturerID = Manufacturer.ManufacturerID<BR>
+      INNER JOIN Locations ON Parts.LocationID = Loactions.LocationID<BR>
+      WHERE SKU = ?</FONT></P>
+      You need to accelerate query response time. What should you do? 
+
+      a. Create a parameterized stored procedure to retrieve the data. 
+
+      b. Create a denormalized table that is maintained by triggers. 
+
+      c. Use ad hoc queries to retrieve the data. 
+
+      d. Create a nonclustered index on the primary key of each table. 
+
+Answer: A
+
+
+      42. You are the administrator of a SQL Server 2000 computer. The server 
+      contains a database named Sales. You perform full database backups every 
+      two days. You also run regular database consistency checks on the server. 
+      The most recent check of the Sales database returns the following message.
+
+      CHECKDB found 0 allocation errors and 9 consistency errors in the table 
+      'Orders'
+      (object ID 214575782).
+
+      You want to correct the data integrity errors while minimizing the amount 
+      of data lost. What should you do?
+
+      a. Disconnect users from the Sales database.
+      Enable the single user database option.
+      Execute the DBCC CHECKTABLE statement for the Orders table, and specify 
+      the REPAIR_REBUILD option.
+
+      b. Disconnect users from the Sales database.
+      Enable the dbo use only database option.
+      Execute the DBCC CHECKTABLE statement for the Orders table, and specify 
+      the REPAIR_REBUILD option.
+
+      c. Disconnect users from the Sales database.
+      Execute the RESTORE DATABASE statement for the Sales database
+
+      d. Execute the DBCC CLEANTABLE statement for the Orders table.
+
+      e. Execute the sp_table_validation stored procedure for the Orders table.
+
+ANSWER: A
+
+
+      43. You are the administrator of a SQL Server 2000 computer.
+      The server contains a database named InsuranceClaims. You have recently added
+      a hard disk to the server and configured the database. 
+      The database is configured as shown in the database schema below: 
+
+      (exhibit not available)
+
+      Each primary key is clustered. All foreign keys contain nonclustered indexes.
+      You want to use the new hard disk to make the database respond more quickly to queries. 
+      What should you do? 
+
+      a. Re-create the Notes table on the SECONDARY filegroup. 
+
+      b. Re-create the nonclustered indexes on the SECONDARY filegroup. 
+
+      c. Re-create the Patients and Doctors tables and their indexes on the SECONDARY filegroup. 
+
+      d. Re-create the Cases and Notes tables and their indexes on the SECONDARY filegroup. 
+
+Answer: C
+
+
+      44. You are the administrator of a SQL Server 2000 computer. The server contains
+      a database named MedicalRecords. The database tables are configured as shown below:
+      <BR><img src="./70-228/images/PIC228-126.jpg"><BR><BR>
+      The existing PatientID field is an identity field. A new healthcare policy mandates
+      that patient IDs must include a three-character prefix before the numeric portion of the ID.
+      The patient's home address defines the prefix. You want to comply with the regulation
+      while minimizing changes to the database. Which two actions should you take?
+      (Each correct answer presents part of the solution. Choose Two) 
+
+      a. Drop the FOREIGN KEY constraints.
+      In each table, change the data type of the PatientID field to char. 
+
+      b. Add an on update constraint to the patients table, and link it to the PatientID field.
+      Update the field in the Patients table. 
+
+      c. In the Patients table, add a new field named StatePatientID that has a data type of char.
+      Populate the field with the prefix and the existing PatientID. 
+
+      d. In each table, update the PatientID field. 
+      Re-create the FOREIGN KEY constraints. 
+
+      e. In the Patients table, update the PatientID field. 
+
+      f. Create a trigger that populates the StatePatientID field when a new patient is created. 
+
+Answer: A, D 
+
+
+      45. You are the administrator of an SQL Server 2000 computer.
+      The server contains a database named ResearchRecords. This database contains research
+      records and administrative records. The database consumes about 30GB of disk space.
+      The data files are configured as shown below:<BR><BR>
+<DIV ALIGN="center">
+  <CENTER>
+  <TABLE BORDER="1" HEIGHT="47" BGCOLOR="#808080" WIDTH="654">
+    <TR>
+      <TD HEIGHT="1" VALIGN="top" ALIGN="left" BGCOLOR="#C0C0C0" BORDERCOLORLIGHT="#C0C0C0" BORDERCOLORDARK="#000000" BORDERCOLOR="#C0C0C0" NOWRAP WIDTH="134"><FONT FACE="Arial" SIZE="2">File Name</FONT></TD>
+      <TD HEIGHT="1" VALIGN="top" ALIGN="left" BGCOLOR="#C0C0C0" BORDERCOLORLIGHT="#C0C0C0" BORDERCOLORDARK="#000000" BORDERCOLOR="#C0C0C0" NOWRAP WIDTH="218"><FONT FACE="Arial" SIZE="2">Location</FONT></TD>
+      <TD HEIGHT="1" VALIGN="top" ALIGN="left" BGCOLOR="#C0C0C0" BORDERCOLORLIGHT="#C0C0C0" BORDERCOLORDARK="#000000" BORDERCOLOR="#C0C0C0" NOWRAP WIDTH="135"><FONT FACE="Arial" SIZE="2">Space Allocated (MB)&nbsp;&nbsp;</FONT></TD>
+      <TD HEIGHT="1" VALIGN="top" ALIGN="left" BGCOLOR="#C0C0C0" BORDERCOLORLIGHT="#C0C0C0" BORDERCOLORDARK="#000000" BORDERCOLOR="#C0C0C0" NOWRAP WIDTH="59"><FONT FACE="Arial" SIZE="2">Filegroup&nbsp;</FONT></TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="18" NOWRAP BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="134"><FONT FACE="Arial" SIZE="2">MedicalRecords_data.</FONT></TD>
+      <TD HEIGHT="18" NOWRAP BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="218"><FONT SIZE="2" FACE="Arial">E:\Program Files\Microsoft\MSSQL...</FONT></TD>
+      <TD HEIGHT="18" NOWRAP BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="135"><FONT SIZE="2" FACE="Arial">10000</FONT></TD>
+      <TD HEIGHT="18" NOWRAP BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="59"><FONT SIZE="2" FACE="Arial">PRIMARY</FONT></TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="134"><FONT FACE="Arial" SIZE="2">MedicalRecords_data1</FONT></TD>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="218"><FONT FACE="Arial" SIZE="2">F:\data\MedicalRecords</FONT></TD>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="135"><FONT SIZE="2" FACE="Arial">10000</FONT></TD>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="59"><FONT SIZE="2" FACE="Arial">PRIMARY</FONT></TD>
+    </TR>
+    <TR>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="134"><FONT FACE="Arial" SIZE="2">MedicalRecords_data2</FONT></TD>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="218"><FONT SIZE="2" FACE="Arial">G:\Program Files\Microsoft\MSSQL...</FONT></TD>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="135"><FONT SIZE="2" FACE="Arial">20000</FONT></TD>
+      <TD HEIGHT="18" BGCOLOR="#FFFFFF" BORDERCOLORLIGHT="#FFFFFF" BORDERCOLORDARK="#FFFFFF" WIDTH="59"><FONT SIZE="2" FACE="Arial">PRIMARY</FONT></TD>
+    </TR>
+  </TABLE>
+  </CENTER>
+</DIV><BR><BR>
+      You run full database backups each night after business hours.
+      You notice that the backup is not complete by the time the morning shift begins to use the database.
+      You need to minimize the time needed to restore data in the event of a system failure.
+      You also want to reconfigure the database to allow the backups to complete during the evening hours.
+      Which two actions should you take? (Each correct answer presents part of the solution. Choose two) 
+
+      a. Reorganize the data files into two filegroups. 
+      Place the system tables in the PRIMARY filegroup and the user-defined tables in the other filegroup. 
+
+      b. Reorganize the data files into three filegroups. 
+      Place the system tables and shared objects in the PRIMARY filegroup,
+      the clinical records in a filegroup, and the administrative records in a filegroup. 
+
+      c. Reorganize the data files into three filegroups. 
+      Place the system tables in the PRIMARY filegroup, the indexes in a filegroup,
+      and the tables in the other filegroup. 
+
+      d. Back up the transaction log each night. 
+      Run a filegroup backup on a different filegroup each night. 
+
+      e. Back up the transaction log each night. 
+      Run a filegroup backup on the database each weekend. 
+
+      f. Back up the transaction log each night. 
+      Run a differential backup each Sunday, and run a full backup the first day of each month. 
+
+Answer: B, D

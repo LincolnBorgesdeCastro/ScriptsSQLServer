@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Fabricam</TITLE>
+<META NAME="Version" CONTENT="8.0.3410">
+<META NAME="Date" CONTENT="10/11/96">
+<META NAME="Template" CONTENT="C:\ProgLoc\Office97E\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=6><P>Fabricam, Inc. </P>
+</FONT><P>&nbsp;</P>
+<P>Windows 2000 Upgrade Project:</P>
+</B><P>Your company is asked to provide consulting, development, and integration serviced for a company named Fabrikam, Inc. As a part of this project, you will implement Windows 2000. All client computers that currently run Microsoft Windows 95 will be upgraded to Windows 2000 Professional. The domain controller environment will be fully upgraded to Windows 2000 Server. <I>(Comments: bind versions will be an issue)</P>
+</I><B><P>&nbsp;</P>
+<P>Background:</P>
+</B><P>Fabrikam, Inc. manufactures and supplies plastic containers to manufacturers of personal grooming products. The company has three offices in the southern United States. These offices are located in Dallas, Atlanta, and Phoenix. The company headquarters is in Dallas. <I>(Comments: Centralized admin)</P>
+</I><P>The following departments are located in the Dallas office.</P>
+<P>Accounting</P>
+<P>Administration</P>
+<P>Graphics</P>
+<P>Human resources</P>
+<P>IT administration</P>
+<P>Maintenance </P>
+<P>Manufacturing</P>
+<P>Manufacturing design</P>
+<P>Purchasing </P>
+<P>Quality control</P>
+<P>Sales and marketing</P>
+<P>&nbsp;</P>
+<P>In both Phoenix and Atlanta, there are offices for the following departments:</P>
+<P>IT administration</P>
+<P>Manufacturing</P>
+<P>Maintenance</P>
+<P>Quality control</P>
+<P>Sales and marketing</P>
+<P>&nbsp;</P>
+<P>The company currently operates two eight-hour shifts for manufacturing and one shift for administrative and clerical functions. <I>(Comments: look out for hours available for replication)</P>
+</I><P>&nbsp;</P>
+<B><P>Problem Statement:</P>
+<P>Chief Executive officer (CEO):</P>
+</B><P>The benefits derived from IT administration are not worth the money that we spend on it. <I>(Comments: non-aggressive, lacks funding)</P>
+</I><P>Our suppliers and customers want to be able to link to our network for inventory updates, for pricing, and for billing. Currently, many of our processes are papers based. <I>(Comments: replace with apps and msi)</P>
+</I><P>This practice causes all of the associated difficulties related to paper handling and data entry. Another consolidate the sites that employees need to access to find employee information and to input information.</P>
+<P>&nbsp;</P>
+<B><P>Chief Information Officer (CIO):</P>
+</B><P>Currently, all account administration must be performed in Dallas. With the exception of account administration, there is no centralized management of client computers. Internet mail is not currently available within the company. The existing Windows NT 4.0 domain structure necessitates several domains for the delegation of administration. <I>(Comments: Explicit trusts)</P>
+</I><P>We want to create accounts at headquarters. However, we want departmental IT staff members at the Phoenix and Atlanta locations to be able to reset passwords and make other modifications to the accounts. <I>(Comments: Possible with ours)</P>
+</I><P>We do not want to give the Phoenix or Atlanta IT staffs full administrative control. <I>(Comments: Delegation of OU permissions)</P>
+</I><P>We are concerned that Microsoft Windows 95 does not offer enough security at the client computer level. <I>(Comments: primary concern)</P>
+</I><P>The amount of traffic on the existing WAN connections between Atlanta and Dallas and between Phoenix and Dallas averages 75 percent saturation during business hours. <I>(Comments: Not vital, may be improved with replication schedules)</P>
+</I><P>All IT maintenance will be performed during a four-hour period during non-business hours. We try to schedule traffic during the evening hours whenever possible. I need to justify the cost of every improvement we make to the IT infrastructure. <I>(Comments: Tight with spending)</P>
+</I><P>&nbsp;</P>
+<B><P>History:</P>
+</B><P>The Windows environment was most recently upgraded in early 1997. It was upgraded to Windows NT 4.0 and Microsoft Windows 95 from Net Ware 3.12 and Windows 3.1. All service packs were applied to Windows NT 4.0 when they were released. The upgrade in 1997 caused several problems with connectivity, validation, and permissions. Because of these problems, some employees were not able to work. These problems were associated with the specific consulting organization that performed the upgrade. Nevertheless, employees still remember the problems and recall them whenever upgrades are suggested. Consequently, the company is sensitive about the duration of downtime during upgrades. <I>(Comments: cautious)</P>
+<P>(Comments: staged upgrade, possible parallels network / pristine / test labs, etc)</P>
+</I><P>&nbsp;</P>
+<B><P>Existing IT Environment:</P>
+<P>General:</P>
+</B><P>Fabrikam, Inc., employs approximately 10,000 people. The company uses approximately 5,000 computers. Of these computers, 3,750 are in Dallas, 750 are in Atlanta, and 500 are in Phoenix. The existing manufacturing environment is controlled by UNIX-based computers. There are currently four Windows NT 4.0 domains: a global account domain in Dallas that contains all user accounts, and resource domains in Dallas, Phoenix, and Atlanta. <I>(Comments: one way trust would make sense)</P>
+</I><P>&nbsp;</P>
+<B><P>Network Infrastructure:</P>
+</B><P>There are 56-Kbps lines from Dallas to both Phoenix and Atlanta. IT administrators are concerned about the amount of available bandwidth but cannot justify upgrading the links at this time. <I>(Comments: no new cables)</P>
+</I><P>Because of these concerns, traffic is scheduled for evening hours whenever possible. SAP is used for inventory management. The SAP Server is Located in Dallas. <I>(Comments: will have its own schema, concerns for AD)</P>
+</I><P>The existing Web site is hosted by a third party. <I>(Comments: External web presence/ two domain names)</P>
+</I><P>The fabrikam.com domain is registered. It is hosted by third party Web servers, but it does not host any interactive Web pages. At each location, there is an internal BIND DNS server to manage the UNIX environment. <I>(Comments: look out for version compatibility)</P>
+</I><P>The UNIX DNS structure is completely self-contained and functions as its own root. The Windows 2000 support staff must easily be able to gain access to the DNS that supports Windows 2000. The company currently has no connection to the Internet. <I>(Comments: no FQDN)</P>
+</I><B><P>&nbsp;</P>
+<P>Client computer Environment:</P>
+</B><P>Employees in the manufacturing design department use UNIX-based computers for design processes. For e-mail and word processing, they use computers that run Windows. The computers used by the manufacturing department use a terminal-emulation program to communicate with the UNIX system that controls the manufacturing process. <I>(Comments: bandwidth issue)</P>
+</I><P>Most of the employees use computers that run Microsoft Windows 95. Most of the Windows 95 computers run on Pentium 166-MHz MMX hardware platforms that have 16 MB of RAM and 2.1-GB hard disks. Fabrikam, Inc. used Microsoft Office 97 as its standard office suite. Department-specific applications are installed locally by on-site administrators. <I>(Comments: schema)</P>
+</I><P>Each of the manufacturing department's computers is used by more than one employee. The company wants server-stored profiles and documents to be available from local servers to each manufacturing department user at each of the manufacturing department's computers.  <I>(Comments: roaming profiles)</P>
+</I><P>&nbsp;</P>
+<B><P>IT Infrastructure: </P>
+</B><P>The primary IT center is in Dallas. IT management is performed in Dallas whenever possible. The sales and marketing, manufacturing, human resources, purchasing, administration, quality control, and maintenance departments each use unique software. <I>(Comments: Schema)</P>
+</I><P>The technical support staff needs specific expertise to be able to supply support for each of these departments. Consequently, each department has its own technical support staff. <I>(Comments: reduce admins) </P>
+</I><P>The IT policy for each department is defined and managed in Dallas. Most of the departmental support staff is located in Dallas, although some support staff members at the local offices report directly to the departmental IT managers in Dallas. <I>(Comments: Delegate control/ OU's)</P>
+</I><P>The departmental support staff at the local offices will need delegated authority to perform basic administration.</P>
+<P>&nbsp;</P>
+<B><P>Security:</P>
+</B><P>In the master account domain, grouping of users for resource access is performed by means of global groups. This grouping is performed by the IT administrators in Dallas. For local resource access, local groups are created on the local servers. These groups are created by the local IT administrators. Administrators grant these users rights by adding global groups to local groups. <I>(Comments: Trusts) </P>
+</I><P>Local administrators of resource domains are not granted administrative rights for the Dallas domain. <I>(Comments: one way trusts)</P>
+</I><P>&nbsp;</P>
+<B><P>Group policy goals:</P>
+</B><P>Group Policy will be managed from Dallas for both company-wide policy and departmental policy. <I>(Comments: Domain GPO)<B> </P>
+</B></I><P>Initially, Group Policy will be designed to redirect folders, to define logon scripts that will be customized for each department at each location, to minimize logon time, to define the desktop settings, and to allow department-specific software to be made available. Security groups will not filter Group Policy objects (GPOs), with the exception that most Group Policy will not apply to technical support staff. <I>(Comments: No "No override or block inheritance"; Isolate IT support)</P>
+</I></BODY>
+</HTML>

@@ -1,0 +1,801 @@
+70-270 -- Windows XP Professional
+
+1. You are a help desk technician for your company. An employee named Marc is attempting to open a Microsoft Word document Phonelist.doc by using Internet Explorer. However, when he types http://Server1/Files/Phonelist.doc into the address bar in Internet Explorer, he receives the following error message: “404: Page not found.” You verify that Phonelist.doc exists in a shared folder named Files on Server1. You need to ensure that Marc can access Phonelist.doc by using Internet Explorer. What should you do? 
+A. Instruct Marc to run the IPconfig/flushdns command on his computer. 
+B. Grant Marc’s domain user account Allow-Read permission on the File shared folder. 
+C. Grant Marc’s domain user account Allow-Read permission on Phonelist.doc. 
+D. Instruct Marc to type file://server1/File/Phonelist.doc into the address bar in Internet Explorer. 
+Answer:D 
+
+2. You are the desktop administrator for your company. The company network consists of a single Active Directory domain. All employees have Windows XP Professional computers that use DHCP for their TCP/IP configuration. A new user reports that he cannot access network resources. No other users report problems. When you run IPconfig.exe on the user’s computer, you receive the following log: 
+Windows IP Configuration 
+Ethernet adapter Local Area Connection: 
+Connection-specific DNS Suffix. : 
+IP address. . . . . . . . . . . . . . . . . . . :169.254.96.107 
+Subnet Mask. . . . . . . . . . . . . . . . . :255.255.0.0 
+Default Gateway. . . . . . . . . . . . . . : 
+You must ensure that the new user can connect to the network. What should you do? 
+A. Run the Netstat -e command on the new user’s computer. 
+B. Run the IPconfig/renew command on the new user’s computer. 
+C. Run the Nbstat -RR command on the new user’s computer. 
+D. Add the IP address of the DHCP server to the HOSTS file. 
+E. Disable Automatic Private IP addressing (APIPA. on the new user’s computer. 
+Answer:B 
+
+3. You are the desktop administrator for your company. All employees have Windows XP Professional computers. Twenty engineers at the company use portable computers. An engineer named Tom wants to install an external parallel-port tape backup drive to use the removable storage features of Windows XP Professional. The tape drive is included on the Hardware Compatibility List (HCL. Tom connects the tape drive to his computer and installs the manufacturer-provided drivers and software. When Tom attempts to create a media library for removable storage, the tape drive is not listed as an available library to select. You need to enable Tom to install the driver for the tape drive. What should you do? 
+A. Add Tom to the local Backup Operator group on his computer. 
+B. Run the Sigverif utility to verify the digital signer and version information for the print device driver. 
+C. Disable Enhanced Parallel Port (EPP. support in the system BIOS on Tom’s computer. 
+D. Ensure that the Driver Signing Options are set to Warn-Prompt me each time to choose an action. 
+Answer: A 
+
+4. You are the desktop administrator for your company. All employees have Windows XP Professional computers. All employees are members of the local Users group on their own computers. A user in the graphics department has a removable disk cartridge drive on his computer. The disk cartridge contains an unsupported, third-party file system. When he tries to save data to the disk cartridge, the user is prompted to reformat the disk cartridge. However, he receives an “Access denied” error message when attempting to reformat. You need to enable the user to save data to the disk cartridge. What should you do? 
+A. Instruct the user to format the cartridge as FAT32. 
+B. Remove the Read-only attribute from the disk cartridge. 
+C. Add the user to the Power Users local group on the computer. 
+D. Grant the user Allow-Full Control permission on the disk cartridge. 
+E. Configure the local security settings to allow the user to format and eject removable media. 
+Answer:E 
+
+5. You are the desktop administrator for your company. A graphics designer name Pierre installs a new application and an updated video driver on his Windows XP Professional computer. After the installation, Pierre restarts his computer and logs on. However, when he moves Windows and dialog boxes, the display is distorted. You need to find the correct video driver for the new application. Meanwhile, you need to ensure that Pierre can run his other applications without video distortion. What should you do? 
+A. Use device Manager to roll back the video driver. 
+B. Restart the computer with the last known good configuration. 
+C. Run the Msconfig utility, and select the /BASEVIDEO check box. 
+D. Use the Add Hardware Wizard to scan for new hardware. Install any found hardware. 
+Answer:A 
+
+6. You are a help desk technician for your company. Initially, all your client computers run Microsoft NT workstation 4.0. You upgrade these computers. Now some run Windows 2000 Professional and others run Windows XP Professional. Users now report display problems. When they run an application named App2, their displays become garbled, or their computers do not display the application window correctly. They do not experience this problem when running other applications. How should you reconfigure each computer? 
+A. In the Display settings, adjust the screen resolution to a lower value. 
+B. In the Monitor properties, adjust the screen refresh rate to a lower value. 
+C. In the Advanced Display settings, configure the display DPI settings to 120 dots per inch. 
+D. In the Compatibility settings for app2, select the Run in 256 colors check box. 
+Answer: A
+(No way, Windows 2000 does not have a compatibility mode, so use the overall solution, so my opinion is Answer A. If it was only XP stations I would agree. 
+
+7. You are the desktop administrator for your company. All users have Windows XP Professional computers. Users in the sales department have portable computers. The portable computers are used to create customer presentations and perform online ordering. 
+Sales representatives want to be able to use large external monitors to display their presentations at customer locations. These users also want to use the displays on the portable computers to show their speaker notes and extra data. You verify that the video adapters in the portable computers support multiple monitor and dual-view capabilities. However, the sales representatives report that when they attach the external monitors to 
+their computers, the option to define separate desktop displays does not appear in the Display settings. You need to enable the sales representatives to display multiple desktops. What should you do? 
+A. Obtain and install an updated driver from the video adapter manufacturer. 
+B. Instruct the sales representatives to disable all hardware video acceleration during their presentations. 
+C. Configure the monitors on the sales representatives’ computers to use the Presentation power scheme. 
+D. Create a monitor profile on the sales representatives’ computers for the external monitors at the customer sites. 
+Answer:A
+
+8. You are the desktop administrator for Baldwin Museum of Science. You are configuring a Windows XP Professional desktop computer for a new employee named Maria. Maria will be using the Magnifier utility. You need to configure the computer so that Maria can more easily distinguish between interface colors and fonts. You also need to configure Maria’s screen to display fonts and colors designed for easy reading. 
+What should you do? 
+A. In Accessibility Options, enable the Use High Contrast Display setting. 
+B. Enable the Invert Colors setting for the Magnifier utility’s configuration screen. 
+C. In the Display Properties, change the Appearance settings to use the Windows Classic theme instead of the Windows XP theme. 
+D. In the display properties, change the system display settings to enable large fonts. 
+Answer:A 
+
+9. You are the desktop administrator for your company. All employees use Windows XP Professional computers. All employees are members of the local power users group on their client computers. There are three daily work shifts, and employees share computers with employees who work on different shifts. Each client computer has a defined set of desktop icons and shortcuts in addition to the system icons. All 
+users must be able to access these icons and shortcuts. Users can place their own icons and shortcuts on the desktop, but these icons and shortcuts should be invisible to other users of the computer You want to prevent users from adding or removing icons and shortcuts to the default desktop. You also want to allow users to customize their own desktops. What should you do? 
+A. For the Power Users group, remove Allow-Modify permission from the Documents and settings\All Users folder. 
+B. For each user, remove Allow-Full Control and Allow-Modify permissions from the Document and settings\%username% folder. 
+C. For the power users group, assign the Deny-Full Control permission on the documents and settings folder. 
+D. For the power users group, assign the Deny-Full Control permission on the documents and settings/Default User folder. 
+Answer:A 
+
+10. You are the desktop administrator for Wingtip Toys. Management requires that a standard user profile be created for all domain user accounts. Additionally, the standard profile must be protected so that domain users cannot make permanent changes to the standard profile. You create a company standard user profile. You require all domain us accounts to use this profile. Later, users report that the changes they make to their desktop are overwriting the standard profile settings. What should you do to ensure permanent changes cannot be made to the standard user profile? 
+A. Open the local default user profile. Rename ntuser.dat to ntuser.man. 
+B. Enable the local Group Policy to exclude directories in roaming profile for all users in the Wingtip Toys domain. 
+C. Open control panel. In system properties, copy the standard user profile to the profile server. Grant the Everyone group Allow-Full Control permission on the copied profile. Change the profile type from Local to Roaming. 
+D. Open control panel. In system properties, copy the standard user profile folder to the profile server. Grant the Everyone group Allow-Full Control permission on the copied profile. Name the directory that contains the standard user profile to standard man. 
+Answer:A 
+
+11. You are the desktop administrator for your company. The company has an Active Directory domain that includes 15 Microsoft Windows NT Workstation 4.0 computers and 20 new Windows XP Professional computers Domain users of Windows NT Workstation 4.0 computers can run an older application on heir computers. However, domain users of Windows XP Professional computers cannot run the same legacy application on their computers. You need to enable all users of Windows XP Professional computers to run this application. Your solution must not give the users administrative control of their computers. You create an Organizational unit name Pro and a Group Policy Object name Legacy. How should you reconfigure the Windows XP Professional computers. 
+A. Add the domain user accounts to the Pro OU. Import the Basicwk.inf security template to the legacy GPO. 
+B. Add the domain user accounts to the Pro OU. Import the Compatws.inf security template to the Legacy GPO. 
+C. Add the computer accounts to the Pro OU. Import the Basicwk.inf security template to the legacy GPO. 
+D. Add the computer accounts to the Pro OU. Import the Compatws.inf security template to the Legacy GPO. 
+Answer:D 
+
+12. You are a help desk technician for your Litware,Inc. Litware, Inc. maintains a secure intranet web site at intranet litwareinc.com. All employees use Windows XP Professional computers. A user named Katherine reports that she cannot access the secure web site by using internet explorer. When she types http://intranet.litware.com into the internet explorer address bar, an error message reports that the digital certificate is not from a trusted source. You confirm that the intranet web server is using a digital certificate issued by your company's Enterprise Certificate Authority. The Enterprise Certificate Authority is locate on a server named certificates.litwareinc.com You need to ensure that Katherine can access the secure intranet web site without receiving an error message. What should you do? 
+A. Ask a network administrator to modify the properties for IIS on intranet.litwareinc.com and set the SSL port number to 443. 
+B. Ask your network administrator to create a Certificate Trust List (CTL. that includes your Enterprise Certificate Authority. On Katherine’s computer, open the Certificates settings for internet explorer and import the CTL. 
+C. On Katherine’s computer, open the security properties for Internet Explorer. Add intranet.litwareinc.com to the Trusted Sites list. 
+D. On Katherine’s computer, open the Security properties for Internet Explorer. Open the Trusted Sites dialog box, and select the Require server verification for all sites in this zone check box. 
+E. On Katherine’s computer, open Internet Explorer’s list of certificates. Import a copy of the certificate used by the intranet.litwareinc.com server into Katherine’s Trusted Publishers certificates store. 
+Answer: E 
+
+13. You are a help desk technician for your company. Irene is a user in the human resources department. She often works with documents that contain confidential information. Irene creates a folder named Private on volume C. Volume C is an NTFS volume on her Windows XP Professional computer. Then she adds the confidential files to the Private folder. Whenever Irene opens a file, any subsequent temporary files are created within the same folder as the source document. You need to configure Irene’s computer so that only she can access the confidential documents. You also need to minimize the impact of the configuration on her computer’s performance. What should you do? 
+A. In the Encrypted data Recovery Agents policy for the local computer, import a certificate. Compress the contents of volume C. 
+B. Instruct Irene to modify the properties of each file in the Private folder by selecting the option to encrypt the contents of the files. 
+C. Instruct Irene to modify the properties of the Private folder by selecting the option to encrypt the contents of the folder. Then instruct Irene to accept the default setting on the Confirm Attributes Changes dialog box. 
+D. Ensure that Irene has Allow-Full Control permission on the Private folder. Instruct Irene to modify the properties of the Private folder and then select the option to compress the contents of the folder. 
+Answer:C 
+
+14. You are a help desk technician for your company. Your company's network includes an Active Directory domain and Windows XP Professional computers that are configured as members of the domain. Company policy prohibits users from accessing their computers unless they are authenticated by a domain controller. However, users report that they can log on to their computers, even though a network administrator has told then that a domain controller is not available. As a test, you log off of your computer and disconnect it from the network. You discover that you can log on by using your domain user account. You need to ensure that users cannot access their computers unless they are authenticated by a domain controller. How should you configure the local computer policy on these computers? 
+A. Enable the Require domain controller to unlock policy. 
+B. Set the Number of previous logons to cache policy to 0. 
+C. Remove all user and group accounts from the Log on locally user right. 
+D. Remove all user and group accounts from the Access this computer from the network user right. 
+Answer:B 
+
+15. You are the desktop administrator for your company. The network consists of a single Active Directory domain. All users have Windows XP Professional computers, and all users store their data on file servers. No company or user data is stored locally on client computers. Users from the sales department have portable computers. When these users travel, they must be able to use company data files even when they are not connected to the network. Caching of offline files is enabled on all shared folders on the file servers. Offline files are configured on all computers used by employees of the sales department. Additionally, these users select several folders to be made available offline. However, sales department users report that when they are out of the office, the offline files are no available to them. You need to ensure that the offline files are available to the sales users, even when they are not connected to the network. What should you do? 
+A. Grant the sales users Allow-Full Control permission on the shared folders. 
+B. Change the caching options for the shared folder to allow automatic caching of documents. 
+C. Add the servers containing the sales department files to the Exception list on the offline files configuration. 
+D. In the Advanced properties for Offline Files, select the Notify me and begin working offline check box on each of the sales department client computer. 
+Answer:B
+
+16. You are a help desk technician for your company. Your company uses a custom database application to track sales information. The database application saves its data in files with a .dta file extension. The .dta files are stored in the same shared folder as several shared Microsoft word 2002 documents. Your manager reports that the application’s .dta files are becoming corrupted. Each time the files are corrupted, they must be restored from a tape backup. Users with portable computers often select the Word 2002 documents in the shared folder to be made available offline. You discover that several users also select the .dta files to be made available offline. You need to ensure that users cannot make the .dta files available offline. Your solution must not affect user access to the other files in the folder. What should you do? 
+A. Use Remote Assistance to disable offline files on the local computer policy of all portable computers. 
+B. Modify the file share that contains the .dta files, and disable offline file caching. 
+C. Ask a network administrator to modify the file permissions on the .dta files to assign all users the Deny-Change permission. 
+D. Ask a network administrator to modify the domain security policy to add the .dta file type to the File not caching domain group policy. 
+Answer:D 
+
+17. You are the desktop administrator for your company. You upgrade all computers in the company from Windows 98 to Windows XP Professional. Andrew, a user in the graphics department, works with very large graphics and desktop publishing file. She wants to be able to save his files in a folder named GFX on drive C of his computer. However, Andrew does not have enough free space on the drive. You install a new hard disk on Andrew’s computer and create an NTFS volume named NewVolume. You attempt to mount NewVolume to the GFX fold. However, the option to mount the volume to a folder s unavailable You need to be able to mount the volume to the GFX folder. Which command should you run on Andrew’s computer? 
+A. Convert c:/fs:ntfs 
+B. Convert c:/V/NoSecurity 
+C. Fsutil objected create NewVolume c:\GFX 
+D. Fsutil hardlink create c:\GFXNewVolume 
+Answer:A 
+
+18. You are the desktop administrator of your company's network. You install a print device on a Windows XP Professional computer. This print device should be used only by the desktop administration staff and by managers. You share the printer on the network as DTA-Print and assign Allow-Print permissions to the DTA-S group, which includes staff members’ computers Later, the managers report that they must wait a long time for their jobs to print. You discover that the desktop administration staff generates many problematic print jobs. As a result, the managers’ print jobs must wait a long time in the print queue. You need to ensure that the managers’ print jobs as quickly as possible while minimizing hardware costs. What should you do? 
+A. Install a second printer for the same print device on the Windows XP Professional computer. Share this printer as DTA-Manager and grant allow-Print permission to the DTA-Microsoft group only. Configure a priority setting of 1 on DTA-Print. Configure a priority setting of 99 on DTA-Manager. 
+B. Install a second printer for the same print device on the Windows XP Professional computer. Share this printer as DTA-Manager and grant allow-Print permission to the DTA-Microsoft group only. Configure a priority setting of 99 on DTA-Print. Configure a priority setting of 1 on DTA-Manager. 
+C. Connect a second print device to the Windows XP Professional computer. Create a printer pool from the first defined printer. Configure a priority setting of 1 on the printer pool. Grant Allow-Manage Documents permission to DTA-Microsoft group. 
+D. Connect a second print device to the Windows XP Professional computer. Create a printer pool from the first defined printer. Configure a priority setting of 99 on the printer pool. Grant Allow-Manage Documents permission to DTA-Microsoft group. 
+Answer:A 
+
+19. You are deploying new Windows XP Professional computers in your company. All employees will receive new computers, and their old Windows 98 and Windows 2000 Professional computers will be sold to another company. You must ensure that each employee’s documents, personal data, Microsoft Office XP settings, and desktop settings are copied from their old computers to their new computers. You want this data to be copied to the new computer when Windows XP Professional is installed. What should you do? 
+A. Run the Scanstate utility on each employee’s computer. Save the information generated by the utility to a shared folder on the network. Run the Loadstate utility in the installation script for each employee’s new computer, specifying the shared folder on the network as the state source. 
+B. Start each employee’s old computer in the Recovery console. Copy the Registry files, documents, and personal data to a removable storage device. In each new computer’s installation script, coy the information from the removable storage device to each new computer. 
+C. Use Windows Explorer to copy all documents and personal data from each employee’s old computer to each new computer. Run the Regedit command to export the Registry to a .REG file. In the installation script for each new computer, copy the documents and personal data to the computer, and import the .REG file. 
+D. Run the Sysprep utility on each employee’s old computer. Use a third-party disk-imaging software utility to create an image of the hard disk. After installing Windows XP Professional, apply the harddisk image to each new computer. 
+Answer:A 
+
+20. You are the desktop administrator for your company. You plan to install Windows XP Professional on a client computer. The computer contains a PCI network adapter, a PCI video adapter, and an industry standard architecture (ISA. SCSI adapter that hosts the hard disk and a CD-ROM drive. After the installation begins, you receive an error message indicating that setup cannot find a hard disk. You verify that the SCSI hard disk is connected and functional. Nevertheless, the error message persists when you restart setup. The installation will not resume. What should you do to complete the installation? 
+A. Disable the APM features in the system BIOS. 
+B. Enable UDMA in the system BIOS for the primary hard disk. 
+C. Reserve an IRQ for the ISA SCSI adapter in the system BIOS. 
+D. Set the system BIOS boot device option to boot from the SCSI hard disk. 
+E. Restart Setup and install the driver for the SCSI adapter while initially copying the files. 
+Answer:E 
+
+21. You are the administrator of your company's network, which includes an Active Directory domain. Your company hires Julie to help deploy Windows XP Professional to 200 new computers. You create a new domain user account for Julie and add it to the Domain Users group. Julie is able to perform the Windows XP Professional installation on the new computers, but she is unable to add the computers to the Active Directory domain. She verifies that the computers are connected to the network and that they are receiving IP configuration information from your company's DHCP server. You need to ensure that Julie can add the new computers to the Active Directory domain. You also need to ensure that Julie does not have any unnecessary security privileges on the network. What should you do? 
+A. Add Julie’s domain use account to the Server Operators domain user group. 
+B. Use the Delegation of Control Wizard to grant Julie’s domain user account the right to create new objects in the computers container. 
+C. On a domain controller, use the Local Computer Policy MMC to add Julie’s domain user account to the add workstations to domain user right policy. 
+D. Install the Active Directory users and computers MMC on Julie’s Windows XP Professional computer. Add Julie’s domain user account top the domain Administrators domain user group. 
+Answer:C 
+
+22. You are the desktop administrator for your company. You install a new driver for the network adapter card on your Windows XP Professional computer. When you restart the computer, the monitor displays a STOP error with no text before you are able to log on. Every time you restart the computer, a STOP error halts the start process. You need to correct the error without affecting the user data on the computer. You also need to restore the original network adapter driver. What should you do? 
+A. Restart the computer with the last known good configuration. 
+B. Restart the computer by using the Recovery console, and stop the Network Connections service. 
+C. Restart the computer by using a Windows XP Professional CD, and select the option to perform an Automated System Recovery (ASR. restore when prompted. 
+D. Restart the computer by using a Windows XP Professional bootable floppy disk, and disable the network adapter. Restart the client computer, and enable the network adapter. 
+Answer:A 
+
+23. You are the desktop administrator for your company. All users in the network have Windows XP Professional computers. Users in the research department have dual-processor computers. Users in the research department report that when they run 16-bit Windows programs, their computer performance becomes very slow. You use system monitor to monitor the users’ computers. You discover that when the users are running their 16-bit applications, one processor shows a sustained utilization of more than 90 percent while the other processor only shows utilization of less than 10 percent. You need to improve application performance for the users in the research department. What should you do? 
+A. Configure each application to run in a separate memory space. 
+B. Configure each application to run in AboveNormal priority class. 
+C. For each application, set the compatibility mode to Windows 95. 
+D. Configure processor affinity for each application to allow it to run on both processors. 
+Answer:A
+
+24. You are a help desk technician for your company. All users have Windows XP Professional computers. Ten users run a custom application named Finance on their computers. Finance stores user passwords in a file named Passwords.ini By default, the passwords.ini file is stored in a folder named C:\Winnt\App 1. The location and name of the file can be changed by an administrator. Each Passwords.ini file is unique. Each computer contains a single logical drive, which is drive C and is formatted as NTFS In order to comply with a new company security policy, you need to ensure that the Passwords.ini files are encrypted. What should you do? 
+A. In the Properties of the C:\Winnt\App1 folder, use Windows Explorer to select the option to encrypt the contents of the folder. Accept the default settings on the Confirm Attributes Changes dialog box. 
+B. Ask a network administrator to share a new encrypted folder named PassFiles on a network server and to permit users to read the files contained within the folder. Copy the passwords.ini file from each computer into the PassFiles folder. On each computer, configure Finance to use the Passwords.ini file in the PassFiles folder. 
+C. Create a folder named C:\Files. Copy the Passwords.ini file to the C:\Files folder. In the properties of the C:\Files folder, select the option to encrypt the contents of the folder. Accept the default settings on the Confirm Attributes Changes dialog box. Configure Finance to use the C:\Files\Passwords.ini file. 
+D. Create a folder named C:\Files. Move the passwords.ini file to the C:\Files folder. Instruct the user of each computer to open the properties of the C:\Files folder and select the option to encrypt the contents of the folder. Accept the default settings on the Confirm Attributes Changes dialog box. Configure Finance to use the C:\Files\Passwords.ini files. 
+Answer:D 
+
+25. You are the desktop administrator for your company. Your company's software developers use Windows XP Professional and IIS on their client computers to develop web-based applications. One of the developers reports that he can no longer access the web-based application on his desktop by using his web browser. When you attempt to access the application by using your web browser, you receive the following error message, “Cannot find server or DNS Error.” You verify that the world wide web publishing service is started on the developer’s computer. You also verify that you are using the correct URL to access the developer’s computer by using your web browser. You need to ensure that the developer can access the web application by using his web browser. How should you configure the developer’s computer? 
+A. Start the default web site. 
+B. Start the IIS Admin Service. 
+C. Run the IPconfig/registerdns command. 
+D. In the default web site properties, disable the host header setting. 
+Answer:D
+
+26. You are the desktop administrator for your company. Your company has offices in Los Angeles and New York. Both offices are connected by a wide area network (WAN. connection. The networks at both offices include Windows XP Professional computers. The company uses a single Active Directory domain that includes a Microsoft exchange 2000 server computer. Neither office is connected to the Internet. Peter is a member of the marketing department in the New York office. Peter needs to use Remote Assistance to obtain help from another marketing employee in Los Angeles. However, when Peter attempts to send a remote assistance invitation by using Windows Messenger, and error message reports that he does not have a Net Passport. You need to ensure that Peter can send a Remote Assistance invitation by using Windows messenger. How should you configure Peter’s computer? 
+A. Configure Windows Messenger to log on by using an exchange account. 
+B. Install MSN Explorer. Configure to log on using a valid Net Passport. 
+C. Configure Windows Messenger to log on using a valid Net Passport user name and password. 
+D. Install a modem. Configure the modem to dial up to an internet service provider when an internet connection is required. 
+Answer:A 
+
+26. You are a help desk technician for your company. Michael and Veronica are users in your company's marketing department. Michael and Veronica use Windows XP Professional portable computers. Michael and Veronica use Internet explorer to connect to a web-based internet e-mail service. Michael reports that he is required to provide a user name and password each time he accesses the web site. However, Veronica is not required to log on each time she accesses the web site. The web site remembers Veronica’s user name and password. You need to configure Michael’s computer so that the web site can remember his user name and password. How should you configure internet explorer on Michael’s computer? 
+A. Set the security level for the internet zone to medium. 
+B. Set the privacy configuration for First party cookies to accept. 
+C. Modify the privacy configuration so that the Always allow session cookies check box is selected. 
+D. Modify the security configuration so that the internet e-mail web site is included in the Trusted Sites list. 
+Answer:B 
+
+27. You are a help desk technician for your company. Your Windows XP Professional computer is connected to the company network, which is connected to the internet via a T1 line. Your computer hosts a web site that is accessed by other help desk technicians. You set up a new Windows XP Professional computer at home. The home computer is connected to the internet via a cable modem that is always on. The home computer is configured to use a static IP address assigned by your internet service provider. You want to use a remote desktop connection to control your home computer while you are at work. However, you want to prevent any other internet traffic from reaching the home computer. You verify that your company's internet firewall permits remote desktop connection traffic. Which two actions should you take? (Each Answer: presents part of the solution. Choose two. 
+A. On your office computer, enable the internet connection firewall. 
+B. On your office computer, enable internet connection sharing. 
+C. On your home computer, enable internet connection sharing. 
+D. On your home computer, enable the internet connection firewall. 
+E. On your home computer, enable the Remote Desktop Option in the internet connection firewall services. 
+F. On your home computer, enable the web Server (HTTP. option in the internet connection firewall service. 
+G. On your home computer, select the internet connection Sharing Advanced tab. Select the establish a dial-up connection whenever a computer on my network attempts to access the internet check box. 
+Answer:DE 
+
+28. You are the desktop administrator for your company. You are using RIS to install Windows XP Professional on a new computer. You start the computer, but instead of connecting to your network RIS server, your computer returns the following error message, “Operating system not found.” You verify that the computer contains a PXE-compliant network adapter that is connected to your network. You need to start the computer and connect to your network RIS server. What should you do? 
+A. Ask a network administrator to modify the network DHCP server to include a DHCP reservation for the computer. 
+B. Ask a network administrator to modify the RIS server permissions to grant your domain user account Allow-Read permission on the RIS images. 
+C. Modify the computer’s BIOS settings, and ensure that the computer is configured to boot from the network. 
+D. Modify the computer’s BIOS settings, and ensure that the computer’s boot password is the same as the RIS server’s Administrator password. 
+Answer:C 
+
+29. You are the desktop administrator for your company. Your Windows XP Professional computer is configured to use an external fax modem. The fax modem is configured to send and receive faxes. You install a new application that requires the computer to be restarted. After the computer restarts, you can no longer send and receives faxes. When you open the Fax console, you notice that the options to send and receive faxes are unavailable. You need to configure your computer to send and receive faxes. What should you do? 
+A. Turn the fax modem off and then on again. 
+B. Configure the Fax service to start automatically. Then start the Fax server. 
+C. Use the fax configuration wizard to configure the fax modem to send and receive faxes. 
+D. Log on as a local administrator, and grant your user account Allow Full Control Permission on the fax printer driver. 
+Answer:C 
+(If the fax service is stopped the options send and receiva are still available. 
+
+30. You are a help desk technician for your company. All employees use Windows XP Professional computers. A salesperson named Philippe receives a removable disk drive cartridge from his supervisor. Philippe now reports that he cannot edit files on the cartridge, he receives an “access denied” error message. Philippe’s supervisor is currently out of the office. You place the cartridge in the removable drive on your computer. You receive the same “access denied” error message when you try to access the files and folders. You call Philippe’s supervisor. She asks you to grant permission to access the contents of the cartridge only to Philippe. However, she also wants to prevent Philippe from changing permissions on the contents of the cartridge. Which two actions should you take? (Each correct Answer: presents part of the solution. Choose two. 
+A. As administrator, take ownership of the files and folders. 
+B. As administrator, grant your help desk user account Allow-Full Control permission on the files and folders. 
+C. Grant Philippe Allow-Modify permission on the files and folders. 
+D. Grant Philippe Allow-Full Control permission on the files and folders. 
+E. Grant Philippe Allow-Take Ownership permission on the files and folders. 
+Answer:AC 
+
+31. You are the desktop administrator for Wide World Importers. You have installed Windows XP Professional on a portable computer for a user named Bruno. Bruno travels between the main office in New York and the branch office in Tokyo. Bruno needs to create documents in the English and Japanese languages. You need to provide an easy method for Bruno to switch between languages. You also need to allow Bruno to create documents in the selected language immediately. How should you configure the Regional and Language Options on Bruno’s computer? 
+A. In the Languages options, configure the Language bar to show additional Language bar icons. 
+B. In the Languages options, select the Install files for complex script and right-to-left languages (including Thai. check box. 
+C. In the Languages options, select the Install Files for East Asian languages check box. Add Japanese as an input language. 
+D. In the Advanced options, select Japanese as the Language for non-Unicode programs. In the Language options, add the Japanese keyboard/ME layout. 
+Answer:C 
+
+32. You are the desktop administrator for Contoso,Ltd. A graphic designer named Peter saves all his files in the My Documents folder on his Windows XP Professional computer. Peter now needs o work on several computers each day to complete his work. Peter needs to be able to access his files at any time. You implement a roaming user profile and home directory for Peter. However, Peter reports that when he uses his roaming profile, it takes 10 minutes for him to log on to computers other than his own. You need to reduce the amount of tie it takes for Peter to log on to computers when using his roaming profile. What should you do? 
+A. Change the UNC path of Peter’s roaming profile to his home directory folder. 
+B. Log on as a local administrator on Peter’s computer. Change the roaming profile to a local profile. 
+C. Log on as a local administrator on Peter’s computer. Edit the local Group Policy to exclude Directories in Roaming Profile. 
+D. Log on as a local administrator on Peter’s computer. In the properties of the My Documents folder, change the Target folder location to Peter’s home directory. 
+
+33. You are moving files from the folder \OLD to the folder \NEW on the same volume. The \OLD folder is compressed using Windows XP NTFS compression, but the \NEW folder is not. What will the compression status of the files be once the move has completed? 
+A. The files are uncompressed 
+B. The files are compressed 
+C. An error is returned because the files cannot be moved until their compression status matches that of the destination folder. 
+D. The destination files are not compressed because Windows XP automatically changes the type of file transfer to copy instead of move to allow the transfer method 
+Answer:B 
+
+34. You want to use the User State Management Tool (USMT. to migrate 50 users from Windows NT 4.0 Workstation systems to new Windows XP Professional systems. You've decided to run a script to expedite the process. You can run two executable files from a command prompt. Which of the following would you run on each system? (Select two.. 
+A. Run scanstate.exe on the NT 4.0 systems. 
+B. Run dumpstate.exe on the NT 4.0 systems. 
+C. Run loadstate.exe on the NT 4.0 systems. 
+D. Run scanstate.exe on the XP Pro systems. 
+E. Run dumpstate.exe on the XP Pro systems. 
+F. Run loadstate.exe on the XP Pro systems. 
+Answer:AF 
+
+35. Which of the following methods can you use to generate a list of signed drivers on your Windows XP Professional system? (Select all that apply.. 
+A. At a command prompt, type drivers signed 
+B. At a command prompt, type msinfo signed 
+C. At a command prompt, type msinfo In the system information window that appears, select "Software Environment," then "Signed Drivers." 
+D. At a command prompt, type msinfo32 In the system information window that appears, select "Software Environment," then "Signed Drivers." 
+E. At a command prompt, type winmsd In the system information window that appears, select "Software Environment," then "Signed Drivers." 
+Answer:ED
+(When I type msinfo32 at the command prompt I get an error, so D could not be right. 
+
+36. You are the desktop administrator for your company. You are responsible for automating the deployment of Windows XP Professional to new computers in your company. You are preparing a Windows XP Professional computer, which you will use to test disk imaging. You install Windows XP Professional on the test computer and run the Sysprep utility. You use a third-party software package to create a disk image to a new computer and then restart the computer. Instead of completing the Windows XP Professional installation, the computer starts the Windows Welcome program, requiring you to enter additional setup information. Because you will be deploying a large number of computers, you want to ensure that the disk image can be applied without additional user interaction. What should you do? 
+A. Use a network-based RIS server to apply the disk image to new computers. 
+B. On the test computer, run the Sysprep-factory command. Re-create the disk image by using the third-party software. 
+C. Use setup manager to create a Sysprep Answer: file. Copy the Answer: file to a floppy disk, and insert the disk into new computers when the disk image is applied. 
+D. Create an Unattend.txt Answer: file. Copy the file to the C:\Winnt\System32 folder on the text computer. Run the Sysprep utility and re-create the disk image by using the third-party software. 
+
+Answer:C 
+
+37. You are the desktop administrator for Adventure Works. You perform a clean installation of Windows XP Professional on 25 computers. All of these computers are part of a workgroup named Dev. All of the computers in Dev are configured to require a user name and password for logon. Thirty day after the installation, all users in the Dev workgroup report that they cannot log on to their computers. How should you correct this problem? 
+A. Use the Windows product Activation wizard on all computers to activate Windows XP Professional via the Microsoft Clearing House. 
+B. On each computer, log on as a local administrator and reset the user password at the next logon. 
+C. Restart each computer in safe mode, and change the local account policy expiration from 30 days to zero days. 
+D. Restart each computer in safe mode. Use system restore, specifying the restore point that was created after the clean installation of Windows XP Professional. 
+Answer:A 
+
+38. You and Stephan are the desktop administrators for your company. You install a printer on your Windows XP Professional computer. You share his printer on the company network. You want to ensure that only members of the DTAdmins local group can use this printer, and that only you and Stephan can manage the printer and all print jobs. You also want to ensure that members of the DTAdmins local group can manage only their own print jobs. How should you configure security on this printer? 
+A. Grant Allow-Print permission to the DTAdmins group. Grant Allow-Manage Documents permission to your user account and o Stephan’s user account. 
+B. Grant Allow-Print permission to the DTAdmins group. Grant Allow-Manage Documents and Allow-Manage Printers permissions to your user account and o Stephan’s user account. 
+C. Grant Allow-Manage Documents permission to the DTAdmins group. Grant Allow-Manage printers permission to your user account and o Stephan’s user account. 
+D. Grant Allow-Print permission to the DTAdmins group. Remove Allow-Manage Documents permission from the Creator Owner group. Grant Allow-Manage Printers permission to your user account and o Stephan’s user account. 
+Answer:B 
+
+39. You are a help desk technician for your company. A user named Bruno has a Windows XP Professional portable computer that contains two hard disks, which are configured as logical drives C and D. Both hard disks are formatted as NTFS. You run the Cachemove utility to move Bruno’s Client Side Cache (CSC. to the D:\Data\CSC folder. Bruno now reports that his offline files cannot be synchronized. He does not receive any error messages or warnings to indicate the source of the problem. Whenever Bruno tries to synchronize the files, Synchronization Manager reports that the synchronization completed successfully. However, when he opens the file, it is not the correct version. You verify that the D:\Data\CSC folder exists on Bruno’s computer. You need to ensure that Bruno can synchronize his offline files. What should you do? 
+A. On Bruno’s computer, re-initialize the offline files CSC. 
+B. Instruct Bruno to delete the offline files on his computer. 
+C. On Bruno’s computer, modify the NTFS permissions on drive D to grant Bruno the ability to create new folders. 
+D. Ask a network administrator to modify the server-based file permissions on Bruno’s files so that Bruno has Allow-Read permission on each file. 
+Answer:A
+
+40. You are the desktop administrator for your company. All employees use Windows XP Professional computers. A user named Julie is a member of the sales user group. She reports that she cannot save a sales report spreadsheet o a shared folder on another computer. You examine the shared folder, which has the permissions shown in the table in the exhibit. You need to ensure that Julie can save her spreadsheet to the shared folder. What should you do? 
+A. Grant Julie Allow-Modify shared folder permission. 
+B. Grant the Sales group Allow-Modify NTFS permission. 
+C. Grant Julie Allow-Full Control shared folder permission. 
+D. Grant the sales group Allow-Create Files/Append Data NTFS permission. 
+Answer:B
+(Missing table, so can’t verify that. 
+
+41. You are the desktop support technician for Margie’s travel. Every day, a user named Andrea successfully faxes travel itineraries from her Windows XP Professional computer. Andrea’s computer is configured to use an external fax device. The fax device is configured to receive faxes. However, Fax monitor does not Answer: any incoming calls. You need to configure Andrea’s computer to receive faxes. What should you do? 
+A. Restart Andrea’s computer. 
+B. Turn the external fax device off and then on again. 
+C. Use the fax monitor to manually Answer: the incoming fax calls. 
+D. Configure the fax device to automatically Answer: incoming fax calls after the first ring. 
+Answer:D 
+
+42. Your Windows XP Professional system has three hard disks-one 10GB disk, one 20GB disk, and one 50GB disk. You want to boot from the 10GB disk, combine the other two disks into one 70GB volume, and mount the volume on the 10GB disk under a folder named Mountpoint. 
+The 20GB and 50GB disks are running off of the 20GB disk's IDE controller. The 10GB disk and your DVD-ROM drive are running off of the 10GB disk's IDE controller. Which of the following statements are true? (Select all that apply.. 
+A. You can't mount another volume off of the boot partition. 
+B. You must convert the 10GB disk and the 50GB disk to dynamic disks. 
+C. You must convert the 10GB disk and the 20GB disk to dynamic disks. 
+D. You must convert all disks to dynamic disks. 
+E. You don't need to convert any disks to dynamic disks. 
+F. You must create a spanned volume. 
+G. You must create a mirrored volume. 
+H. You can open the Computer Management console's Disk Management tree, right-click the volume, and select "Change Drive Letters and Paths" to mount the new volume in the Mountpoint folder. 
+Answer:FH 
+
+43. Which of the following correctly identifies the files that load the kernel, the hardware abstraction layer (HAL., and the registry information during startup on Windows XP 64-bit and Windows XP Professional machines? (Select the best answer.. 
+A. Windows XP 64-bit: ntdetect.com; Windows XP Pro: ntdetect.com 
+B. Windows XP 64-bit: ntoskrnl.exe; Windows XP Pro: ntdetect.com 
+C. Windows XP 64-bit: ia64ldr.efi; Windows XP Pro: ntdetect.com 
+D. Windows XP 64-bit: ia64ldr.efi; Windows XP Pro: ntoskrnl.exe 
+E. Windows XP 64-bit: ia64ldr.efi; Windows XP Pro: ia64ldr.efi 
+Answer:D 
+
+44. You are the desktop administrator for your company. A graphics designer named Eric installs a photo editing application on his Windows XP Professional computer. After the installation, performance on his computer is significantly slowed. In an attempt to resolve the problem, Eric uninstalls the photo editing application and restarts his computer. However, performance is not improved. You want to ensure that you preserver Eric’s data and his computer settings while returning his computer to its previous working condition as quickly as possible. What should you do? 
+A. Restart the computer with the last known good configuration. 
+B. Use disk Defragmenter on the computer’s hard disk. 
+C. Restore Windows XP Professional by using the most current system restore point. 
+D. Restore Windows XP Professional by using an Automated system recovery (ASR. backup. 
+Answer:C 
+
+45. You are the desktop administrator for your company. A remote sales representative named Laura uses a Windows XP Professional portable computer. Laura travels to customer locations daily, and she usually works from home. She does not use a docking station when she starts the computer at home. Each time Laura starts her computer, she is prompted to choose between the Docked and Undocked hardware profiles from the Hardware Profile Menu. You need to ensure that Laura is not prompted to choose a hardware profile each time she start her computer. You also eed to allow her computer to start automatically with the undocked profile and without delay. How should you configure Laura’s computer? 
+A. Modify the BIOS settings, and disable support for the docking station. 
+B. Modify the hardware profiles, and remove the Docked hardware profile. 
+C. Modify the Device Manager settings to disable all devices used by the docking station. 
+D. Configure the hardware profiles so that the Undocked hardware profile is the default hardware profile for startup. 
+Answer:B 
+
+46. A senior manager has asked you to help her disable a particularly annoying application that runs every time she logs on. Unfortunately, the application is corrupt and locks up the system, so the manager can't delete the application by removing it from the Startup folder. When you arrive at her office, the boot process has progressed to the point where the logon banner appears. You want to deal with this problem as expeditiously as possible, which means that you don't want to reboot back into Safe mode. Which of the following steps should you take? (Select the best answer.. 
+A. Press Ctrl+Alt+Del and log on. When the logon process begins, hold down the Alt key to prevent all Startup programs from running. 
+B. Press Ctrl+Alt+Del and log on. When the logon process begins, hold down the Shift key to prevent all Startup programs from running. 
+C. Press Ctrl+Alt+Del and log on. When the logon process begins, hold down the Break key to prevent all Startup programs from running. 
+D. Press Ctrl+Alt+Del and log on. When the logon process begins, hold down the space bar to prevent all startup programs from running. 
+Answer:B 
+
+47. You visit a regional office in New York to install and upgrade that office's Windows 2000 Server cluster. You also install Windows XP Professional on a secretary's workstation. You use Win2K Server Terminal Services across the WAN from your office in Los Angeles to manage other Win2K Server clusters in Denver, Des Moines, and Duluth, and you want to test the Remote Desktop function as a precursor to migrating away from PC Anywhere for desktop management. You enable Remote Desktop on the secretary's system, install the regular applications, enable access to your user account, then return to your office. 
+Which of the following steps should you take to connect to the secretary's machine in New York with a minimal amount of effort? (Select all that apply.. 
+A. Install an XP Pro machine in your office and select Remote Desktop Client. 
+B. Connect using the Terminal Services client on the Win2K Pro workstation in your office. 
+C. Make sure port 3389 is open on the WAN links between your office and the New York office. 
+D. Make sure port 1168 is open on the WAN links between your office and the New York office. 
+E. On the XP Pro machine in your office, go to My Network Places, Entire Network, Microsoft Terminal Services, and select the secretary's machine. 
+Answer:BC 
+
+48. You want to issue a command on your Windows XP Professional machine to monitor a remote XP Pro workstation and run the execute.bat file in your C:\bin directory whenever an event with event ID 4133 occurs with an error in the remote machine's System event log. The remote XP system's name is ridcully, and it's a member of the same domain as your XP system. Your account has Domain Administrator access. Which of the following commands should you run? (Choose the best answer.. 
+A. trigger /create /s ridcully /tr "execute" /eid 4133 /l system /t error /tk c:\bin\execute.bat 
+B. logscan /create /s ridcully /tr "execute" /eid 4133 /l system /t error /tk c:\bin\execute.bat 
+C. logfind /create /s ridcully /tr "execute" /eid 4133 /l system /t error /tk c:\bin\execute.bat 
+D. eventtriggers /create /s ridcully /tr "execute" /eid 4133 /l system /t error /tk c:\bin\execute.bat 
+Answer:D 
+
+49. You are the desktop administrator for your company's network. You are preparing a Windows XP Professional computer for Carlos, a new user in the sales department. This computer formerly belonged to an employee named Anne. Carlos requires access to all of Anne’s files, but he does not have the appropriate permissions. You log on as the local administrator and attempt to reassign permission so Carlos can access Anne’s files. However, you receive an “access denied” error message. You need to ensure that Carlos can access Anne’s file. What should you do? 
+A. Copy Anne’s account and name the new account Carlos. 
+B. Give Carlos ownership of the files and folders on the computer. 
+C. Grant Carlos Allow-Change Permissions permission on the files and folds on the computer. 
+D. Take ownership of the files and folders on the computer, and grant Carlos Allow-Full Control permission. 
+Answer:D 
+
+50. You are the desktop administrator for your company. You install a new printer on your Windows XP Professional computer. You share this printer with several users in your department. When you attempt to print to this printer, the output is several pages of unreadable characters. Other users report similar results. You need to ensure that the appropriate users can successfully print to this printer. What should you do? 
+A. Configure the printer to print directly to the print device. Instruct the other users to make the same configuration. 
+B. Configure the printer to use the WinPrint print processor and to use RAW as the default data type. 
+C. Configure the printer to hold mismatched documents. Disable the advanced printing features. 
+D. Run the AddPrinter Driver Wizard to install the correct printer driver on your computer. Instruct the other users to disconnect and then reconnect to your shared printer. 
+Answer:D 
+
+51. Which of the following best describes the difference between Windows XP's Remote Desktop and Remote Assistance features? (Choose the best answer.. 
+A. There's no difference--Remote Desktop and Remote Assistance are the same thing. 
+B. Remote Assistance lets you view a remote desktop but doesn't let you interact with it; Remote Desktop lets you interact with another user's desktop settings. 
+C. Remote Assistance lets you view a remote desktop but doesn't let you interact with it; Remote Desktop lets multiple users connect to an XP Professional workstation in the same way Windows 2000 Server Terminal Services Application Server does. A maximum of five users can connect to the Remote Desktop at any time. 
+D. Remote Assistance lets you view a remote desktop but doesn't let you interact with it; Remote Desktop lets multiple users connect to an XP Pro workstation in the same way that Win2K Server Terminal Services Application Server does. A maximum of two users can connect to the Remote Desktop at any time. 
+E. Remote Assistance lets you view a remote desktop but doesn't let you interact with it unless the remote user permits you to; Remote Desktop lets you remotely connect to your workstation as if you were directly connected. 
+Answer:E 
+
+52. You are a help desk technician for your company. A portion of your company's network is shown in the exhibit. Michael is an employee in your company's marketing department. Michael uses a Windows XP Professional computer that is located on Subnet A. You use a Windows XP Professional computer that is located on Subnet B. The company's firewall does not use Network Address Translation (NAT.. Michael sends you a Remote Assistance invitation. In Windows messenger, you accept the invitation, but you cannot connect to Michael’s computer. Next, you run the Ping command, which verifies connectivity to Michael’s computer. You need to establish a Remote Assistance connection with Michael’s computer. What should you do next? 
+A. Ask your firewall administrator to open the TCP/IP ports that are used by Windows Messenger. 
+B. Ask your firewall administrator to open the TCP/IP ports that are used by Remote Desktop Services. 
+C. Instruct Michael to create an invitation file and then e-mail the file to you as a file attachment. When you receive the e-mail, open the file attachment. 
+D. Instruct Michael to edit the System properties for his computer and add your domain user account to the Remote Desktop Users list on the Remote tab. 
+Answer:B
+(Even without exhibit you can see this. 
+
+53. You are the administrator for your company. You have just installed Windows XP Professional on a portable computer for a user named Andrew. The computer is configured to have a modem and Ethernet PC card.At the office, Andrew uses his computer in a docking station. At home, he uses his computer in an undocked state by using the power adapter.Andrew travels to customer locations frequently. While travelling, he creates and edits documents. When he returns from a customer location, he information you that the battery power in his computer has not lasted as long as he would like.You need to configure Andrew¯s portable computer to conserve battery power for his sales trips. Whatshould you do? 
+A. Modify the Device Manager settings to disable all devices used by the docked hardware profile 
+B. Restart the computer in the undocked profile. In control panel, disable the server service in the services options 
+C. Configure the hardware profiles so that the Undocked hardware profile is at the top of the list of available hardware profiles. 
+D. Create a new hardware profile named Remote. Use Device Manager to disable the modem and Ethernet PC card devices for this hardware profile. 
+Answer:D 
+
+54. You are the desktop administrator for your company. You install Windows XP Professional on your portable computer. The computer is configured to use an IEEE 1394 PC card. You use the computer to download pictures from a digital camera while you are at the office. You attend a meeting every Monday. During the meeting you use a battery to supply power to your portable computer. Occasionally, the battery runs out of power during these meetings. You need to configure the computer to conserve battery power while you attend your weekly meeting without affecting your power options when you use the computer at your office. How should you configure your computer? 
+A. Use Device Manager to disable the IEEE 1394 PC card power device. 
+B. In control panel, select the Minimal Power Management power scheme in the Power Options Properties. 
+C. Create an additional hardware profile, and disable the IEEE 1394 PC card for this profile. 
+D. Use Device Manager to configure the IEEE 1394 PC card Host Controller power management scheme. Select the Allow this device to bring the computer out of standby check box. 
+Answer:C 
+
+55. You are the desktop administrator for the Graphic Design Institute. You have just deployed new Windows XP Professional computers to all graphic designers. Each computer has a built-in tape drive for data backups. The graphic designers need to back up their own data to the tape drive. You add all graphic designers¯ user accounts administrator members of the Backup Operators group on their computers. Then you instruct the graphic designers to create a full backup of all their data every Monday morning. The graphic designers need to back up all of their data once a week. They also need to back up all the changes since the last full backup. The graphic designers want to use a backup method that allows them to recover their data as quickly as possible. What should you advise the graphic designers to do? 
+A. Perform a Differential backup every Monday. Create an Incremental backup for Tuesday,Wednesday, Thursday, and Friday. 
+B. Perform a Daily backup every Monday. Create an Incremental backup for Tuesday, Wednesday,Thursday, and Friday. 
+C. Perform a normal backup every Monday. Create an Incremental backup for Tuesday, Wednesday,Thursday, and Friday. 
+D. Perform a copy backup every Monday. Create an Incremental backup for Tuesday, Wednesday,Thursday, and Friday. 
+Answer:C 
+
+56. You are the desktop administrator for your company. All users have Windows XP Professional or Windows 2000 Professional computers. Users in the accounting department run an application that requires several hours to process financial and accounting data.Users in the accounting department report that when they run this application, the performance of other business applications becomes significantly slower.You need to allow the accounting application to run with the least amount of performance impact on the other business applications. How should you configure the users¯ applications? 
+A. Configure all other business applications to have High priority. 
+B. Configure all other business applications to have Realtime priority. 
+C. Configure the accounting application to have AboveNormal priority. 
+D. Configure all accounting application to have BelowNormal priority. 
+Answer:D 
+
+57. You are the desktop administrator of your company. A user named Andrew has just dropped his Windows XP Professional portable computer on the floor.Andrew reports that when he turns on his portable computer, he receives the following message: °System disk not found.± You confirm that the hard disk on Andrew¯s computer is functioning properly. The portable computer has an Automated System Recovery (ASR. backup of the original system state. You verify that Andrew had created a restore point before the accident. You need to ensure that Andrew¯s computer can start Windows XP Professional from the hard disk.What should you do? 
+A. Restart the computer with the last known good configuration 
+B. Restart the computer in safe mode. Restore Windows XP Professional by using the latest restore point. 
+C. Restart the computer by using a Windows XP Professional CD. Perform an ASR restore. 
+D. Restart the computer by using a bootable floppy disk. Restore the operating system by using the Ntbackup utility and the latest ASR backup. 
+Answer:C 
+
+58. You are a help desk technician for your company. Susan is an executive. Because Susan travels frequently, she uses a Windows XP Professional portable computer that has a smart card reader. Susan asks you to configure her computer so that she can dial in to the company network when she is out of the office. Company security policy states that dial-in users must use a smart card when they connect to the network, and that the users must use the strongest form of data encryption possible. Company security policy also states that client computers must disconnect if the routing and remote access server does not support both smart card authentication and the strongest possible authentication.You need to configure the dial-up connection properties on Susan¯s computer to dial in to the company network. Your solution must ensure that company security policies are enforced. Which three actions should you perform? (Each correct Answer: presents part of the solution. Choose three. 
+A. Select the Advanced (custom settings. security option. 
+B. Select the Require data encryption check box. 
+C. Select the Typical (recommended settings. security option. 
+D. Select the Use smart card item from the Validate my identity as follows list. 
+E. Select the Maximum strength encryption item from the Data encryption list. 
+F. Select the Allow these protocols option, and select the MS-CHAP v2 check box. 
+G. Select the Extensible Authentication Protocol (EAP. option, and select Smart Card or other Certificate from the EAP list. 
+Answer:AEG
+(Laat je niet in de steek, sorry, Dutch joke. 
+
+59. You are a help desk technician for your company. Stefan and Irene are software developers for yourcompany. Stefan is developing a web application on his Windows XP Professional computer. The computer is named Stefan 132. When Irene types http://Stefan132 in the address bar of her web browser, she cannot access the web application by typing http://localhost or http://Stephan132 in the address bar of her Web browser. She can access other resources on the company network. When you run the Ping command from your computer, you cannot connect to Stephan¯s computer. When you attempt to access http://Stephan132 from your computer, Internet Explorer displays °DNS or Server error.± You need to ensure that Irene can access the Web application on Stefan¯s computer. First, you establish a Remote Assistance connection to Stefan¯s computer. What should you do next on Stefan¯s computer? 
+A. Run the Ipconfig/renew command. 
+B. Stop and then restart the World Wide Web Publishing service. 
+C. Ensure that the Everyone group Allow-Full Control permission on the Inetpub folder. 
+D. In the properties of the Local Area Connection connection, clear the Internet Connection Firewall Check box. 
+Naswer:D 
+
+60. You are a help desk technician for your company. Helene is a user in the sales department who works from home. She reports a problem on her Windows XP Professional computer. You instruct Helene to send you a Remote Assistance invitation, and then disconnects from the ISP. You receive the invitation on your Windows XP Professional computer and instruct Helene to reconnect to her ISP. After you accept the invitation, you cannot connect to Helene¯s computer. You need to establish a Remote Assistance connection with Helene¯s computer. What should you do? 
+A. Run the Ipconfig/flushdns command on your computer, and reaccept the invitation. 
+B. Run the Remote Desktop Connection application on your computer to establish a connection to Helene¯s computer. 
+C. Instruct Helene to disable the Internet Connection Firewall on her computer. From your computer,reaccept the invitation. 
+D. Instruct Helene to send a new Remote Assistance invitation and remain connected to her ISP. From your computer, accept the new invitation. 
+E. Instruct Helene to edit the System properties of her computer and add your domain user account to the Remote Desktop Users list on the Remote tab. From your computer, reaccept the invitation. 
+Answer:D
+(But if it is not a dial-up connection, which is not clear in this question there is no need to resend the invitation, but the answer remains D. 
+
+61. You are a help desk technician for your company. The network consists of a single Active Directory domain. The network includes Windows 2000 Advanced Server computers, and Windows 2000 Professional and Windows XP Professional client computers. Except for the domain controllers, all computers on the network use DHCP for their TCP/IP configuration. During the business day, the network administrators perform emergency maintenance on a file server named Filesrv1. Filesrv1 is then restarted and experiences no further problems. Users begin reporting that when they try to access resources on Filesrv1, they receive the following error message: °Network path not found.± You verify that Filesrv1 is functional. You need to ensure that all users can access Filesrv1. What command should you instruct users to run? 
+A. Nbstat-R 
+B. Nbstat-RR 
+C. IPconfig/flushdns 
+D. IPconfig/registerdns 
+Answer:C 
+
+62. You are the desktop administrator for your company. An employee named Bruno uses IIS to develop a Web application on his Windows XP Professional computer.Bruno creates a new Web page named Private.htm for the Web application. He saves the web page in the C:\Inetpub\wwwroot folder on his computer. Private.htm should be accessible only to users who provide a valid user name and password. Other pages in the web site should be accessible to anyone.Using his web browser, Bruno can access Private.htm without providing a user name or password. The directory security on the web site is configured as shown in the exhibit.You need to ensure that users are required to provide a valid user name and password in order to access Private.htm. What should you do? 
+A. Clear the Anonymous access check box in the web site properties. 
+B. Select the Basic authentication check box in the web site properties. 
+C. Modify the web site properties to enable the session state. Rename Private.htm to Private.asp. 
+D. Modify the security permissions on private.htm to list the users who are authorized to access the file. 
+Answer:A 
+
+63. You are a help desk technician for your company. Irene is a user in the human resources department. She often works with documents that contain confidential information. Irene creates a folder named Private on volume C. Volume C is an NTFS volume on her Windows XP Professional computer. Then she adds the confidential files to the Private folder. Whenever Irene opens a file, any subsequent temporary files are created within the same folder as the source document. You need to configure Irene’s computer so that only she can access the confidential documents. You also 
+need to minimize the impact of the configuration on her computer’s performance. What should you do? 
+A. In the Encrypted data Recovery Agents policy for the local computer, import a certificate. Compress the contents of volume C. 
+B. Instruct Irene to modify the properties of each file in the Private folder by selecting the option to encrypt the contents of the files. 
+C. Instruct Irene to modify the properties of the Private folder by selecting the option to encrypt the contents of the folder. Then instruct Irene to accept the default setting on the Confirm Attributes Changes dialog box. 
+D. Ensure that Irene has Allow-Full Control permission on the Private folder. Instruct Irene to modify the properties of the Private folder and then select the option to compress the contents of the folder. 
+Answer:C 
+
+64. You are a help desk technician for your company. Your company's network includes an Active Directory domain and Windows XP Professional computers that are configured as members of the domain. Company policy prohibits users from accessing their computers unless they are uthenticated by a domain controller. However, users report that they can log on to their computers, even though a network administrator has told then that a domain controller is not available. As a test, you log off of your computer and disconnect it from the network. You discover that you can log on by using your domain user account. You need to ensure that users cannot access their computers unless they are authenticated by a domain 
+controller. How should you configure the local computer policy on these computers? 
+A. Enable the Require domain controller to unlock policy. 
+B. Set the Number of previous logons to cache policy to 0. 
+C. Remove all user and group accounts from the Log on locally user right. 
+D. Remove all user and group accounts from the Access this computer from the network user right. 
+Answer:B 
+
+65. You are the desktop administrator for your company. Maria is one of your company's software developers. Her client computer runs Windows XP Professional and Internet Information services. Her computer is configured with the values shown in the following table: Setting Configured value 
+Computer name MKP01 IP addresses 172.24.67.45 172.24.67.46 Other than these settings, Maria¯s computer uses the default configuration values. The default web site on Maria¯s computer contains a static HTML page. Maria adds a new virtual web site named Web2 to her computer. She installs a new web application in Web2. However, when she types http://MKP01 in the address bar of her web browser, the browser displays the HTML page form the default web site. You need to ensure that Maria can use her web browser to access the application in web2. What should you do? 
+A. Instruct Maria to access the web application by typing http://Web2 in the address bar of her web browser. 
+B. Instruct Maria to access the web application by typing http://172.24.67.45 in the address bar of her web browser. 
+C. Configure the Web2 virtual web site to use the host header name Web2. Instruct Maria to access the web application by typing http://MKP01/Web2. 
+D. Configure the Web2 virtual web site to use the IP address 172.24.67.46. Instruct Maria to access the web application by typing http://172.24.67.46 in the address bar of her web browser. 
+Answer:D
+(Not to verify because of the missing image 
+. 
+66. You are the desktop administrator for your company. You have just set up a new Windows XP Professional computer at home. The computer is always connected to the internet via an ADSL modem. The computer is configured to have a static IP address assigned by your Internet Service Provider. You enable the internet connection Firewall on the ADSL connection. You use the Ping command on your office computer to try to connect to your home computer. However, you receive the following error message: °Request timed out.± You examine the internet connection firewall on your home computer. A portion of the log file is shown here. 
+2001-06-25 15:23:02 DROP ICMP 172.30.23.1 172.30.23.103 - - 60 - - - - 8 0 - 
+2001-06-25 15:23:07 DROP ICMP 172.30.23.1 172.30.23.103 - - 60 - - - - 8 0 - 
+2001-06-25 15:23:13 DROP ICMP 172.30.23.1 172.30.23.103 - - 60 - - - - 8 0 - 
+2001-06-25 15:23:18 DROP ICMP 172.30.23.1 172.30.23.103 - - 60 - - - - 8 0 - 
+You need to ensure that you can connect to your home computer by using the Ping command from your office computer. You also need to prevent any unauthorized access of your home computer by internet users. How should you configure your home computer? 
+A. Clear the Internet Connection Firewall Check box on the Advanced Tab of the ADSL connection. 
+B. Clear the Log dropped packets check box on the security Logging tab of the internet connection firewall settings. 
+C. Select the Allow incoming echo requests check box on the ICMP tab of the Internet connection firewall settings. 
+D. Select the Allow incoming router requests check box on the ICMP tab of the Internet connection firewall settings. 
+E. Select the Allow outgoing destination reachable check box on the ICMP tab of the Internet connection firewall settings. 
+Answer:C 
+
+67. You are a help desk technician for your company, which includes a main office and one branch office. All employees in the main office have Windows XP Professional computers. All employees in the branch office have Microsoft Windows NT Workstation 4.0 Users in the branch office require access to a network printer shared on a Windows XP Professional computer in the main office. Branch office users access this printer by using their web browser software. These users cannot install the printer on their own computers. Branch offices users now report that they are prompted to insert a manufacturer’ disk whenever they try to access the printer by connecting to the company intranet web site. Users in the main office do not report any problems using the printer. You need to make the printer accessible to the branch office users. What should you do? 
+A. Enable the Basic authentication method on the Printers intranet site. 
+B. Enable support for ActiveX control on the branch office computers. 
+C. Configure the browsers on the branch office computers to support automatic logon. 
+D. Disable the Advanced printing features on the Windows XP Professional print server. 
+E. Install the Windows NT Workstation 4.0 printer drivers on the Windows XP Professional print server. 
+Answer:E 
+
+68. You are a help desk technician for your company. Marie is a member of your company's sales department. Marie asks you to configure her XP portable computer so that she can dial in to the company network when she is out of the office. The company uses two servers for Routing and Remote Access: one is Microsoft Windows NT server 4.0 computer, and the other is a Windows 2000 Server computer. Each server contains four modems. Each modem connects to a dial-up telephone line, and a single telephone number distributes incoming calls across the eight telephone lines. Company security policy requires that dial-up logon credentials be encrypted and use themaximum possible security when they are transmitted. You need to ensure that Marie can dial in and log on by using her domain user account. You also need to ensure that company security policy is enforced. How should you configure the security settings for the dial-up connection? 
+A. Select the Typical (recommended settings. option. Select the Require data encryption (disconnect if none. check box. 
+B. Select the Typical (recommended settings. option. Select the Require secured password list item from the validation list. 
+C. Select the Typical (recommended settings. option. Select the Automatically use my Windows logon name and password (and domain if any. check box. 
+D. Select the Advanced (custom settings. option. On the advanced security settings tab, clear all check boxes except the Microsoft CHAP Version 2 (MS-CHAP v2. check box. 
+Answer:C
+
+69. You are a help desk administrator for your company. Eric, an employee in the marketing department, uses a Windows XP Professional computer. Eric often works with a file named Plan.xis, which is stored in a folder named \\MktFiles\Plans. Initially, he can work with the file when he is out of the office and offline, without copying it to his local hard disk. However, Eric now reports that he can no longer open the file when he is out of the office. You need to ensure that Eric can always access Plan.Xis when he is out of office and offline. What should you do? 
+A. Instruct Eric to increase the amount of hard disk space used for offline files on his computer. 
+B. Instruct Eric to right-click the \\MktFiles\Plans\Plan.xis file and select Make available offline from the context menu. 
+C. Instruct Eric to open Windows explorer, select Folder Options from the Tools menu, and select the Enable offline files check box on the Offline Files tab. 
+D. Instruct Eric to open Windows Explorer, select Folder Options from the Tools menu, and select the Synchronize all offline files before logging off check box on the Offline Files tab. 
+Answer:B
+(But how could it be that he could initally use it? But answer B I like most. 
+
+70. You are the desktop administrator for your company. Initially, all employees use Windows 2000 Professional computers. You upgrade all computers to Windows XP Professional users experience no problems after the upgrade is complete. A new user is issued a new client computer that is identical to all other client computer in the company.The user installs Windows XP Professional on this computer from a network installation point. The user now reports that he cannot change his Display settings to anything other than 640 x 480 resolution with 16 color. You verify that this computer has the same video hardware as all the other client computers. You also verify that the hardware vendor does not currently offer a video driver for Windows XP Professional.You need to enable the user to change hisDisplay settings to higher resolution and color quality. What should you do? 
+A. Reboot the computer in safe mode and select the standard VGA video driver. 
+B. Install the Windows 2000 Professional version of the video drivers on the computer. 
+C. On the Monitor tab in the Advanced Display settings, specify the correct driver for the monitor. 
+D. On the Color Management tab in the Advanced Display settings, specify the appropriate color profile for the monitor. 
+Answer:B 
+
+71. You are the desktop administrator for Southridge Video. You have recently installed Windows XP Professional on a portable computer that meets the minimum installation requirements for the operating system. After theinstallation, you attempt to configure hibernation, but this option is unavailable. To ensure that the option becomesavailable, you update the BIOS on the computer. After, the update, the computer displays a STOP error every timeyou attempt to restart the computer. You cannot successfully start the computer.You need to start the computer and enable hibernation. What should you do? 
+A. Use system Restore to restore the last restore point. 
+B. Restart the computer with the last known good configuration. 
+C. Use the Recovery console to add the correct Advanced Configuration and Power Interface (ACPI.HAL to the computer. 
+D. Reinstall Windows XP Professional to enable Advanced Configuration and Power Interface (ACPI.and power management support. 
+Answer:D
+
+72. You are the desktop administrator for the sales department at your company. All employees have Windows XPProfessional portable computers.Sales department users require dial-in access to the company network when they travel to customer locations. These users must also be able to fax documents to customers from their computers.You need to configure network dial-up access immediately for a user named Anne. First, you insert a 56- Kbps PCMCIA fax modem into Anne¯s computer. You restart the computer and log on as a local administrator. Then, you start the Network Connection Wizard. However, the modem does not appear in the list of devices that you can select for marking the dial-up connection. You need to be able to install Anne¯s modem. What should you do? 
+A. Disable the portable computers¯ built-in serial ports. 
+B. Manually install the modem device driver provided by the manufacturer. 
+C. Decrease the maximum port speed on the modem¯s COM port to 57600. 
+D. Set the Driver signing Options to Ignore - Install the software anyway and do not ask for my approval. 
+E. Use the Add or Remove Windows components wizard to install the Fax service. 
+Answer:B 
+
+73. You are a help desk technician for your company. All users have Windows XP Professional computers. A user named Richard reports that he cannot access www.southridgevideo.com, an internet web site, by using Internet explorer. Whenever, Richard types http://www.southridgevideo.com into the Internet explorer address bar, he receives the following error message; “Your security settings prohibit the display of unsigned ActiveX Controls.” According to company policy, users should download unsigned ActiveX control only from Internet Web sites that have been approved by the company's information security department. You verify that www.southridgevideo.com is listed as an approved web site. On Richard’s computer, you also verify that internet explorer is configured with the default settings. You need to ensure that Richard can access www.southridgevideo.com without receiving an error message. You also want to comply with company properties for internet explorer on Richard’s computer. You need to configure Rickards's computer. First, you open the Security properties for Internet Explorer on Richards's computer. Which two actions should you perform next? (Each correct Answer: presents part of the solution. Choose two. 
+A. Add www.southridgevideo.com to the Trusted Sites list. 
+B. Remove www.southridgevideo.com from the Restricted Sites list. 
+C. In the internet zone settings, enable the Allow unsigned ActiveX control option. 
+D. Open the Local intranet sites dialog box and clear the Include all network paths check box. 
+E. Open the Trusted sites dialog box and clear the Require server verification for all sites in this zone check box. 
+F. Open the Intranet sites dialog box. In Advanced properties, add www.southridgevideo.com to the list of web sites. 
+Answer:AE 
+74. You are the desktop administrator for your company. All employees have Windows XP Professional computers. A user named Anne is given a new portable computer. She successfully installs her printer and scanner hardware. Two weeks later, Anne installs and update print driver. When she restarts her computer, she receives the following error message: °STOP.IRQL_NOT_LESS_OR_EQUAL± Anne restarts the computer again, and she receives the same error message. You need to ensure that Anne can successfully start Windows XP Professional. What should you do? 
+A. Restart Anne¯s computer with the last known good configuration. 
+B. Restart Anne¯s computer in safe mode. Log on as a local administrator and set the Driver Signing Options to Ignore-Install the software anyway and do not task for my approval. 
+C. Restart Anne¯s computer in safe mode. Create a local computer policy to enable Windows File Protection. 
+D. Restart Anne¯s computer in recovery console. Enable the new print driver with the Service_system_start parameter. 
+Answer:A 
+
+75. You are the desktop administrator for your company. A graphics designer name Pierre installs a new application and an updated video driver on his Windows XP Professional computer. After the installation, Pierre restarts his computer and logs on. However, when he moves Windows and dialog boxes, the display is distorted. You need to find the correct video driver for the new application. Meanwhile, you need to ensure that Pierre can run his other applications without video distortion. What should you do? 
+A. Use device Manager to roll back the video driver. 
+B. Restart the computer with the last known good configuration. 
+C. Run the Msconfig utility, and select the /BASEVIDEO check box. 
+D. Use the Add Hardware Wizard to scan for new hardware. Install any found hardware. 
+Answer:A 
+
+76. You are a help desk administrator for your company. You install Windows XP Professional on all portable computers in the marketing department.Users in this department bring their computers from their offices to a conference room for a weekly marketing meeting. These users need a simple method to manually place their computers in a low-power state without using the Start button. Additionally, they need their computers to start as quickly as possible. You need to configure the Power Options on the portable computers to meet these requirements. What should you do? 
+A. Configure the power button on each computer to enable hibernation. 
+B. Configure the computers to enable standby when the lid is closed. 
+C. Configure all the computers to use the Portable/Laptop power scheme. 
+D. Configure the computers to use the Minimal Power Management power scheme. 
+E. Configure the Critical Battery Alarm on the computers to hibernate when the battery capacity reaches 3 percent. 
+Answer:B 
+
+77. You are the desktop administrator for your company. You upgrade all client computers from Microsoft Windows NT workstation 4.0 to Windows XP Professional. After the upgrades, a user named Anne reports that her computer now starts with Display settings of 640 x 480 screen resolution and 16 colors. She is unable to change these settings. She also wants to be able to select Windows XP themes. You need to enable Anne to use the Windows XP interface options. What should you do? 
+A. Update the driver for the video adapter to support increased screen resolution and color depth. 
+B. On the Color Management tab in the Advanced Display settings, add the color profile for Anne¯s monitor. 
+C. In the advanced properties for the video adapter, clear the enable Write Combining check box. 
+D. Roll back the current video adapter driver to the previous Windows NT workstation 4.0 video adapter driver. 
+Answer:A 
+
+78. You are the desktop administrator for your company. All employees have Windows XP Professional portable computers. A sales representative named Richard has a local user account on his computer. Richard is issued a portable USB print device. You log on to his computer and disable the restrictions on loading unsigned drivers. All other local computer policies are configured with the default settings. You restart Richard¯s computer. Then Richard connects the USB print device, but the printer does not appear in the Printers folder, and Richard cannot print any documents. You need to ensure that Richard can install the printer and print successfully. What should you do? 
+A. Add Richard to the local Print Operators group on his computer. 
+B. Add the /fastdetect switch in the Boot.ini file on Richard¯s computer. 
+C. Disable the Prevent users from installing printer drivers local security policy setting. 
+D. Modify the Driver signing Options, selecting the Make this action the system default check box. 
+Answer:C 
+
+79. Which of the following steps should you take to install Remote Desktop Web Connection on a Windows XP Professional machine? 
+A. Run the Control Panel Add/Remove Programs applet; click Add/Remove Windows Components; select Other Networking, Remote Desktop Protocol, click Details; and select Remote Desktop Web Connection. 
+B. Remote Desktop Web Connection is installed by default on all XP Pro desktop systems. 
+C. Run the Control Panel Add/Remove Programs applet; click Add/Remove Windows Components; and select Internet Information Services, Details, World Wide Web Services (Details., Remote Desktop Web Connection. 
+D. Download the Power Toys add-on from the Microsoft Web site. 
+Answer:C 
+
+80. Which tools can be used to convert a disk from basic to dynamic?(Choose two. 
+A. Disk management snap-in 
+B. Fsutil.exe 
+C. Format.exe 
+D. Diskpart.exe 
+E. Disk defragmenter snap-in 
+Answer:AD 
+
+81. You are the desktop administrator for your company¯s network. All employees use Windows XP Professional computers. All employees in the research department use both desktop and portable computers. All computers in the research department have four-port USB hubs attached.A user in the research department connects a portable USB hard disk to the USB hub attached to his portable computer. However, the port on the USB hub shuts down and the hard disk does not function.The user experiences no problem when he attaches the same hard disk to his desktop computer¯s USB hub.When the user attaches a USB mouse or keyboard to the portable computer¯s USB hub, the port and device function normally. When he attaches the hard disk directly to the USB port on his portable computer, the device functions normally. You need to ensure that the USB hub on the user¯s portable computer can use the USB hard disk. What should you do? 
+A. Replace the portable hard disk¯s USB cable with a shorter USB cable. 
+B. Replace the portable computer¯s bus-powered USB hub with a self-powered USB hub. 
+C. Enable the Assign IRQ to USB option in the computer¯s system BIOS. 
+D. Disable all USB power management features for the USB Root Hub. 
+E. In the properties of the USB Root Hub, increase the reserved USB bandwidth for the external USB hub. 
+Answer:B
+
+82. A backup created in win98, which can't read or restore in XP. 
+A. Grant User "Allow-Modify" permission on Removable Storage 
+B. Import tapes into existing application media pool 
+C. Create new System media pool, add tape to the pool and restore the backup 
+D. restore data in 98, bacup up again in non-compressed way, restore it. 
+Answer:D 
+
+83. Bill is a local Admin of his XP, connect to office by dialup from several branchs in different dialup connection. He can't enable the ICF for the new connection but he did it for the previous connections. How to enable that ICF 
+A. remove local admin, grant Power User 
+B. remove "Prohibit use of ICF on your DNS Domain" group policy in the Domain 
+C. disable ICS discovery and control, delete and recreate the dialup 
+D. delete and recreate the dialup, use ICS 
+Answer:B 
+
+84. When installing XP, they don't want to waste WAN bandwidth, but needed to loads the donwloaded Dynamic Updates during the installation. They have use a 56k modem download the updates to \XPupdate network folder. 
+A. use winnt32 /dudisable 
+B. use winnt32 /copydir:i386\xpupdates /dudisable 
+C. use winnt32, accept default Dynamic Update settings 
+D. use winnt32 /duprepare:\xpupdate first, then run winnt32 /dushare:\xpupdate 
+Answer:D 
+
+85. Someone setup the ICF, found the computer perform very slow after it. when he open the ICF log, it says 
+???-TCP 192.168.0.1 202.202.202.202 1066 80 
+???-TCP 192.168.0.87 202.202.202.202 1066 80 
+??????? 192.168.0.87 202.202.202.202 1066 80 
+??? 
+
+how to solve the problem? 
+
+A. disable web server check box 
+B. disable ftp server check box 
+C. disable telnet server check box 
+D. disable allow incoming echo request check box 
+Answer:A 
+
+86. You are the desktop administrator for your company. Your company has offices in Los Angeles and New York. Both offices are connected by a wide area network (WAN. connection. The network att both offices include windows XP Professional computers. The company uses a single Active Directory domain that includes a Microsoft exchange 2000 server computer. Neither office is connected to the internet. 
+Peter is a member of the marketing department in the New York office. Peter needs to use Remote Assistance to obtain help from another marketing emloyee in Los Angeles. However, when Peter attempts to send a remote assistance invitation by using Windows Messenger, an error message reports that he does not have a Net Passport. You nees to ensure that Peter can send a Remote Assistace invitation by using Windows Messenger. 
+How should you configure Peter's computer? 
+A. Configure Windows Messenger to log on by using an exchange account. 
+B. Install MSN Explorer. Configure to log on using a valid Net Passport. 
+C. Configure Windows Messenger to log on using a valod Net Passport user name and password. 
+D. Install a modem. Configure the modem to dial up to an internet service provider when an internet connection is required. 
+Answer:A 
+
+(Explanation: Windows messenger can be configured to use an Exchange 2000 server within a corporate enviroment. . 
+Incorrect answers: 
+B: This requires an internet connection (the company ISN'T connected to the internet. 
+C: This requires an internet connection (the company ISN'T connected to the internet. 
+D: This will NOT resolve the problem because the other user would also need an internet connection. 
+• From (Q306556. Both the local and the remote computer must be using either Windows Messenger or a Messaging Application Programming Interface (MAPI.-compliant e-mail program such as Microsoft Outlook or Outlook Express. 
+• Both computers must be connected to the Internet while using Remote Assistance. 
+NOTE : If your computer is behind a firewall, you may need to reconfigure the firewall to allow Remote Assistance. Contact your network administrator before using Remote Assistance. 
+
+87. A user cannot use search engines on Internet. Gets 'can not send HTML forms' error. Can search fine on the INRAnet. You want to allow him to use any Internet search engine. How? 
+A. Change search options in IE 
+B. Search by changing http:// to https:// 
+C. Go to trusted sites and remove require server varification 
+D. Go to security settings and disable require non encrypted form data 
+Answer:D
+(The error itself is: "Your current security settings do not allow you to send HTML forms" and you need to ENABLE “Submit nonencrypted form data”.. 
+
+88. Users at several sites use an application that references a local file named password.ini on a fat 32 partition. You have to make sure that password.ini is secure. What do you do? 
+A. Move all password.ini to Network 1 NTFS share and configure app to use it 
+B. Move each password.ini to Local share and configure app to use it 
+C. Keep password.ini where it is and convert to folder ntfs 
+
+Answer:C 
+
+88. Windows XP pro on computer 192MB-RAM 4GB-HD-NTFS. Perormance problem. When you select multiple file icons, performance becomes very slow. 
+A. Change folder options: Enable "do not cache thumbnails" 
+B. Change system performance option: Disable "Show tranlucent selection rectangle" 
+C. Change system performance option: Disable "Show windows content while dragging" 
+D. Run FSUTIL to prevent NTFS updating last access timestamps 
+E. Use Diskperf utility... 
+Answer:D
+(Reskit XP CH13,NTFS file systems, Features available on NTFS volumes, Optimizing NTFS performance. The last alinea tells you to use fsutil behavior set disablelastaccess.. 
+
+89. How to ensure offline files on laptop not accessible to unathorized persons if lost ? 
+A. NTFS permissions on offline files on Laptop 
+B. NTFS permissions on server 
+C. GPO "Encrypt the offline file cache" on the domain level 
+D. Encrypt on the server and add all users on the encryption details 
+Answer:C 
+
+90. You install Windows XP Professional on a Windows 98 computer with one hard disk. During the installation, the C drive is converted to NTFS. Later you decide to use the system to dual-boot with Windows 98. You want to convert the drive back to FAT32. What should you do? 
+A. Run convert C:/FS:FAT. 
+B. Run convert C:/FS:NTFS. 
+C. Reformat the partition, and restore the data from backup. 
+D. Use System Restore to recover the previous disk configuration. 
+Answer:C 
+
+91. Your computer was upgraded from Windows 98. You want to compress the Docs folder on your hard drive, but the option to compress the folder contents is not available. You want to compress the Docs folder. What should you do? 
+A. Ensure that EFS is disabled. 
+B. Convert the volume to NTFS. 
+C. Convert the volume to FAT32. 
+D. Ensure that Offline Files are disabled. 
+Answer:B 
+
+92. Which Windows XP professional built-in user groups haven permissions to create shared folders? 
+A. Administrators 
+B. Network Configuration Operators 
+C. Backup Operators 
+D. Power Users 
+E. Users 
+Answer:AD 
+
+93. After several installation failures, you determine that you need to examin a debug log for the setup routine. You want the setup routine to create the most detailed debug log possible.Which command do you use? 
+A. Winnt32 /debug7:debug.log 
+B. Winnt32 /debug4:debug.log 
+C. Winnt32 /debug1:debug.log 
+D. Winnt32 /debug0:debug.log 
+Answer:B 
+
+94. After installing SP2 on a Windows XP professional on a desktop system you discover that a critical application does not wordk properly. The application vendor indicates that the application is not compatible with SP2, so you decide to uninstall the SP. Which is a valid method? 
+A. From the command prompt, change to the %systemroot%\$NtservicepackUninstall$\spuninst folder. Type spuninst.exe -u 
+B. From the command prompt, change to the %systemroot%\$NtservicepackUninstall$\spuninst folder. Type spuninst.exe -f 
+C. From the command prompt, change to the %systemroot%\$NtservicepackUninstall$\spuninst folder. Type Update -n 
+D. From the command prompt, change to the %systemroot%\$NtservicepackUninstall$\spuninst folder. Type Update -u 
+Answer:A 
+
+95. Under which following scenarios do you not see the APM tab in the power Options program located in control panel? (Choose two. 
+A. The APM-based BIOS is failing 
+B. The computer’s BIOS is ACPI compliant 
+C. The external uninterruptible Power Supply is not properly connected to the serial port of the pc 
+D. The pc’s battery has beenimproperly charged 
+E. The pc’s bios is not APM based 
+Answer:BE 
+
+96. Which command launches the file signature verification tool that is used to identify unsigned drivers installed on a windows XP Professional system? 
+A. Winmsd.exe 
+B. Fsutil.exe 
+C. Sigverif.exe 
+D. Regedit.exe 
+Answer:C 
+
+97. You want to use Windows Installer service to deploy software applications on the desktop computers. How do you configure GP so that the applications are not advertised? 
+A. Assign applications to computers 
+B. Publish applications to computers 
+C. Publish applications to users 
+D. Assign applications to users 
+Answer:C 
+
+98. Which of the following accurately decribes L2TP tunneling? (Choose Three. 
+A. Supports Ipsec authentication 
+B. Supports header compression 
+C. Automatically provides privacy using PPP encryption 
+D. Can be used with SPX/IPX traffic tunneling 
+E. Can tunnel IP traffic across relay links 
+F. Supported by NT4.0 
+Answer:ABE 
+
+99. Which of the following features are available with IIS included with XP (Choose three. 
+A. ISAPI filters 
+B. Application recyling 
+C. Bandwidth throttling 
+D. IP address and domain name resolution 
+E. Content expiration 
+F. HTTP keep alives 
+Answer:AEF 
+
+100. You want to write a script that encrypts each user’s My Documents folder using EFS. It has to be scheduled only run once. What tool must you use in the script? 
+A.Windows Explorer 
+B. Efsinfo 
+C. Syskey 
+D. Cipher 
+Answer:D 
