@@ -1,7 +1,7 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (208)
+dbcc inputbuffer (816)
 WITH NO_INFOMSGS
 
 /*
@@ -16,9 +16,9 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 208
+exec sbd.dbo.up_SBDInputbuffer 638
 
--- kill 358
+-- kill 638
 
 SELECT request_id , * FROM sys.dm_exec_requests 
 --WHERE session_id = 70
@@ -325,3 +325,12 @@ and role=1;
 /************************************************************************************************************/
 
 */
+/************************************************************************************************************/
+-- Quantidade de memoria por database
+SELECT DB_NAME(database_id),
+COUNT (1) * 8 / 1024 AS MBUsed
+FROM sys.dm_os_buffer_descriptors
+GROUP BY database_id
+ORDER BY COUNT (*) * 8 / 1024 DESC
+GO
+/************************************************************************************************************/
