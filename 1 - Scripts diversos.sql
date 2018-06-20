@@ -1,7 +1,7 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (816)
+dbcc inputbuffer (771)
 WITH NO_INFOMSGS
 
 /*
@@ -16,16 +16,16 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 638
+exec sbd.dbo.up_SBDInputbuffer 771
 
--- kill 638
+-- kill 771
 
 SELECT request_id , * FROM sys.dm_exec_requests 
 --WHERE session_id = 70
 where status = 'running'
 
 /*
-use IPASGO select * from operadores where nome_operador IN ('43946267149')
+use IPASGO select * from operadores where nome_operador IN ('03334846148')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('43946267149')
 
 /************************************************************************************/
@@ -304,7 +304,7 @@ ORDER BY [server_principal], [permission_name];
 
 /************************************************************************************************************/
 --Consultar todas conexões
-select * from sys.databases
+select  log_reuse_wait_desc,* from sys.databases
 
 select * from sys.dm_exec_sessions
 where database_id = 13
