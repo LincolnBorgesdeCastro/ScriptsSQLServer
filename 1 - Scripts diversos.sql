@@ -3,7 +3,6 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
 dbcc inputbuffer (771)
 WITH NO_INFOMSGS
-
 /*
 
  Exec sbd.dbo.sp_whoisactive
@@ -20,12 +19,10 @@ exec sbd.dbo.up_SBDInputbuffer 771
 
 -- kill 771
 
-SELECT request_id , * FROM sys.dm_exec_requests 
---WHERE session_id = 70
-where status = 'running'
-
 /*
-use IPASGO select * from operadores where nome_operador IN ('03334846148')
+
+use IPASGO select * from operadores where nome_operador IN ('37714155191')
+
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('43946267149')
 
 /************************************************************************************/
