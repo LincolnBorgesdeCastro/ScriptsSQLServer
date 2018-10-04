@@ -13,18 +13,20 @@ order by nome,[tamanho\GB]  desc
 
 /**/
 
-SELECT
---    OBJECT_NAME(object_id) As Tabela, Rows As Linhas,
-    SUM(Total_Pages * 8) As Reservado,
-    SUM(CASE WHEN Index_ID > 1 THEN 0 ELSE Data_Pages * 8 END) As Dados,
-        SUM(Used_Pages * 8) -
-        SUM(CASE WHEN Index_ID > 1 THEN 0 ELSE Data_Pages * 8 END) As Indice,
-    SUM((Total_Pages - Used_Pages) * 8) As NaoUtilizado
+SELECT TOP 100
+    OBJECT_NAME(object_id) As Tabela, Rows As Linhas,
+    SUM(Total_Pages * 8) /1024.0 As "Reservado(MB)",
+    SUM(CASE WHEN Index_ID > 1 THEN 0 ELSE Data_Pages * 8 END) /1024.0  As "Dados(MB)",
+        SUM(Used_Pages * 8)  -
+        SUM(CASE WHEN Index_ID > 1 THEN 0 ELSE Data_Pages * 8 END) /1024.0  As "Indice(MB)",
+    SUM((Total_Pages - Used_Pages) * 8) /1024.0  As "NaoUtilizado(MB)"
 FROM
     sys.partitions As P
     INNER JOIN sys.allocation_units As A ON P.hobt_id = A.container_id
-WHERE
-	OBJECT_NAME(object_id) in ('guias')
+--WHERE
+--	OBJECT_NAME(object_id) in ('guias')
 
---GROUP BY OBJECT_NAME(object_id), Rows
+GROUP BY OBJECT_NAME(object_id), Rows
 ORDER BY linhas desc
+
+

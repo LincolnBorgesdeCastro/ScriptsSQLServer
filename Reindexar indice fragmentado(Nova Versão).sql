@@ -1,4 +1,4 @@
-USE ?
+USE OSSES
 GO
 
 -- Ensure a USE <databasename> statement has been executed first.
@@ -55,8 +55,8 @@ WHILE (1=1)
             SET @command = N'ALTER INDEX ' + @indexname + N' ON ' + @schemaname + N'.' + @objectname + N' REBUILD';
         IF @partitioncount > 1
             SET @command = @command + N' PARTITION=' + CAST(@partitionnum AS nvarchar(10));
-        EXEC (@command);
-        PRINT N'Executed: ' + @command;
+        print @command;
+       -- PRINT N'Executed: ' + @command;
     END;
 
 -- Close and deallocate the cursor.

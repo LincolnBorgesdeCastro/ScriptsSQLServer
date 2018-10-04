@@ -10,11 +10,13 @@ exec SBD.dbo.up_Compacta_Database
 /*
 /*Consulta*/
 
-Declare @Compressao int = 0 -- Colocar p metodo que deseja que seja migrado
+Declare @Compressao int = 2 -- Colocar p metodo que deseja que seja migrado
 Declare @Ds_Metodo_Compressao VARCHAR(20) = (CASE WHEN @Compressao  = 2 THEN 'PAGE' WHEN @Compressao = 1 THEN 'ROW' ELSE 'NONE' END)
 -- 0 -- Não comprimido
 -- 1 -- Compressão de linha
 -- 2 -- Compressão de pagina
+Declare @Ds_Tabela VARCHAR(200) =  NULL --'Receitas'
+
 SELECT DISTINCT 
         A.name AS Tabela,
         NULL AS Indice,
@@ -26,16 +28,16 @@ SELECT DISTINCT
         INNER JOIN sys.schemas       C   ON A.schema_id = C.schema_id
     WHERE 
         B.data_compression <> @Compressao -- NONE
-        AND B.index_id = 0
         AND A.type = 'U'
-    
+		AND ((@Ds_Tabela is null) or (A.name = @Ds_Tabela ))
+        --and A.name = @Ds_Tabela
     UNION
 
     SELECT DISTINCT 
         B.name AS Tabela,
         A.name AS Indice,
 		D.data_compression,
-        'ALTER INDEX [' + A.name + '] ON [' + C.name + '].[' + B.name + '] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = '+@Ds_Metodo_Compressao+')'
+        'ALTER INDEX [' + A.name + '] ON [' + C.name + '].[' + B.name + '] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = ON, ONLINE = OFF, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = '+@Ds_Metodo_Compressao+')'
     FROM 
         sys.indexes                  A
         INNER JOIN sys.tables        B   ON A.object_id = B.object_id
@@ -45,6 +47,8 @@ SELECT DISTINCT
         D.data_compression <> @Compressao -- 
         AND D.index_id <> 0
         AND B.type = 'U'
+        AND ((@Ds_Tabela is null) or (B.name = @Ds_Tabela ))
+		--and B.name = @Ds_Tabela
     ORDER BY
         Tabela,
         Indice
@@ -112,7 +116,7 @@ BEGIN
         INNER JOIN [' + @Ds_Database + '].sys.schemas       C   ON A.schema_id = C.schema_id
     WHERE 
         B.data_compression <> '+@Nr_Metodo_Compressao+' 
-        AND B.index_id = 0
+        --AND B.index_id = 0 -- Tabela heap
         AND A.type = ''U''
     
     UNION
@@ -120,7 +124,7 @@ BEGIN
     SELECT DISTINCT 
         B.name AS Tabela,
         A.name AS Indice,
-        ''ALTER INDEX ['' + A.name + ''] ON ['' + ''' + @Ds_Database + ''' + ''].['' + C.name + ''].['' + B.name + ''] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = OFF, ONLINE = OFF, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = ' + @Ds_Metodo_Compressao + ')''
+        ''ALTER INDEX ['' + A.name + ''] ON ['' + ''' + @Ds_Database + ''' + ''].['' + C.name + ''].['' + B.name + ''] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = ON, ONLINE = OFF, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = ' + @Ds_Metodo_Compressao + ')''
     FROM 
         [' + @Ds_Database + '].sys.indexes                  A
         INNER JOIN [' + @Ds_Database + '].sys.tables        B   ON A.object_id = B.object_id

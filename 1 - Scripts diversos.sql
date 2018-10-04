@@ -1,11 +1,12 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (771)
+dbcc inputbuffer (742)
 WITH NO_INFOMSGS
 /*
 
  Exec sbd.dbo.sp_whoisactive
+-- Exec sbd.dbo.stpLock_Raiz
 
 @get_plans = 1       -- this gives you the execution plans for running queries.
 ,@get_locks = 1       -- gives you an XML snippet you can click on to see what table, row, object, etc locks each query owns. Useful when you’re trying to figure out why one query is blocking others.
@@ -15,13 +16,13 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 771
+exec sbd.dbo.up_SBDInputbuffer 221
 
--- kill 771
+-- kill 192
 
 /*
 
-use IPASGO select * from operadores where nome_operador IN ('37714155191')
+use IPASGO select * from operadores where nome_operador IN ('00722298102')
 
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('43946267149')
 

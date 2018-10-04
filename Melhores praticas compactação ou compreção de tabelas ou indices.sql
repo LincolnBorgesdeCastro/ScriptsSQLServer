@@ -1,6 +1,8 @@
 --Melhores praticas para compressão/compactação de tabelas e inides
 
-https://technet.microsoft.com/en-us/library/dd894051(v=sql.100).aspx
+https://social.technet.microsoft.com/wiki/pt-br/contents/articles/28197.entendendo-mais-sobre-compressao-de-dados-em-sql-server.aspx
+https://technet.microsoft.com/en-us/library/dd894051(v=sql.100).aspx -- SQLSERVR2008
+https://docs.microsoft.com/pt-br/sql/relational-databases/data-compression/data-compression?view=sql-server-2017
 
 -- Percentual de update
 
