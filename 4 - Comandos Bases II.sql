@@ -377,3 +377,9 @@ SELECT [Current LSN], [Operation], [Context], [Transaction ID], [AllocUnitName],
 FROM fn_dblog(NULL, NULL)
 
 /************************************************************************************************/
+
+DBCC SHOW_STATISTICS ('dbo.ossys_User',OSIDX_OSSYS_USER_11EXTERNAL_ID) WITH HISTOGRAM;  
+GO  
+
+/************************************************************************************************/
+

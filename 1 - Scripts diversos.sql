@@ -1,11 +1,11 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (742)
+dbcc inputbuffer (1036)
 WITH NO_INFOMSGS
 /*
 
- Exec sbd.dbo.sp_whoisactive
+ Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
 
 @get_plans = 1       -- this gives you the execution plans for running queries.
@@ -16,21 +16,23 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 221
+exec sbd.dbo.up_SBDInputbuffer 75
 
--- kill 192
+-- kill 84
+checkpoint
 
 /*
+up_opOperadores_Logins '03390182160'
 
-use IPASGO select * from operadores where nome_operador IN ('00722298102')
+use IPASGO select * from operadores where nome_operador IN ('99086867120')
 
-use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('43946267149')
+use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('89130138191')
 
 /************************************************************************************/
 /* Verificar enfileramento */
 sp_who2 'active'
 /************************************************************************************/
---ALTER DATABASE IPASGO SET PARTNER FAILOVER
+--      sp_recompile 'up_saBuscaGuiasPorFaturaExames'
 /************************************************************************************/
 -- desabilitar a trigger
 disable trigger tr_SBDConferirReplicacao on database
@@ -47,7 +49,7 @@ select distinct
 from MSarticles M 
 inner join MSpublications  S on M.publication_id =S.publication_id 
 inner join MSsubscriptions X on X.publication_id =S.publication_id
-where M.article = 'simm_LOGMateriaisMedicamentos'
+where M.article = 'sa_ProcedimentosValoresPrestadores'
 
 /************************************************************************************/
 
@@ -331,4 +333,12 @@ FROM sys.dm_os_buffer_descriptors
 GROUP BY database_id
 ORDER BY COUNT (*) * 8 / 1024 DESC
 GO
+/************************************************************************************************************/
+
+select top 4 * from RH_Ponto where NUMG_colaborador = 4485 order by DATA_acao desc
+
+/************************************************************************************************************/
+sp_recompile ''
+/************************************************************************************************************/
+dbo.up_opOperadores_Logins '86273795134'
 /************************************************************************************************************/
