@@ -2,13 +2,13 @@
 
 declare @DESC_TipoBackup varchar(4)
 declare @NOME_Base varchar(50)
-declare @NOME_Servidor varchar(50)
+
 declare @DESC_PastaDia varchar(800)
 declare @FLAG_BackupRecente	bit 
 
 set @DESC_TipoBackup = 'LOG'
-set @NOME_Base = 'SIGA'
-set @NOME_Servidor = 'SUDESTE'
+set @NOME_Base = 'LIFERAY_New'
+
 set @DESC_PastaDia =''
 set @FLAG_BackupRecente = 1
 
@@ -20,7 +20,7 @@ declare
 @NUMR_QuantArquivos		int,
 @NUMR_Contador			int
 
-set @DESC_Pasta = 'K:\Bkp\LOG\2015-03-23\SIGA'
+set @DESC_Pasta = '\\norte\k$\Backup\Recentes\LOG\2019-10-10\LIFERAY'
 set @DESC_Recovery = 'norecovery'
 set @NUMR_Contador = 0
 
@@ -43,11 +43,13 @@ set @DESC_Comando = 'dir ' + @DESC_Pasta + ' /OGNE /B'
 insert #Dir   
 exec master..xp_cmdshell  @DESC_Comando
 
+--select SUBSTRING(desc_arquivo, 28, 4) from #Dir
 delete from #Dir where desc_arquivo is null
 
-delete from #Dir where SUBSTRING(desc_arquivo, 25, 4) <= '0135' -- Para o SIGA
---delete from #Dir where SUBSTRING(desc_arquivo, 27, 4) <= '0135'
+delete from #Dir where SUBSTRING(desc_arquivo, 28, 4) <= '0400' -- Para o LIFERAY
+delete from #Dir where SUBSTRING(desc_arquivo, 28, 4) >  '1130'
 
+--select * from #Dir
 /*
 SELECT * , SUBSTRING(desc_arquivo, 25, 4) 
 from #Dir 

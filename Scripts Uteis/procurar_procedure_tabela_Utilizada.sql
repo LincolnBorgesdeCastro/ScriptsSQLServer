@@ -33,7 +33,7 @@ Select distinct
 	END AS Tipo
 
 from sysobjects sys inner join syscomments co on co.id = sys.id
-where lower(co.text) like '%TABELA%' 
+where lower(co.text) like '%up_aeBuscaAtendimentosNaoAuditados%' 
 --and xtype = 'p'
 order by sys.name
 

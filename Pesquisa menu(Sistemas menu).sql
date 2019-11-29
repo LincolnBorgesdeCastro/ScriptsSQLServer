@@ -1,6 +1,7 @@
 
-select * from Sistemas_Menus
-where DESC_linkMenu like '%Gastos Com Procedimentos de Hemodinâmica%'
+Select * from Sistemas_Menus
+where DESC_sistemaMenu like '%Valor Gasto com Totalidade - PAS%'
+--where DESC_linkMenu like '%Patologia%'
 
 
 
@@ -17,3 +18,6 @@ WHERE
 
 
 	and Path like '%Gastos Com Procedimentos de Hemodinâmica%'
+
+
+

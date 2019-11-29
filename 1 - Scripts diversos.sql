@@ -1,9 +1,10 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (1036)
+dbcc inputbuffer (1141)
 WITH NO_INFOMSGS
 /*
+ sp_recompile 'up_aaObtemDadosSolicitacoesCliente'
 
  Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
@@ -16,23 +17,23 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 75
+exec sbd.dbo.up_SBDInputbuffer 1141
 
--- kill 84
+-- kill 89
 checkpoint
 
 /*
 up_opOperadores_Logins '03390182160'
 
-use IPASGO select * from operadores where nome_operador IN ('99086867120')
-
+use IPASGO select * from operadores where nome_operador IN ('75695502187')
+use IPASGO select * from log_operadores where nome_operador IN ('69046190153')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('89130138191')
 
 /************************************************************************************/
 /* Verificar enfileramento */
 sp_who2 'active'
 /************************************************************************************/
---      sp_recompile 'up_saBuscaGuiasPorFaturaExames'
+--      sp_recompile 'up_atBuscaRestricoesProcFicha'
 /************************************************************************************/
 -- desabilitar a trigger
 disable trigger tr_SBDConferirReplicacao on database
@@ -49,7 +50,7 @@ select distinct
 from MSarticles M 
 inner join MSpublications  S on M.publication_id =S.publication_id 
 inner join MSsubscriptions X on X.publication_id =S.publication_id
-where M.article = 'sa_ProcedimentosValoresPrestadores'
+where M.article = 'sa_PrestadoresHonorariosJuridicos'
 
 /************************************************************************************/
 

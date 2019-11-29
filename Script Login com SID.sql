@@ -1,11 +1,11 @@
-Declare @DESC_Login  sysname = '86273795134'
+Declare @DESC_Login  sysname = '13115424850'
 
 Select 'IF NOT EXISTS (SELECT * FROM master.sys.sql_logins WHERE [name] = ''' + [name] + ''')
     CREATE LOGIN [' + [name] + '] 
     WITH PASSWORD=' + master.sys.fn_varbintohexstr(password_hash) + ' HASHED,
     SID = ' + master.sys.fn_varbintohexstr([sid]) + ',  
     DEFAULT_DATABASE=[' + default_database_name + '], DEFAULT_LANGUAGE=[us_english], 
-    CHECK_EXPIRATION=' + CASE WHEN is_expiration_checked = 1 THEN 'ON' ELSE 'OFF' END + ', CHECK_POLICY=OFF;'
+    CHECK_EXPIRATION=' + CASE WHEN is_expiration_checked = 1 THEN 'ON' ELSE 'OFF' END + ', CHECK_POLICY=' + CASE WHEN is_policy_checked = 1 THEN 'ON' ELSE 'OFF' END + ';'
 from master.sys.sql_logins 
 where type_desc = 'SQL_LOGIN' 
 and [name] not in ('sa', 'guest')
