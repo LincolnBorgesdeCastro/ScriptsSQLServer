@@ -1,4 +1,4 @@
-Declare @DESC_Login  sysname = '13115424850'
+Declare @DESC_Login  sysname = '03761706111'
 
 Select 'IF NOT EXISTS (SELECT * FROM master.sys.sql_logins WHERE [name] = ''' + [name] + ''')
     CREATE LOGIN [' + [name] + '] 
@@ -11,6 +11,7 @@ where type_desc = 'SQL_LOGIN'
 and [name] not in ('sa', 'guest')
 and name = @DESC_Login 
 
+/*
 union all
 
 Select  'IF EXISTS (SELECT * FROM master.sys.sql_logins WHERE [name] = ''' + [name] + ''')
@@ -23,7 +24,7 @@ from master.sys.sql_logins
 where type_desc = 'SQL_LOGIN' 
 and [name] not in ('sa', 'guest')
 and name = @DESC_Login 
-
+*/
 --CREATE FUNCTION [dbo].[fn_hexadecimal] 
 --(
 --    -- Add the parameters for the function here

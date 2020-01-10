@@ -4,7 +4,7 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 dbcc inputbuffer (1141)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_aaObtemDadosSolicitacoesCliente'
+ sp_recompile 'up_saRelPeqCirurgias'
 
  Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
@@ -17,7 +17,7 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 1141
+exec sbd.dbo.up_SBDInputbuffer 1228
 
 -- kill 89
 checkpoint
@@ -50,12 +50,13 @@ select distinct
 from MSarticles M 
 inner join MSpublications  S on M.publication_id =S.publication_id 
 inner join MSsubscriptions X on X.publication_id =S.publication_id
-where M.article = 'sa_PrestadoresHonorariosJuridicos'
+where M.article = 'sa_arquivosmensagensprestadores'
 
 /************************************************************************************/
 
 /* Verificar os processos que estao rodando */
-Select spid,blocked,waittime,dbid,cpu,login_time,open_tran,status,hostname,program_name,hostprocess,cmd,nt_domain,loginame
+Select spid,blocked,waittime,dbid,cpu,login_time,open_
+,status,hostname,program_name,hostprocess,cmd,nt_domain,loginame
 from Sys.SysProcesses
 Where spid > 50 
 --and program_name LIKE '%Quest Diagnostic Server%'

@@ -3,9 +3,9 @@
 use msdb
 go
 
-EXECUTE dbo.sysmail_stop_sp
+EXECUTE msdb.dbo.sysmail_stop_sp
 
-EXECUTE dbo.sysmail_start_sp 
+EXECUTE msdb.dbo.sysmail_start_sp 
 
 
 
@@ -15,8 +15,9 @@ use msdb
 go
 
 
-select * from sysmail_allitems
-where sent_status <> 'sent'
+select * from msdb.dbo.sysmail_allitems
+where sent_status = 'unsent'
+--where sent_status <> 'sent'
 
 --where sent_status = 'failed'
 
