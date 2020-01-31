@@ -4,7 +4,7 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 dbcc inputbuffer (1141)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_saRelPeqCirurgias'
+ sp_recompile 'up_gvExcluiExServidores'
 
  Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
@@ -17,7 +17,7 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 1228
+exec sbd.dbo.up_SBDInputbuffer 172
 
 -- kill 89
 checkpoint
@@ -25,11 +25,13 @@ checkpoint
 /*
 up_opOperadores_Logins '03390182160'
 
-use IPASGO select * from operadores where nome_operador IN ('75695502187')
+use IPASGO select * from operadores where nome_operador IN ('69046190153')
 use IPASGO select * from log_operadores where nome_operador IN ('69046190153')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('89130138191')
 
 /************************************************************************************/
+dbcc opentran
+
 /* Verificar enfileramento */
 sp_who2 'active'
 /************************************************************************************/
@@ -50,7 +52,7 @@ select distinct
 from MSarticles M 
 inner join MSpublications  S on M.publication_id =S.publication_id 
 inner join MSsubscriptions X on X.publication_id =S.publication_id
-where M.article = 'sa_arquivosmensagensprestadores'
+where M.article = 'sa_ArquivosTratamentosAtosProfissionais'
 
 /************************************************************************************/
 
@@ -340,7 +342,12 @@ GO
 select top 4 * from RH_Ponto where NUMG_colaborador = 4485 order by DATA_acao desc
 
 /************************************************************************************************************/
-sp_recompile ''
+/*
+Checkpoint
+Select convert(numeric(18,2), sum("Log Record Length") / 1024. /1024.) 
+from ::fn_dblog(null,null)
+*/
 /************************************************************************************************************/
 dbo.up_opOperadores_Logins '86273795134'
 /************************************************************************************************************/
+
