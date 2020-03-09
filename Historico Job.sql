@@ -87,3 +87,12 @@ and sh.run_time >= 120000 --and  h.run_time  <= 235600
 /********************************************************************************************************************************************/
 /********************************************************************************************************************************************/
 
+SELECT Jobs.name AS 'JobName',
+msdb.dbo.agent_datetime(run_date, run_time) AS 'Run Date Time',
+history.run_duration AS 'Duration in Second'
+FROM msdb.dbo.sysjobs jobs INNER JOIN msdb.dbo.sysjobhistory history ON jobs.job_id = history.job_id
+WHERE jobs.enabled = 1
+And jobs.name = 'IPASGO - Gera Borderos Agendados'
+And CONVERT(CHAR(10), CAST(STR(history.run_date,8, 0) AS dateTIME), 121) >= '2020-02-19'
+And CONVERT(CHAR(10), CAST(STR(history.run_date,8, 0) AS dateTIME), 121) <= '2020-02-19'
+Order by 2 Desc

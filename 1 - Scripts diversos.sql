@@ -1,10 +1,10 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (1141)
+dbcc inputbuffer (1607)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_gvExcluiExServidores'
+ sp_recompile 'up_aaObtemGuiasEmitidas'
 
  Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
@@ -17,18 +17,18 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 172
+exec sbd.dbo.up_SBDInputbuffer 111 --369
 
--- kill 89
+-- Kill 1181
 checkpoint
 
 /*
-up_opOperadores_Logins '03390182160'
+ipasgo.dbo.up_opOperadores_Logins '80314457100'
 
-use IPASGO select * from operadores where nome_operador IN ('69046190153')
-use IPASGO select * from log_operadores where nome_operador IN ('69046190153')
-use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('89130138191')
-
+use IPASGO select * from operadores where nome_operador IN ('80314457100')
+use IPASGO select * from log_operadores where nome_operador IN ('80314457100')
+use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('80314457100')
+use IPASGO select * from rh_colaboradores where nome_operador IN ('98396528772')
 /************************************************************************************/
 dbcc opentran
 
@@ -52,7 +52,7 @@ select distinct
 from MSarticles M 
 inner join MSpublications  S on M.publication_id =S.publication_id 
 inner join MSsubscriptions X on X.publication_id =S.publication_id
-where M.article = 'sa_ArquivosTratamentosAtosProfissionais'
+where M.article = 'sa_ArquivosPrestadores'
 
 /************************************************************************************/
 
@@ -342,7 +342,7 @@ GO
 select top 4 * from RH_Ponto where NUMG_colaborador = 4485 order by DATA_acao desc
 
 /************************************************************************************************************/
-/*
+/*-- Leitura no transaction log
 Checkpoint
 Select convert(numeric(18,2), sum("Log Record Length") / 1024. /1024.) 
 from ::fn_dblog(null,null)
@@ -351,3 +351,13 @@ from ::fn_dblog(null,null)
 dbo.up_opOperadores_Logins '86273795134'
 /************************************************************************************************************/
 
+/************************************************************************************************************/
+-- Pressão da CPU detectada pelo usu das Estatisticas
+/************************************************************************************************************/
+SELECT CAST(100.0 * SUM(signal_wait_time_ms) / SUM (wait_time_ms) AS NUMERIC(20,2))
+AS [%signal (cpu) waits],
+CAST(100.0 * SUM(wait_time_ms - signal_wait_time_ms) / SUM (wait_time_ms) AS NUMERIC(20,2))
+AS [%resource waits] 
+FROM sys.dm_os_wait_stats OPTION (RECOMPILE);
+
+/************************************************************************************************************/
