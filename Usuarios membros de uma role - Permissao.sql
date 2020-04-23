@@ -118,4 +118,23 @@ And DP1.name = 'SIGA - SUPERVISOR')
 
 /**************************************************************************/
 /**************************************************************************/
+--Pesquisa qual grupo(role) que um usuario esta em todos os bancos
+Exec sp_MSforeachdb 'USE ?
+If object_id(''tempdb..#tmpRoleMember'') is not null drop table #tmpRoleMember
 
+SELECT ''[?]'' as [Database], DP1.name as [Role_Database], Dp2.name as [User_Database]
+into #tmpRoleMember
+FROM sys.database_role_members AS DRM   INNER JOIN sys.database_principals AS DP1   ON DRM.role_principal_id = DP1.principal_id  
+                                        INNER JOIN sys.database_principals AS DP2    ON DRM.member_principal_id = DP2.principal_id  
+WHERE DP1.type = ''R''
+And DP2.name like ''%86273795134%''
+--And DP1.name in (''db_datareader'', ''db_datawriter'', ''db_ddladmin'')
+
+If (Select Count(*) from #tmpRoleMember) > 0 Select * from #tmpRoleMember
+
+'
+
+/**************************************************************************/
+/**************************************************************************/
+
+/**************************************************************************/
