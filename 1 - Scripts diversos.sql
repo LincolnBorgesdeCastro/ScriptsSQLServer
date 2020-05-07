@@ -1,10 +1,10 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (1607)
+dbcc inputbuffer (309)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_aeBuscaMedicamentos'
+ sp_recompile 'up_saBuscaFeriado'
 
  Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
@@ -17,7 +17,7 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 243
+exec sbd.dbo.up_SBDInputbuffer 147
 
 -- Kill 72
 checkpoint
@@ -25,7 +25,7 @@ checkpoint
 /*
 ipasgo.dbo.up_opOperadores_Logins '86273795134'
 
-use IPASGO select * from operadores where nome_operador IN ('84714719149')
+use IPASGO select * from operadores where nome_operador IN ('02003360700')
 use IPASGO select * from log_operadores where nome_operador IN ('80314457100')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('80314457100')
 use IPASGO select * from rh_colaboradores where nome_operador IN ('98396528772')

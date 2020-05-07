@@ -1,4 +1,4 @@
-SELECT OBJECT_NAME(p.[object_id]) AS [ObjectName] ,
+SELECT top 50 OBJECT_NAME(p.[object_id]) AS [ObjectName] ,
 p.index_id ,
 COUNT(*) / 128 AS [Buffer size(MB)] ,
 COUNT(*) AS [Buffer_count]
@@ -11,3 +11,4 @@ AND p.[object_id] > 100
 GROUP BY p.[object_id] ,
 p.index_id
 ORDER BY buffer_count DESC ;
+
