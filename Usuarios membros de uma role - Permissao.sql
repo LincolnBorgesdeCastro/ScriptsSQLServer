@@ -139,7 +139,7 @@ If (Select Count(*) from #tmpRoleMember) > 0 Select * from #tmpRoleMember
 
 /**************************************************************************/
 /**************************************************************************/
--- Script que pega os registros da Operadores_Grupos e verifica sem o Operador comtém a ROLE do banco de dados.
+-- Script que pega os registros da Operadores_Grupos e verifica se o Operador comtém a ROLE do banco de dados.
 Declare @NUMG_Operador int = 5066
 
 Select 'ALTER ROLE ['+Gru.SIGL_grupo+'] ADD MEMBER ['+Ope.NOME_Operador +']' as Script , Ope.NOME_Operador, Ope.NOME_Completo, Gru.DESC_grupo
@@ -153,8 +153,9 @@ and (SELECT Count(*)
 	 WHERE DP1.type = 'R'
 	 And DP1.name = Gru.SIGL_grupo
 	 And DP2.name = Ope.NOME_Operador) = 0
-
-And Gru.SIGL_grupo like 'SIGA%' -- Se for IPASGO tem que coloca not like
+And Gru.DATA_bloqueio IS Null
+And DESC_grupo not like 'Relatórios Ipasgo -%'
+--And Gru.SIGL_grupo like 'SIGA%' -- Se for IPASGO tem que comntar essa linha
 And Ope.NOME_Operador in (select name from sys.syslogins where name = Ope.NOME_Operador)
 
 /**************************************************************************/
