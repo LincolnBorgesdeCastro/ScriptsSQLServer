@@ -4,7 +4,7 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 dbcc inputbuffer (453)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_saExtratoFaturaRevisaoGlosa'
+ sp_recompile 'up_atObtemParametrizacao'
 
  Exec sbd.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
@@ -17,18 +17,18 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 523
+exec sbd.dbo.up_SBDInputbuffer 994
 
 -- Kill 72
 checkpoint
 
 /*
-ipasgo.dbo.up_opOperadores_Logins '51729482104'
+ipasgo.dbo.up_opOperadores_Logins '69957177168'
 
-use IPASGO select * from operadores where nome_operador IN ('03761706111')
-use IPASGO select * from log_operadores where nome_operador IN ('80314457100')
-use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('80314457100')
-use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('03761706111')
+use IPASGO select * from operadores where nome_operador IN ('70281246149')
+use IPASGO select * from log_operadores where nome_operador IN ('05225035191')
+use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('05225035191')
+use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('05225035191')
 /************************************************************************************/
 dbcc opentran
 
@@ -38,9 +38,12 @@ sp_who2 'active'
 --      sp_recompile 'up_atBuscaRestricoesProcFicha'
 /************************************************************************************/
 -- desabilitar a trigger
-disable trigger tr_SBDConferirReplicacao on database
+disable trigger tr_SBDConferirReplicacao on database;
+disable trigger tr_SBDAlertaProducao on database;
+
 -- habilitar a trigger
-enable trigger tr_SBDConferirReplicacao on database
+enable trigger tr_SBDConferirReplicacao on database;
+enable trigger tr_SBDAlertaProducao     on database;
 /************************************************************************************/
 --Verifica tabela em replicação
 use distribution

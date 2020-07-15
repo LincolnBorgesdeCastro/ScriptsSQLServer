@@ -5,11 +5,15 @@
 /**************************************************************************/
 /**************************************************************************/
 
-Declare @SIGL_Grupo varchar(128) = 'SAAT - Cancela Guias'
+Set NoCount ON
+
+Declare @SIGL_Grupo varchar(128) = 'SIGA - DIGITACAO2'
 Declare @NUMG_Grupo int = (Select NUMG_Grupo from IPASGO.dbo.grupos where SIGL_grupo = @SIGL_Grupo)
 
+Select 'USE IPASGO'
+
 Select 'ALTER ROLE ['+@SIGL_Grupo+'] ADD MEMBER ['+Ope.NOME_Operador +']
-GO' as Script , Ope.* 
+GO' as Script-- , Ope.* 
 From IPASGO.dbo.Operadores_Grupos Gope inner join IPASGO.dbo.Operadores Ope on Gope.NUMG_operador = Ope.NUMG_Operador
 Where NUMG_grupo = @NUMG_Grupo
 and Ope.DATA_Bloqueio IS NULL
@@ -21,7 +25,22 @@ and Ope.NOME_Operador not in  (	SELECT DP2.name AS DatabaseUserName
 									And DP2.name = Ope.NOME_Operador
 								)
 
-And Ope.NOME_Operador in (select name from sys.syslogins where name = Ope.NOME_Operador)
+Select 'USE SIGA'
+
+Select 'ALTER ROLE ['+@SIGL_Grupo+'] ADD MEMBER ['+Ope.NOME_Operador +']
+GO' as Script-- , Ope.* 
+From IPASGO.dbo.Operadores_Grupos Gope inner join IPASGO.dbo.Operadores Ope on Gope.NUMG_operador = Ope.NUMG_Operador
+Where NUMG_grupo = @NUMG_Grupo
+and Ope.DATA_Bloqueio IS NULL
+and Ope.NOME_Operador not in  (	SELECT DP2.name AS DatabaseUserName   
+									FROM SIGA.sys.database_role_members AS DRM   INNER JOIN SIGA.sys.database_principals AS DP1   ON DRM.role_principal_id = DP1.principal_id  
+									                                                            INNER JOIN SIGA.sys.database_principals AS DP2    ON DRM.member_principal_id = DP2.principal_id  
+									WHERE DP1.type = 'R'
+									And DP1.name = @SIGL_Grupo
+									And DP2.name = Ope.NOME_Operador
+								)
+
+--And Ope.NOME_Operador in (select name from sys.syslogins where name = Ope.NOME_Operador)
 
 
 /**************************************************************************/
@@ -29,13 +48,18 @@ And Ope.NOME_Operador in (select name from sys.syslogins where name = Ope.NOME_O
 --É Membros da ROLE do banco mas não tem na tabela Operadores_Grupos 
 /**************************************************************************/
 /**************************************************************************/
+Use IPASGO
+GO
 
+Set NoCount On
 
-Declare @SIGL_Grupo varchar(128) = 'SAAT - TROCA DE GUIAS'
+Declare @SIGL_Grupo varchar(128) = 'SIGA - AdministradorConta'
 Declare @NUMG_Grupo int = (Select NUMG_Grupo from IPASGO.dbo.grupos where SIGL_grupo = @SIGL_Grupo)
 
+Select 'USE IPASGO'
+
 SELECT 'ALTER ROLE ['+DP1.name+'] DROP MEMBER ['+Dp2.name +']
-GO' as Script , DP2.name AS DatabaseUserName   
+GO' as Script-- , DP2.name AS DatabaseUserName   
 FROM sys.database_role_members AS DRM   INNER JOIN sys.database_principals AS DP1   ON DRM.role_principal_id = DP1.principal_id  
                                         INNER JOIN sys.database_principals AS DP2    ON DRM.member_principal_id = DP2.principal_id  
 WHERE DP1.type = 'R'
@@ -48,7 +72,25 @@ And Dp2.name not in (
 						And   Ope.Nome_Operador = Dp2.name
 						And Ope.DATA_Bloqueio IS NULL
 					)
-And Dp2.name in (select name from sys.syslogins where name = Dp2.name)
+And Dp2.name <> 'Santos'
+
+Select 'USE SIGA'
+
+SELECT 'ALTER ROLE ['+DP1.name+'] DROP MEMBER ['+Dp2.name +']
+GO' as Script-- , DP2.name AS DatabaseUserName   
+FROM siga.sys.database_role_members AS DRM   INNER JOIN siga.sys.database_principals AS DP1   ON DRM.role_principal_id = DP1.principal_id  
+                                        INNER JOIN siga.sys.database_principals AS DP2    ON DRM.member_principal_id = DP2.principal_id  
+WHERE DP1.type = 'R'
+And DP1.name = @SIGL_Grupo
+And Dp2.name not in (
+						Select Ope.NOME_Operador 
+						From IPASGO.dbo.Operadores_Grupos Gope inner join IPASGO.dbo.Operadores Ope on Gope.NUMG_operador = Ope.NUMG_Operador
+						                         --   inner join #operadores_grupo tempOpe on Ope.NUMG_Operador = tempOpe.NUMG_Operador  
+						Where Gope.NUMG_grupo = @NUMG_Grupo
+						And   Ope.Nome_Operador = Dp2.name
+						And Ope.DATA_Bloqueio IS NULL
+					)
+And Dp2.name <> 'Santos'
 
 
 /**************************************************************************/
@@ -140,7 +182,7 @@ If (Select Count(*) from #tmpRoleMember) > 0 Select * from #tmpRoleMember
 /**************************************************************************/
 /**************************************************************************/
 -- Script que pega os registros da Operadores_Grupos e verifica se o Operador comtém a ROLE do banco de dados.
-Declare @NUMG_Operador int = 5066
+Declare @NUMG_Operador int = 5011
 
 Select 'ALTER ROLE ['+Gru.SIGL_grupo+'] ADD MEMBER ['+Ope.NOME_Operador +']' as Script , Ope.NOME_Operador, Ope.NOME_Completo, Gru.DESC_grupo
 From IPASGO.dbo.Operadores Ope inner join IPASGO.dbo.Operadores_Grupos OpeGru on Ope.NUMG_Operador = OpeGru.NUMG_operador
@@ -155,7 +197,31 @@ and (SELECT Count(*)
 	 And DP2.name = Ope.NOME_Operador) = 0
 And Gru.DATA_bloqueio IS Null
 And DESC_grupo not like 'Relatórios Ipasgo -%'
---And Gru.SIGL_grupo like 'SIGA%' -- Se for IPASGO tem que comntar essa linha
+--And Gru.SIGL_grupo like 'SIGA%' -- Se for IPASGO tem que comentar essa linha
 And Ope.NOME_Operador in (select name from sys.syslogins where name = Ope.NOME_Operador)
 
 /**************************************************************************/
+
+Declare @NUMG_Operador int = 5011
+Declare @Nome_Operador Varchar(20) = (Select Nome_Operador from Ipasgo.dbo.Operadores where NUMG_Operador = @NUMG_Operador)
+
+SELECT 'ALTER ROLE ['+DP1.name+'] DROP MEMBER ['+Dp2.name +']
+GO' as Script 
+--, DP2.name AS DatabaseUserName   
+FROM sys.database_role_members AS DRM   INNER JOIN sys.database_principals AS DP1   ON DRM.role_principal_id = DP1.principal_id  
+                                        INNER JOIN sys.database_principals AS DP2    ON DRM.member_principal_id = DP2.principal_id  
+WHERE DP1.type = 'R'
+And DP2.name = @Nome_Operador
+And (
+		Select count(*) 
+		from ipasgo.dbo.Operadores_Grupos og
+		where og.NUMG_operador = @NUMG_Operador
+		And   og.Numg_Grupo IN (Select g.Numg_Grupo from Ipasgo.dbo.Grupos g where g.SIGL_grupo = DP1.name)
+	 ) = 0 -- esse teste é pra pegar quem não tem o registro inserido na Operadores_Grupos
+	 -- Se quiser ver os que ainda tem registros inseridos na operadores cadastro é so testar maior que zero (> 0)
+
+And Dp1.Name not In ('SIGA - Supervisor')
+And Dp2.name in (select name from sys.syslogins where name = Dp2.name)
+
+/**************************************************************************/
+
