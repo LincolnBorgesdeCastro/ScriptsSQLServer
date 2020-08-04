@@ -3,8 +3,11 @@
 Set Nocount ON
 Use IPASGO
 GO
+
+--Select * from ipasgo.dbo.operadores where nome_operador = '40143155172'
+
 -- Colocaque o NUMG_Operador para gerar o Script de sincronismo da tabela Operadores_Grupos com os papeis(ROLE) do banco
-Declare @NUMG_Operador int = 3272
+Declare @NUMG_Operador int = 2115
 Declare @Nome_Operador Varchar(20) = (Select Nome_Operador from Ipasgo.dbo.Operadores where NUMG_Operador = @NUMG_Operador)
 
 Select 'USE IPASGO
@@ -24,7 +27,9 @@ and (SELECT Count(*)
 	 And DP1.name = Gru.SIGL_grupo
 	 And DP2.name = Ope.NOME_Operador) = 0
 And Gru.DATA_bloqueio IS Null
-And DESC_grupo not like 'Relatórios Ipasgo -%'
+And Gru.DESC_grupo not like 'Relatórios Ipasgo -%' -- Grupos que somente tem na tabela e não existe role no Banco de Dados
+And Gru.SIGL_grupo not like ('%[_]IN[_]%')         -- Grupos que somente tem na tabela e não existe role no Banco de Dados
+
 And Ope.NOME_Operador in (select name from sys.syslogins where name = Ope.NOME_Operador)
 
 
@@ -45,8 +50,8 @@ And (
 		And   og.Numg_Grupo IN (Select g.Numg_Grupo from Ipasgo.dbo.Grupos g where g.SIGL_grupo = DP1.name)
 	 ) = 0 -- esse teste é pra pegar quem não tem o registro inserido na Operadores_Grupos
 	 -- Se quiser ver os que ainda tem registros inseridos na operadores cadastro é so testar maior que zero (> 0)
-
-And Dp1.Name not In ('SIGA - Supervisor')
+--And Dp1.Name not In ('SIGA - Supervisor')
+And Dp1.Name not like 'DES_%'
 And Dp2.name in (select name from sys.syslogins where name = Dp2.name)
 
 Select '----------------------------------------- Sincronismo da Base SIGA -----------------------------------------'
@@ -90,8 +95,9 @@ And (
 	 ) = 0 -- esse teste é pra pegar quem não tem o registro inserido na Operadores_Grupos
 	 -- Se quiser ver os que ainda tem registros inseridos na operadores cadastro é so testar maior que zero (> 0)
 
-And Dp1.Name not In ('SIGA - Supervisor')
+--And Dp1.Name not In ('SIGA - Supervisor')
 And Dp1.Name like 'SIGA%' -- Se for IPASGO tem que comntar essa linha
+And Dp1.Name not like 'DES_%'
 And Dp2.name in (select name from sys.syslogins where name = Dp2.name)
 
 

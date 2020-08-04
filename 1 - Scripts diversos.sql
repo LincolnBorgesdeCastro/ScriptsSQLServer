@@ -23,12 +23,12 @@ exec sbd.dbo.up_SBDInputbuffer 994
 checkpoint
 
 /*
-ipasgo.dbo.up_opOperadores_Logins '69957177168'
+ipasgo.dbo.up_opOperadores_Logins '19103816672'
 
-use IPASGO select * from operadores where nome_operador IN ('70281246149')
+use IPASGO select * from operadores where nome_operador IN ('19103816672')
 use IPASGO select * from log_operadores where nome_operador IN ('05225035191')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('05225035191')
-use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('05225035191')
+use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('86115430178')
 /************************************************************************************/
 dbcc opentran
 
@@ -365,4 +365,6 @@ FROM sys.dm_os_wait_stats OPTION (RECOMPILE);
 
 /************************************************************************************************************/
 fn_dump_dblog  -- Le o arquivo de backup de log e retorna em resultset
+/************************************************************************************************************/
+--Exec SBD.dbo.up_SBDTentativasFrustadasLogin --'2020-07-17 00:00:00.000', '2020-07-18 00:00:00.000', 2
 /************************************************************************************************************/
