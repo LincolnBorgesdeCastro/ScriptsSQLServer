@@ -12,3 +12,10 @@ GROUP BY p.[object_id] ,
 p.index_id
 ORDER BY buffer_count DESC ;
 
+
+--CLERKS
+-- SQL Server 2012 version
+SELECT TOP(10) [type] as [Memory Clerk Name], SUM(pages_kb)/1024 AS [SPA Memory (MB)]
+FROM sys.dm_os_memory_clerks
+GROUP BY [type]
+ORDER BY SUM(pages_kb) DESC;

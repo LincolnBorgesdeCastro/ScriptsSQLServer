@@ -1,4 +1,4 @@
-select
+Select
  'drop index ' + stats.table_name + '.' + i.name as DropIndexStatement,
  stats.table_name as TableName,
  i.name as IndexName,
@@ -24,10 +24,12 @@ select
  and i.is_primary_key = 0 --Not a Primary Key
  and i.is_unique = 0 --Not a unique index
  and stats.table_name not like 'sys%'
- order by stats.table_name, i.name
+ ORDER BY (stats.seeks + stats.scans + stats.lookups) ASC
+ --order by stats.table_name, i.name
 
  /**********************************************************************************************************************************/
- SELECT TOP 25
+
+SELECT TOP 100
 o.name AS ObjectName
 , i.name AS IndexName
 , i.index_id AS IndexID
@@ -52,7 +54,7 @@ AND dm_ius.database_id = DB_ID()
 AND i.type_desc = 'nonclustered'
 AND i.is_primary_key = 0
 AND i.is_unique_constraint = 0
---and dm_ius.user_seeks = 0
-ORDER BY (dm_ius.user_seeks + dm_ius.user_scans + dm_ius.user_lookups) ASC
---ORDER BY p.TableRows DESC
+And dm_ius.user_seeks + dm_ius.user_scans + dm_ius.user_lookups = 0
+--ORDER BY (dm_ius.user_seeks + dm_ius.user_scans + dm_ius.user_lookups) ASC
+ORDER BY p.TableRows DESC
 GO

@@ -1,4 +1,5 @@
 SELECT DISTINCT
+OBJECT_SCHEMA_NAME(s.[object_id]) AS SchemaName,
 OBJECT_NAME(s.[object_id]) AS TableName,
 c.name AS ColumnName,
 s.name AS StatName,
@@ -20,6 +21,6 @@ JOIN sys.partitions par ON par.[object_id] = s.[object_id]
 JOIN sys.objects obj ON par.[object_id] = obj.[object_id]
 CROSS APPLY sys.dm_db_stats_properties(sc.[object_id], s.stats_id) AS dsp
 WHERE OBJECTPROPERTY(s.OBJECT_ID,'IsUserTable') = 1
-AND (s.auto_created = 1 OR s.user_created = 1)
-and DATEDIFF(d,STATS_DATE(s.[object_id], s.stats_id),getdate()) is not null
+-- AND (s.auto_created = 1 OR s.user_created = 1) -- filter out stats for indexes
+And dsp.modification_counter > 500000
 ORDER BY DaysOld;

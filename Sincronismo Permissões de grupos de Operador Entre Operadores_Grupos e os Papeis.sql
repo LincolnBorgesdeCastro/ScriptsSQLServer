@@ -4,10 +4,10 @@ Set Nocount ON
 Use IPASGO
 GO
 
---Select * from ipasgo.dbo.operadores where nome_operador = '40143155172'
+--Select * from ipasgo.dbo.operadores where nome_operador = '00943946107'
 
 -- Colocaque o NUMG_Operador para gerar o Script de sincronismo da tabela Operadores_Grupos com os papeis(ROLE) do banco
-Declare @NUMG_Operador int = 2115
+Declare @NUMG_Operador int = (Select NUMG_Operador from ipasgo.dbo.operadores where nome_operador = '00943946107')
 Declare @Nome_Operador Varchar(20) = (Select Nome_Operador from Ipasgo.dbo.Operadores where NUMG_Operador = @NUMG_Operador)
 
 Select 'USE IPASGO

@@ -1,12 +1,14 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (453)
+dbcc inputbuffer (301)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_atObtemParametrizacao'
+ sp_recompile 'up_crCancelaGuiaCoParticipNaoPaga'
+ 
+ Exec SBD.dbo.sp_BlitzWho 
 
- Exec sbd.dbo.sp_whoisactive 
+ Exec SBD.dbo.sp_whoisactive
 -- Exec sbd.dbo.stpLock_Raiz
 
 @get_plans = 1       -- this gives you the execution plans for running queries.
@@ -17,20 +19,21 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 994
+exec sbd.dbo.up_SBDInputbuffer 647
 
--- Kill 72
+-- Kill 1511
 checkpoint
 
 /*
-ipasgo.dbo.up_opOperadores_Logins '19103816672'
+ipasgo.dbo.up_opOperadores_Logins '86273795134'
 
-use IPASGO select * from operadores where nome_operador IN ('19103816672')
+use IPASGO select * from operadores where nome_operador IN ('02211881181')
 use IPASGO select * from log_operadores where nome_operador IN ('05225035191')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('05225035191')
 use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('86115430178')
 /************************************************************************************/
-dbcc opentran
+exit;
+--dbcc opentran
 
 /* Verificar enfileramento */
 sp_who2 'active'
@@ -134,11 +137,11 @@ ALTER DATABASE IPASGO SET READ_COMMITTED_SNAPSHOT  ON WITH ROLLBACK IMMEDIATE;
 ALTER DATABASE IPASGO SET ALLOW_SNAPSHOT_ISOLATION ON;
 /*******************************************************************************************************/
 /*************SETAR O VALOR DO IDENTITY**********************************************************************/
-DBCC CHECKIDENT ('cr_LOGCobrancas') -- seta para o ultimo usado
+DBCC CHECKIDENT ('rh_ColaboradoresHorarios') -- seta para o ultimo usado
 
-DBCC CHECKIDENT ('cr_LOGCobrancas', NORESEED) -- visualiza
+DBCC CHECKIDENT ('rh_ColaboradoresHorarios', NORESEED) -- visualiza
 
-DBCC CHECKIDENT ('cr_LOGCobrancas', RESEED, 3) -- volta para o valor estipulado ex. 30
+DBCC CHECKIDENT ('rh_ColaboradoresHorarios', RESEED, 3) -- volta para o valor estipulado ex. 30
 /*******************************************************************************************************/
 
 select * from cr_LOGCobrancas
@@ -196,23 +199,23 @@ USE [SIGA]
 GO
 checkpoint
 GO
-backup log SIGA with no_log
+--backup log SIGA with no_log
 */
 
 GO
 DBCC SHRINKFILE (N'SIGA_Log' , 0)
 GO
 /************************************************************************************/
-SELECT db.name, m.mirroring_role_desc , m.mirroring_connection_timeout
+SELECT db.name, m.mirroring_role_desc , m.mirroring_connection_ut
 FROM sys.database_mirroring m 
 JOIN sys.databases db
 ON db.database_id = m.database_id
 WHERE db.name = N'IPASGO'; 
 GO
-ALTER DATABASE IPASGO SET PARTNER TIMEOUT 50
+--ALTER DATABASE IPASGO SET PARTNER TIMEOUT 50
 /************************************************************************************/
-grant ALTER ANY LOGIN to [USER]
-grant ALTER ANY ROLE to [ROLE]  
+--grant ALTER ANY LOGIN to [USER]
+--grant ALTER ANY ROLE to [ROLE]  
 /************************************************************************************/
 /*Mostra a quantidade de conexoes por IP*/
 SELECT  EC.CLIENT_NET_ADDRESS ,
@@ -292,7 +295,7 @@ where principal_id in (select grantee_principal_id
 
 /************************************************************************************************************/
 --Rota do mirror
-tracert mirror.segplan.ipasgo.go.gov.br
+--tracert mirror.segplan.ipasgo.go.gov.br
 /************************************************************************************************************/
 
 Descobrir permissoes em nivel de servidor
@@ -318,10 +321,10 @@ where database_id = 13
 
 
 /************************************************************************************************************/
-sp_removedbreplication 'IPASGO'
+--sp_removedbreplication 'IPASGO'
 /************************************************************************************************************/
 TOAD DBA SUIT SQL SERVER
-https://support.software.dell.com/download-install-detail/6054161
+---https://support.software.dell.com/download-install-detail/6054161
 
 /************************************************************************************************************/
 -- Descobrir se é primario ou secundario AlwaysOn
@@ -351,7 +354,7 @@ Select convert(numeric(18,2), sum("Log Record Length") / 1024. /1024.)
 from ::fn_dblog(null,null)
 */
 /************************************************************************************************************/
-dbo.up_opOperadores_Logins '86273795134'
+--dbo.up_opOperadores_Logins '86273795134'
 /************************************************************************************************************/
 
 /************************************************************************************************************/
@@ -364,7 +367,36 @@ AS [%resource waits]
 FROM sys.dm_os_wait_stats OPTION (RECOMPILE);
 
 /************************************************************************************************************/
-fn_dump_dblog  -- Le o arquivo de backup de log e retorna em resultset
+--fn_dump_dblog  -- Le o arquivo de backup de log e retorna em resultset
 /************************************************************************************************************/
 --Exec SBD.dbo.up_SBDTentativasFrustadasLogin --'2020-07-17 00:00:00.000', '2020-07-18 00:00:00.000', 2
+/************************************************************************************************************/
+/*
+USE IPASGO -- Consultas demoradas com alto consumo
+
+SELECT TOP(50) qs.execution_count AS [Execution Count],
+(qs.total_logical_reads)/1000.0 AS [Total Logical Reads in ms],
+(qs.total_logical_reads/qs.execution_count)/1000.0 AS [Avg Logical Reads in ms],
+(qs.total_worker_time)/1000.0 AS [Total Worker Time in ms],
+(qs.total_worker_time/qs.execution_count)/1000.0 AS [Avg Worker Time in ms],
+(qs.total_elapsed_time)/1000.0 AS [Total Elapsed Time in ms],
+(qs.total_elapsed_time/qs.execution_count)/1000.0 AS [Avg Elapsed Time in ms],
+qs.creation_time AS [Creation Time]
+,t.text AS [Complete Query Text], qp.query_plan AS [Query Plan]
+FROM sys.dm_exec_query_stats AS qs WITH (NOLOCK)
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS t
+CROSS APPLY sys.dm_exec_query_plan(plan_handle) AS qp
+WHERE t.dbid = DB_ID()
+--ORDER BY qs.execution_count DESC OPTION (RECOMPILE);-- for frequently ran query
+-- ORDER BY [Avg Logical Reads in ms] DESC OPTION (RECOMPILE);-- for High Disk Reading query
+ ORDER BY [Avg Worker Time in ms] DESC OPTION (RECOMPILE);-- for High CPU query
+-- ORDER BY [Avg Elapsed Time in ms] DESC OPTION (RECOMPILE);-- for Long Running query
+*/
+/************************************************************************************************************/
+
+/*
+
+   update statistics    with fullscan
+
+*/
 /************************************************************************************************************/

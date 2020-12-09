@@ -1,10 +1,10 @@
-Declare @Dias int = -2                      -- Quantos dias antes até a data atual que deseja consultar
+Declare @Dias int = -1                      -- Quantos dias antes até a data atual que deseja consultar
 Declare @Caminho Varchar(200)               -- Caminho onde esta o arquivos para consultar
 Declare @Server  Varchar(100) --= 'ROMENIA' -- Servidor que gerou o arquivo de auditoria
 
 If @Server is Null set @Server = @@SERVERNAME
 
-Set @Caminho  = '\\catar\Auditorias\'+ @Server +'\Audit_DCL*.*'
+Set @Caminho  = '\\catar\Auditorias\'+ SBD.dbo.fn_ServerName() +'\Audit_DCL_NORTE*.sqlaudit'
 
 SELECT DATEADD(MINUTE, DATEDIFF(MINUTE, GETUTCDATE(), CURRENT_TIMESTAMP), event_time) AS event_time_afterconvert
 	,getdate() 'Current_system_time'

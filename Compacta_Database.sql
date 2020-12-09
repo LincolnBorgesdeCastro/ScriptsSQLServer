@@ -37,7 +37,7 @@ SELECT DISTINCT
         B.name AS Tabela,
         A.name AS Indice,
 		D.data_compression,
-        'ALTER INDEX [' + A.name + '] ON [' + C.name + '].[' + B.name + '] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = ON, ONLINE = OFF, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = '+@Ds_Metodo_Compressao+')'
+        'ALTER INDEX [' + A.name + '] ON [' + C.name + '].[' + B.name + '] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = ON, ONLINE = ON, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = '+@Ds_Metodo_Compressao+')'
     FROM 
         sys.indexes                  A
         INNER JOIN sys.tables        B   ON A.object_id = B.object_id
@@ -124,7 +124,7 @@ BEGIN
     SELECT DISTINCT 
         B.name AS Tabela,
         A.name AS Indice,
-        ''ALTER INDEX ['' + A.name + ''] ON ['' + ''' + @Ds_Database + ''' + ''].['' + C.name + ''].['' + B.name + ''] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = ON, ONLINE = OFF, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = ' + @Ds_Metodo_Compressao + ')''
+        ''ALTER INDEX ['' + A.name + ''] ON ['' + ''' + @Ds_Database + ''' + ''].['' + C.name + ''].['' + B.name + ''] REBUILD PARTITION = ALL WITH ( STATISTICS_NORECOMPUTE = ON, ONLINE = ON, SORT_IN_TEMPDB = OFF, DATA_COMPRESSION = ' + @Ds_Metodo_Compressao + ')''
     FROM 
         [' + @Ds_Database + '].sys.indexes                  A
         INNER JOIN [' + @Ds_Database + '].sys.tables        B   ON A.object_id = B.object_id

@@ -245,4 +245,4 @@ GO
 ***************************************************************************************************/
 
 
---Select * from MONITOR.dbo.Job_Audit
+--Select * from MONITOR.dbo.Job_Audit order by dt_Evento desc
