@@ -1,10 +1,10 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (301)
+dbcc inputbuffer (106)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_crCancelaGuiaCoParticipNaoPaga'
+ sp_recompile 'up_aeBuscaMateriais'
  
  Exec SBD.dbo.sp_BlitzWho 
 
@@ -19,7 +19,7 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 647
+exec sbd.dbo.up_SBDInputbuffer 106
 
 -- Kill 1511
 checkpoint
@@ -27,7 +27,7 @@ checkpoint
 /*
 ipasgo.dbo.up_opOperadores_Logins '86273795134'
 
-use IPASGO select * from operadores where nome_operador IN ('02211881181')
+use IPASGO select * from operadores where nome_operador IN ('00953825183')
 use IPASGO select * from log_operadores where nome_operador IN ('05225035191')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('05225035191')
 use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('86115430178')
@@ -392,6 +392,19 @@ WHERE t.dbid = DB_ID()
  ORDER BY [Avg Worker Time in ms] DESC OPTION (RECOMPILE);-- for High CPU query
 -- ORDER BY [Avg Elapsed Time in ms] DESC OPTION (RECOMPILE);-- for Long Running query
 */
+
+/************************************************************************************************************/
+-- Consumo de memoria da query em execução
+SELECT 
+  ((t1.requested_memory_kb)/1024.00) MemoryRequestedMB
+  , CASE WHEN t1.grant_time IS NULL THEN 'Waiting' ELSE 'Granted' END AS RequestStatus
+  , t1.timeout_sec SecondsToTerminate
+  , t2.[text] QueryText
+FROM sys.dm_exec_query_memory_grants t1
+  CROSS APPLY sys.dm_exec_sql_text(t1.sql_handle) t2
+
+/************************************************************************************************************/
+  
 /************************************************************************************************************/
 
 /*
