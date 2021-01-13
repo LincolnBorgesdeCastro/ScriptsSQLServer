@@ -4,7 +4,7 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 dbcc inputbuffer (106)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_aeBuscaMateriais'
+ sp_recompile 'up_saBuscaCaminhoImagensOdonto'
  
  Exec SBD.dbo.sp_BlitzWho 
 
@@ -19,7 +19,7 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 106
+exec sbd.dbo.up_SBDInputbuffer 333
 
 -- Kill 1511
 checkpoint
@@ -395,14 +395,14 @@ WHERE t.dbid = DB_ID()
 
 /************************************************************************************************************/
 -- Consumo de memoria da query em execução
-SELECT 
+SELECT session_id,
   ((t1.requested_memory_kb)/1024.00) MemoryRequestedMB
   , CASE WHEN t1.grant_time IS NULL THEN 'Waiting' ELSE 'Granted' END AS RequestStatus
   , t1.timeout_sec SecondsToTerminate
   , t2.[text] QueryText
 FROM sys.dm_exec_query_memory_grants t1
   CROSS APPLY sys.dm_exec_sql_text(t1.sql_handle) t2
-
+order by 2 desc
 /************************************************************************************************************/
   
 /************************************************************************************************************/
