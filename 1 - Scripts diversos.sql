@@ -4,7 +4,7 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 dbcc inputbuffer (106)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_saBuscaCaminhoImagensOdonto'
+ sp_recompile 'up_atBuscaCreditosUsuario'
  
  Exec SBD.dbo.sp_BlitzWho 
 
@@ -19,18 +19,18 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 333
+exec sbd.dbo.up_SBDInputbuffer 104
 
 -- Kill 1511
 checkpoint
 
 /*
-ipasgo.dbo.up_opOperadores_Logins '86273795134'
+ipasgo.dbo.up_opOperadores_Logins '00001509160'
 
-use IPASGO select * from operadores where nome_operador IN ('00953825183')
+use IPASGO select * from operadores where nome_operador IN ('72461942153')
 use IPASGO select * from log_operadores where nome_operador IN ('05225035191')
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('05225035191')
-use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('86115430178')
+use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('72461942153')
 /************************************************************************************/
 exit;
 --dbcc opentran
@@ -404,7 +404,29 @@ FROM sys.dm_exec_query_memory_grants t1
   CROSS APPLY sys.dm_exec_sql_text(t1.sql_handle) t2
 order by 2 desc
 /************************************************************************************************************/
-  
+-- Sessoes do banco para avaliar o TempDB, CPU, Memoria e etc.
+SELECT sys.dm_exec_sessions.session_id AS [SESSION ID]
+, DB_NAME(sys.dm_exec_sessions.database_id) AS [DATABASE Name]
+, HOST_NAME AS [System Name]
+, program_name AS [Program Name]
+, login_name AS [USER Name]
+, status
+, cpu_time AS [CPU TIME (in milisec)]
+, total_scheduled_time AS [Total Scheduled TIME (in milisec)]
+, total_elapsed_time AS [Elapsed TIME (in milisec)]
+, (memory_usage * 8) AS [Memory USAGE (in KB)]
+, (user_objects_alloc_page_count * 8) AS [SPACE Allocated FOR USER Objects (in KB)]
+, (user_objects_dealloc_page_count * 8) AS [SPACE Deallocated FOR USER Objects (in KB)]
+, (internal_objects_alloc_page_count * 8) AS [SPACE Allocated FOR Internal Objects (in KB)]
+, (internal_objects_dealloc_page_count * 8) AS [SPACE Deallocated FOR Internal Objects (in KB)]
+, CASE is_user_process WHEN 1 THEN 'user session' WHEN 0 THEN 'system session' END AS [SESSION Type]
+, row_count AS [ROW COUNT] 
+FROM sys.dm_db_session_space_usage 
+INNER join sys.dm_exec_sessions ON sys.dm_db_session_space_usage.session_id = sys.dm_exec_sessions.session_id
+--order by memory_usage desc
+--order by cpu_time desc
+order by internal_objects_alloc_page_count desc
+
 /************************************************************************************************************/
 
 /*
