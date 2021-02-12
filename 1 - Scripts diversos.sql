@@ -4,7 +4,7 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 dbcc inputbuffer (106)
 WITH NO_INFOMSGS
 /*
- sp_recompile 'up_atBuscaCreditosUsuario'
+ sp_recompile 'up_crGravaIntervaloContribuicao'
  
  Exec SBD.dbo.sp_BlitzWho 
 
@@ -19,9 +19,10 @@ WITH NO_INFOMSGS
 
 */
 
-exec sbd.dbo.up_SBDInputbuffer 104
+exec sbd.dbo.up_SBDInputbuffer 117
 
--- Kill 1511
+
+-- Kill 447
 checkpoint
 
 /*
@@ -367,6 +368,23 @@ AS [%resource waits]
 FROM sys.dm_os_wait_stats OPTION (RECOMPILE);
 
 /************************************************************************************************************/
+
+/*Retorda as estatisticas das tabelas*/
+SELECT DISTINCT st.[NAME]
+	,STP.ROWS
+	,STP.ROWS_SAMPLED
+	,' UPDATE STATISTICS ' + '[' + ss.name + ']' + '.[' + 
+	OBJECT_NAME(st.object_id) + ']' + ' ' + '[' + st.name + ']' + ' WITH FULLSCAN'
+FROM SYS.STATS AS ST
+CROSS APPLY SYS.DM_DB_STATS_PROPERTIES(ST.OBJECT_ID, ST.STATS_ID) AS STP
+JOIN SYS.TABLES STA ON st.[object_id] = sta.object_id
+JOIN sys.schemas ss ON ss.schema_id = STA.schema_id
+WHERE --[ROWS] <> ROWS_SAMPLED
+--AND 
+STA.NAME IN ('receitas')
+ORDER BY [ROWS] DESC
+
+/************************************************************************************************************/
 --fn_dump_dblog  -- Le o arquivo de backup de log e retorna em resultset
 /************************************************************************************************************/
 --Exec SBD.dbo.up_SBDTentativasFrustadasLogin --'2020-07-17 00:00:00.000', '2020-07-18 00:00:00.000', 2
@@ -428,10 +446,10 @@ INNER join sys.dm_exec_sessions ON sys.dm_db_session_space_usage.session_id = sy
 order by internal_objects_alloc_page_count desc
 
 /************************************************************************************************************/
-
 /*
 
    update statistics    with fullscan
 
 */
+/************************************************************************************************************/
 /************************************************************************************************************/
