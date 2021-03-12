@@ -3,12 +3,13 @@ Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
 dbcc inputbuffer (106)
 WITH NO_INFOMSGS
+
 /*
- sp_recompile 'up_crGravaIntervaloContribuicao'
+ sp_recompile 'up_crBuscaCoParticipacoes'
  
  Exec SBD.dbo.sp_BlitzWho 
 
- Exec SBD.dbo.sp_whoisactive
+ Exec SBD.dbo.sp_whoisactive 
 -- Exec sbd.dbo.stpLock_Raiz
 
 @get_plans = 1       -- this gives you the execution plans for running queries.
@@ -18,29 +19,33 @@ WITH NO_INFOMSGS
  sp_who2 'active'
 
 */
+exec sbd.dbo.up_SBDInputbuffer 464
 
-exec sbd.dbo.up_SBDInputbuffer 117
 
-
--- Kill 447
+-- Kill 60
 checkpoint
 
 /*
-ipasgo.dbo.up_opOperadores_Logins '00001509160'
+ipasgo.dbo.up_opOperadores_Logins '03095311109'
 
-use IPASGO select * from operadores where nome_operador IN ('72461942153')
-use IPASGO select * from log_operadores where nome_operador IN ('05225035191')
+use IPASGO select * from operadores where nome_operador IN ('03095311109')
+use IPASGO select * from log_operadores where nome_operador IN ('03095311109')
+use IPASGO select * from log.log.dbo.log_operadores where nome_operador IN ('94870292149') order by data_ocorrencia desc
 use IPASGO select * from [dbo].[gv_OrigensResponsaveis] where NUMR_CPF IN ('05225035191')
-use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('72461942153')
+use IPASGO select * from rh_colaboradores where NUMR_CPF IN ('03095311109')
+
+
+*/
 /************************************************************************************/
-exit;
+
 --dbcc opentran
 
 /* Verificar enfileramento */
-sp_who2 'active'
+--sp_who2 'active'
 /************************************************************************************/
 --      sp_recompile 'up_atBuscaRestricoesProcFicha'
 /************************************************************************************/
+/*
 -- desabilitar a trigger
 disable trigger tr_SBDConferirReplicacao on database;
 disable trigger tr_SBDAlertaProducao on database;
@@ -48,7 +53,9 @@ disable trigger tr_SBDAlertaProducao on database;
 -- habilitar a trigger
 enable trigger tr_SBDConferirReplicacao on database;
 enable trigger tr_SBDAlertaProducao     on database;
+*/
 /************************************************************************************/
+/*
 --Verifica tabela em replicação
 use distribution
 select distinct
@@ -60,10 +67,11 @@ from MSarticles M
 inner join MSpublications  S on M.publication_id =S.publication_id 
 inner join MSsubscriptions X on X.publication_id =S.publication_id
 where M.article = 'sa_ArquivosPrestadores'
-
+*/
 /************************************************************************************/
 
 /* Verificar os processos que estao rodando */
+/*
 Select spid,blocked,waittime,dbid,cpu,login_time,open_
 ,status,hostname,program_name,hostprocess,cmd,nt_domain,loginame
 from Sys.SysProcesses
@@ -74,12 +82,15 @@ and loginame <> 'IPASGO\86273795134'
 and Status='runnable' 
 order by cpu desc  --login_time
 
+*/
 /************************************************************************************/
+/*
 Select spid,blocked,waittime,dbid,cpu,login_time,open_tran,status,hostname,program_name,hostprocess,cmd,nt_domain,loginame
 from Sys.SysProcesses
 Where spid = 269
+*/
 /************************************************************************************/
-
+/*
  SELECT  c.session_id
 			 , c.auth_scheme
 			 , c.node_affinity
@@ -97,20 +108,14 @@ Where spid = 269
 			 , c.most_recent_sql_handle
  FROM sys.dm_exec_connections c INNER JOIN sys.dm_exec_sessions s ON c.session_id = s.session_id
  where db_name(s.database_id) = 'IPASGO'
-
-/************************************************************************************/
-IPASGO\81084056199    
+*/
 
 /********************************************************************************************************/
-/* Adicionar usuario ao grupo de permissão */
-exec sp_addrolemember 'db_datareader','84315229172'      
 
-/*Informações sobre o usuario */
-sp_helpuser '86273795134'
-
-sp_change_users_login UPDATE_ONE , '93176554168', '93176554168'
+--sp_change_users_login UPDATE_ONE , '93176554168', '93176554168'
 
 /********* Consultas do mirroriong *********/
+/*
 select * from sys.database_mirroring_endpoints
 
 select * from sys.database_mirroring_witnesses 
@@ -118,43 +123,37 @@ select * from sys.database_mirroring_witnesses
 select    db.name, mir.* 
 from    sys.databases db inner join sys.database_mirroring mir on mir.database_id = db.database_id 
 where    mirroring_guid is not null 
-
+*/
 /* As maiores tabelas do banco */
+/*
 Select object_name(id),rowcnt,dpages*8 as [tamanho KB] from sysindexes 
 where indid in (1,0) and objectproperty(id,'isusertable')=1 
 order by rowcnt desc 
+*/
 
-/*******************************************************************************************************/
-GRANT EXECUTE on dbo.up_cfBuscaSaldoDiarias to [SGF - Supervisao de Conciliacao]
-
-/*******************************************************************************************************/
 /**********************************Renomear objeto******************************************************/
-EXEC sp_rename N'NomeAtual', N'NomeNovo', N'TipoObjeto';
+--EXEC sp_rename N'NomeAtual', N'NomeNovo', N'TipoObjeto';
 /*******************************************************************************************************/
+/*
 /*cofiguração para versionamento de registro no sql server, para evitar deadlocks*/
 
 ALTER DATABASE IPASGO SET READ_COMMITTED_SNAPSHOT  ON WITH ROLLBACK IMMEDIATE;
 
 ALTER DATABASE IPASGO SET ALLOW_SNAPSHOT_ISOLATION ON;
+*/
 /*******************************************************************************************************/
 /*************SETAR O VALOR DO IDENTITY**********************************************************************/
-DBCC CHECKIDENT ('rh_ColaboradoresHorarios') -- seta para o ultimo usado
-
-DBCC CHECKIDENT ('rh_ColaboradoresHorarios', NORESEED) -- visualiza
-
-DBCC CHECKIDENT ('rh_ColaboradoresHorarios', RESEED, 3) -- volta para o valor estipulado ex. 30
+/*
+  DBCC CHECKIDENT ('rh_ColaboradoresHorarios') -- seta para o ultimo usado
+  
+  DBCC CHECKIDENT ('rh_ColaboradoresHorarios', NORESEED) -- visualiza
+  
+  DBCC CHECKIDENT ('rh_ColaboradoresHorarios', RESEED, 3) -- volta para o valor estipulado ex. 30
+*/
 /*******************************************************************************************************/
 
-select * from cr_LOGCobrancas
-
-update pmso_LOGCampanhas set numg_log = numg_log + 3
-
-
-
-select * from dbo.pmso_LOGCampanhas
-
 /*Pegar indice pelo Object_ID*/
-
+/*
 select * FROM
 sys.partitions
 where hobt_id = 72057604301455360
@@ -163,62 +162,54 @@ SELECT *
 from sys.indexes
 where object_id = 1774290472
 and index_id = 5
-
+*/
 /*******************************************************************************************************/
 --Gerar comando para exclusão de foreing key
+/*
 select 'ALTER TABLE ' + s.name + ' drop constraint ' + f.name + ';'--char(13) + 'go' 
 from sys.foreign_keys f join sysobjects s on f.parent_object_id = s.id
 where f.name like 'FK_od%'
 and   s.name like 'Excluir%'
-
+*/
 /*******************************************************************************************************/
 
 --Para Job
-exec msdb.dbo.sp_update_job @job_name = "SBD - JOB RESUME", @enabled = 0
+--exec msdb.dbo.sp_update_job @job_name = "SBD - JOB RESUME", @enabled = 0
 
 --Para Mirror
-ALTER DATABASE IPASGO SET PARTNER SUSPEND
+--ALTER DATABASE IPASGO SET PARTNER SUSPEND
 
 --Reindexa
-DBCC DBREINDEX ('aa_Solicitacoes', PK_aa_Solicitacoes, 80);
+--DBCC DBREINDEX ('aa_Solicitacoes', PK_aa_Solicitacoes, 80);
 
 -- Habilita Mirror
-ALTER DATABASE IPASGO SET PARTNER RESUME
+--ALTER DATABASE IPASGO SET PARTNER RESUME
 
 -- Habilita Job
-exec msdb.dbo.sp_update_job @job_name = "SBD - JOB RESUME", @enabled = 1
+--exec msdb.dbo.sp_update_job @job_name = "SBD - JOB RESUME", @enabled = 1
 /************************************************************************************/
 /*Cria um campo sequencial por um campo que se repete*/
-select row_number() over(partition by id order by id) as numero , id from #teste
+--select row_number() over(partition by id order by id) as numero , id from #teste
 /************************************************************************************/
-backup log VMWARE  with no_log
+--backup log VMWARE  with no_log
 /************************************************************************************/
-/*****************Manutençao no SIGA ***********************************************/
 
+/************************************************************************************/
 /*
-USE [SIGA]
-GO
-checkpoint
-GO
---backup log SIGA with no_log
-*/
-
-GO
-DBCC SHRINKFILE (N'SIGA_Log' , 0)
-GO
-/************************************************************************************/
 SELECT db.name, m.mirroring_role_desc , m.mirroring_connection_ut
 FROM sys.database_mirroring m 
 JOIN sys.databases db
 ON db.database_id = m.database_id
 WHERE db.name = N'IPASGO'; 
 GO
+*/
 --ALTER DATABASE IPASGO SET PARTNER TIMEOUT 50
 /************************************************************************************/
 --grant ALTER ANY LOGIN to [USER]
 --grant ALTER ANY ROLE to [ROLE]  
 /************************************************************************************/
 /*Mostra a quantidade de conexoes por IP*/
+/*
 SELECT  EC.CLIENT_NET_ADDRESS ,
 		ES.[PROGRAM_NAME] ,
 		ES.[HOST_NAME] ,
@@ -230,9 +221,9 @@ ES.[PROGRAM_NAME] ,
 ES.[HOST_NAME] ,
 ES.LOGIN_NAME
 ORDER BY EC.CLIENT_NET_ADDRESS, ES.[PROGRAM_NAME]
-
+*/
 /************************************************************************************/
-
+/*
 USE [master]
 GO
 --DROP DATABASE IPASGO_SNP
@@ -241,10 +232,11 @@ CREATE DATABASE [IPASGO_SNP] ON
  (NAME = N'ipasgo_Data', FILENAME = N'e:\Snapshots\Ipasgo_SNP.SNP') 
 ,(NAME = N'ipasgo_Data2', FILENAME = N'e:\Snapshots\Ipasgo2_SNP.SNP')
 ,(NAME = N'ipasgo_Index', FILENAME = N'e:\Snapshots\IpasgoIx_SNP.SNP') AS SNAPSHOT OF [IPASGO]
+*/
 
 /****************************************************************************************************************/
-/****************************************************************************************************************/
 
+/*
 --Script de verificação de qual causa o LOG não esta sendo truncado
 
 select log_reuse_wait , log_reuse_wait_desc, * 
@@ -252,8 +244,8 @@ from  sys.databases
 where name in ('IPASGO','SIGA')
 
 --select size, max_size, growth, * from sys.database_files
-
-
+*/
+/*
 --Processo que estao consumindo mais log
 SELECT TOP 10 SUBSTRING(qt.TEXT, (qs.statement_start_offset/2)+1,
 ((CASE qs.statement_end_offset
@@ -279,8 +271,9 @@ inner join sys.dm_exec_connections ec on qs.plan_handle = ec.most_recent_session
 ORDER BY qs.total_logical_reads DESC -- logical reads
 -- ORDER BY qs.total_logical_writes DESC -- logical writes
 -- ORDER BY qs.total_worker_time DESC -- CPU time
-
+*/
 /****************************************************************************************************************/
+/*
 --Retorna as permissoes DCL de um usuario
 select *                     
 from sys.database_permissions                     
@@ -292,14 +285,14 @@ where principal_id in (select grantee_principal_id
 					   from sys.database_permissions                     
 					   where grantor_principal_id = user_id ('USR_SCSA')
 )
-
+*/
 
 /************************************************************************************************************/
 --Rota do mirror
 --tracert mirror.segplan.ipasgo.go.gov.br
 /************************************************************************************************************/
-
-Descobrir permissoes em nivel de servidor
+/*
+--Descobrir permissoes em nivel de servidor
 SELECT  
   [srvprin].[name] [server_principal], 
   [srvprin].[type_desc] [principal_type], 
@@ -312,63 +305,59 @@ WHERE [srvprin].[type] IN ('S', 'U', 'G')
 AND permission_name not in ('CONNECT SQL')
 AND permission_name = 'ALTER ANY LOGIN'
 ORDER BY [server_principal], [permission_name];
-
+*/
 /************************************************************************************************************/
+/*
 --Consultar todas conexões
 select  log_reuse_wait_desc,* from sys.databases
 
 select * from sys.dm_exec_sessions
 where database_id = 13
-
+*/
 
 /************************************************************************************************************/
 --sp_removedbreplication 'IPASGO'
 /************************************************************************************************************/
-TOAD DBA SUIT SQL SERVER
----https://support.software.dell.com/download-install-detail/6054161
-
-/************************************************************************************************************/
+/*
 -- Descobrir se é primario ou secundario AlwaysOn
 select role_desc 
 from sys.dm_hadr_availability_replica_states 
 where is_local=1 
 and role=1;
-/************************************************************************************************************/
-
 */
+
 /************************************************************************************************************/
 -- Quantidade de memoria por database
+/*
 SELECT DB_NAME(database_id),
 COUNT (1) * 8 / 1024 AS MBUsed
 FROM sys.dm_os_buffer_descriptors
 GROUP BY database_id
 ORDER BY COUNT (*) * 8 / 1024 DESC
 GO
+*/
 /************************************************************************************************************/
 
-select top 4 * from RH_Ponto where NUMG_colaborador = 4485 order by DATA_acao desc
+--select top 4 * from RH_Ponto where NUMG_colaborador = 4485 order by DATA_acao desc
 
 /************************************************************************************************************/
-/*-- Leitura no transaction log
+/*
+-- Leitura no transaction log
 Checkpoint
 Select convert(numeric(18,2), sum("Log Record Length") / 1024. /1024.) 
 from ::fn_dblog(null,null)
 */
 /************************************************************************************************************/
---dbo.up_opOperadores_Logins '86273795134'
-/************************************************************************************************************/
-
-/************************************************************************************************************/
+/*
 -- Pressão da CPU detectada pelo usu das Estatisticas
-/************************************************************************************************************/
 SELECT CAST(100.0 * SUM(signal_wait_time_ms) / SUM (wait_time_ms) AS NUMERIC(20,2))
 AS [%signal (cpu) waits],
 CAST(100.0 * SUM(wait_time_ms - signal_wait_time_ms) / SUM (wait_time_ms) AS NUMERIC(20,2))
 AS [%resource waits] 
 FROM sys.dm_os_wait_stats OPTION (RECOMPILE);
-
+*/
 /************************************************************************************************************/
-
+/*
 /*Retorda as estatisticas das tabelas*/
 SELECT DISTINCT st.[NAME]
 	,STP.ROWS
@@ -383,7 +372,7 @@ WHERE --[ROWS] <> ROWS_SAMPLED
 --AND 
 STA.NAME IN ('receitas')
 ORDER BY [ROWS] DESC
-
+*/
 /************************************************************************************************************/
 --fn_dump_dblog  -- Le o arquivo de backup de log e retorna em resultset
 /************************************************************************************************************/
@@ -412,6 +401,7 @@ WHERE t.dbid = DB_ID()
 */
 
 /************************************************************************************************************/
+/*
 -- Consumo de memoria da query em execução
 SELECT session_id,
   ((t1.requested_memory_kb)/1024.00) MemoryRequestedMB
@@ -421,7 +411,9 @@ SELECT session_id,
 FROM sys.dm_exec_query_memory_grants t1
   CROSS APPLY sys.dm_exec_sql_text(t1.sql_handle) t2
 order by 2 desc
+*/
 /************************************************************************************************************/
+/*
 -- Sessoes do banco para avaliar o TempDB, CPU, Memoria e etc.
 SELECT sys.dm_exec_sessions.session_id AS [SESSION ID]
 , DB_NAME(sys.dm_exec_sessions.database_id) AS [DATABASE Name]
@@ -444,12 +436,13 @@ INNER join sys.dm_exec_sessions ON sys.dm_db_session_space_usage.session_id = sy
 --order by memory_usage desc
 --order by cpu_time desc
 order by internal_objects_alloc_page_count desc
-
+*/
 /************************************************************************************************************/
 /*
 
    update statistics    with fullscan
 
 */
+/************************************************************************************************************/
 /************************************************************************************************************/
 /************************************************************************************************************/

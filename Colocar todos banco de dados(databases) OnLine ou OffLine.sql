@@ -1,7 +1,8 @@
+use master
 --CREATE PROCEDURE SP_TakeOfflineAllDatabase(@Flag_Status smallint = 0) AS
 --BEGIN
 
-    DECLARE @Flag_Status smallint = 6
+    DECLARE @Flag_Status smallint = 0
 	--0 = OnLine
 	--6 = OffLine
 
