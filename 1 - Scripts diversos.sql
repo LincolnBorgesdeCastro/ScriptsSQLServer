@@ -1,11 +1,11 @@
 /* Verifica bloqueio */
 Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
 
-dbcc inputbuffer (106)
+dbcc inputbuffer (158)
 WITH NO_INFOMSGS
 
 /*
- sp_recompile 'up_crBuscaCoParticipacoes'
+ sp_recompile 'IPASGO.dbo.up_gvReplicaDadosDepEndentes'
  
  Exec SBD.dbo.sp_BlitzWho 
 
@@ -19,7 +19,7 @@ WITH NO_INFOMSGS
  sp_who2 'active'
 
 */
-exec sbd.dbo.up_SBDInputbuffer 464
+exec sbd.dbo.up_SBDInputbuffer 1189
 
 
 -- Kill 60
