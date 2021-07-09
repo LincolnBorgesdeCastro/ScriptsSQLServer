@@ -1,16 +1,25 @@
 /* Verifica bloqueio */
-Exec SBD.dbo.up_SBDVerificaProcessosBloqueios
+sp_listabloqueio
 
-dbcc inputbuffer (158)
+
+SELECT DISTINCT 'KILL ''' + CONVERT(VARCHAR(100), request_owner_guid) + '''' Eliminar, request_owner_guid, request_session_id, transaction_begin_time
+FROM sys.dm_tran_locks tl
+    INNER JOIN sys.dm_tran_active_transactions at
+        ON tl.request_owner_guid = at.transaction_uow
+WHERE request_session_id = -2
+    AND DATEDIFF(MINUTE, transaction_begin_time, GETDATE()) > 1
+
+
+dbcc inputbuffer (5303)
 WITH NO_INFOMSGS
 
 /*
  sp_recompile 'IPASGO.dbo.up_gvReplicaDadosDepEndentes'
  
- Exec SBD.dbo.sp_BlitzWho 
+ Exec dbo.sp_BlitzWho 
 
- Exec SBD.dbo.sp_whoisactive 
--- Exec sbd.dbo.stpLock_Raiz
+ Exec dbo.sp_whoisactive 
+-- Exec dbo.stpLock_Raiz
 
 @get_plans = 1       -- this gives you the execution plans for running queries.
 ,@get_locks = 1       -- gives you an XML snippet you can click on to see what table, row, object, etc locks each query owns. Useful when you’re trying to figure out why one query is blocking others.
@@ -19,11 +28,9 @@ WITH NO_INFOMSGS
  sp_who2 'active'
 
 */
-exec sbd.dbo.up_SBDInputbuffer 1189
-
 
 -- Kill 60
-checkpoint
+--checkpoint
 
 /*
 ipasgo.dbo.up_opOperadores_Logins '03095311109'
